@@ -8,7 +8,10 @@ import androidx.compose.ui.platform.LocalConfiguration
 import com.example.simplysudoku.viewmodel.GameViewModel
 
 @Composable
-fun GameScreen(viewModel: GameViewModel) {
+fun GameScreen(
+    viewModel: GameViewModel,
+    onTitleClick: () -> Unit
+) {
     val uiState by viewModel.uiState.collectAsState()
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
@@ -16,12 +19,14 @@ fun GameScreen(viewModel: GameViewModel) {
     if (isLandscape) {
         LandscapeGameContent(
             uiState = uiState,
-            viewModel = viewModel
+            viewModel = viewModel,
+            onTitleClick = onTitleClick
         )
     } else {
         PortraitGameContent(
             uiState = uiState,
-            viewModel = viewModel
+            viewModel = viewModel,
+            onTitleClick = onTitleClick
         )
     }
 }

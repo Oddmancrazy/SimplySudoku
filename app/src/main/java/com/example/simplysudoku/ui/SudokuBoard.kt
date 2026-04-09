@@ -4,11 +4,11 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,9 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import com.example.simplysudoku.model.GameMode
 import com.example.simplysudoku.model.SudokuCell
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun SudokuBoard(
@@ -34,23 +34,35 @@ fun SudokuBoard(
     val selectedRow = selectedCell?.row
     val selectedCol = selectedCell?.col
 
+    val boardByPosition = board.associateBy { cell -> cell.row to cell.col }
+
     Box {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(9),
-            modifier = Modifier.size(360.dp)
+        Column(
+            modifier = Modifier.fillMaxSize()
         ) {
-            items(board) { cell ->
-                SudokuCellView(
-                    cell = cell,
-                    gameMode = gameMode,
-                    selectedRow = selectedRow,
-                    selectedCol = selectedCol,
-                    selectedNumber = selectedNumber,
-                    completedRows = completedRows,
-                    completedColumns = completedColumns,
-                    completedBoxes = completedBoxes,
-                    onClick = { onCellClick(cell.row, cell.col) }
-                )
+            for (row in 0..8) {
+                Row(
+                    modifier = Modifier.weight(1f)
+                ) {
+                    for (col in 0..8) {
+                        val cell = boardByPosition[row to col] ?: continue
+
+                        SudokuCellView(
+                            cell = cell,
+                            gameMode = gameMode,
+                            selectedRow = selectedRow,
+                            selectedCol = selectedCol,
+                            selectedNumber = selectedNumber,
+                            completedRows = completedRows,
+                            completedColumns = completedColumns,
+                            completedBoxes = completedBoxes,
+                            modifier = Modifier
+                                .weight(1f)
+                                .aspectRatio(1f),
+                            onClick = { onCellClick(cell.row, cell.col) }
+                        )
+                    }
+                }
             }
         }
 
@@ -68,6 +80,7 @@ private fun SudokuCellView(
     completedRows: Set<Int>,
     completedColumns: Set<Int>,
     completedBoxes: Set<Int>,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
     val backgroundColor = cellBackgroundColor(
@@ -82,39 +95,40 @@ private fun SudokuCellView(
     )
 
     Box(
-        modifier = Modifier
-            .aspectRatio(1f)
+        modifier = modifier
             .background(backgroundColor)
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
         Text(
             text = cell.value?.toString() ?: "",
-            color = Color(0xFF111111),
-            fontWeight = if (cell.isFixed) FontWeight.ExtraBold else FontWeight.Bold
+            color = if (cell.isFixed) Color(0xFF5F6368) else Color(0xFF111111),
+            fontWeight = if (cell.isFixed) FontWeight.Bold else FontWeight.ExtraBold,
+            fontSize = if (cell.isFixed) 20.sp else 19.sp
         )
     }
 }
 
 @Composable
 private fun BoardGridOverlay() {
-    Canvas(modifier = Modifier.size(360.dp)) {
-        val cellSize = size.width / 9f
+    Canvas(modifier = Modifier.fillMaxSize()) {
+        val cellWidth = size.width / 9f
+        val cellHeight = size.height / 9f
 
         for (i in 0..9) {
             val stroke = if (i % 3 == 0) 6f else 2f
 
             drawLine(
                 color = Color.Black,
-                start = Offset(i * cellSize, 0f),
-                end = Offset(i * cellSize, size.height),
+                start = Offset(i * cellWidth, 0f),
+                end = Offset(i * cellWidth, size.height),
                 strokeWidth = stroke
             )
 
             drawLine(
                 color = Color.Black,
-                start = Offset(0f, i * cellSize),
-                end = Offset(size.width, i * cellSize),
+                start = Offset(0f, i * cellHeight),
+                end = Offset(size.width, i * cellHeight),
                 strokeWidth = stroke
             )
         }
@@ -153,18 +167,12 @@ private fun cellBackgroundColor(
                 cell.value != null &&
                 cell.value == selectedNumber
 
-    val baseBackground = when {
-        cell.isFixed -> Color(0xFFE0E0E0)
-        cell.value != null -> Color(0xFFF1F1F1)
-        else -> Color.White
-    }
+    val baseBackground = Color.White
 
     val completedTint = isInCompletedRow || isInCompletedColumn || isInCompletedBox
     val completedBackground = when {
-        completedTint && cell.isFixed -> Color(0xFFE6F3E6)
-        completedTint && cell.value != null -> Color(0xFFEDF7ED)
-        completedTint -> Color(0xFFF6FBF6)
-        else -> baseBackground
+        !completedTint -> baseBackground
+        else -> Color(0xFFF1F8F1)
     }
 
     return when {
@@ -173,7 +181,7 @@ private fun cellBackgroundColor(
         isSameNumber -> Color(0xFFBBDEFB)
         completedTint -> completedBackground
         isModernMode && (isInSelectedRow || isInSelectedCol || isInSelectedBox) ->
-            Color(0xFFF3F8FF)
+            Color(0xFFEAF4FF)
         else -> baseBackground
     }
 }

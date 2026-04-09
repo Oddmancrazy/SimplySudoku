@@ -13,5 +13,6 @@ data class GameUiState(
     val completedNumbers: Set<Int> = emptySet(),
     val completedRows: Set<Int> = emptySet(),
     val completedColumns: Set<Int> = emptySet(),
-    val completedBoxes: Set<Int> = emptySet()
+    val completedBoxes: Set<Int> = emptySet(),
+    val isGenerating: Boolean = false
 )

@@ -1,5 +1,7 @@
 package com.example.simplysudoku.ui
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -10,8 +12,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
@@ -23,12 +28,21 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.simplysudoku.R
 import com.example.simplysudoku.model.Difficulty
 import com.example.simplysudoku.model.GameMode
 import com.example.simplysudoku.model.GameUiState
-import com.example.simplysudoku.model.SudokuCell
 import com.example.simplysudoku.viewmodel.GameViewModel
 
 private enum class PendingOpenType {
@@ -36,10 +50,20 @@ private enum class PendingOpenType {
     DIFFICULTY_MENU
 }
 
+private val PanelOuter = Color(0xFF9D744B)
+private val PanelInner = Color(0xFFF5E8D8)
+private val PanelFill = Color(0xEEFFF9F0)
+
+private val WoodButtonBase = Color(0xFFC88B4A)
+private val WoodButtonDark = Color(0xFF8B5A2B)
+private val WoodButtonLight = Color(0xFFE8B777)
+private val WoodButtonText = Color(0xFF3E2512)
+
 @Composable
 fun PortraitGameContent(
     uiState: GameUiState,
-    viewModel: GameViewModel
+    viewModel: GameViewModel,
+    onTitleClick: () -> Unit
 ) {
     var difficultyExpanded by remember { mutableStateOf(false) }
     var modeExpanded by remember { mutableStateOf(false) }
@@ -61,73 +85,93 @@ fun PortraitGameContent(
         }
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        Button(onClick = { }) {
-            Text("SimplySudoku")
-        }
+    GameBackground {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            PanelCard {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    WoodButton(
+                        text = "SimplySudoku",
+                        onClick = onTitleClick,
+                        modifier = Modifier.width(300.dp),
+                        textFontSize = 24.sp,
+                        textFontFamily = FontFamily.Cursive
+                    )
 
-        PortraitTopControls(
-            uiState = uiState,
-            modeExpanded = modeExpanded,
-            difficultyExpanded = difficultyExpanded,
-            onOpenMode = ::requestOpenModeMenu,
-            onOpenDifficulty = ::requestOpenDifficultyMenu,
-            onDismissMode = { modeExpanded = false },
-            onDismissDifficulty = { difficultyExpanded = false },
-            onSelectMode = {
-                modeExpanded = false
-                viewModel.setGameMode(it)
-                viewModel.startNewGame()
-            },
-            onSelectDifficulty = {
-                difficultyExpanded = false
-                viewModel.setDifficulty(it)
-                viewModel.startNewGame()
-            },
-            onNewGame = viewModel::startNewGame
-        )
+                    PortraitTopControls(
+                        uiState = uiState,
+                        modeExpanded = modeExpanded,
+                        difficultyExpanded = difficultyExpanded,
+                        onOpenMode = ::requestOpenModeMenu,
+                        onOpenDifficulty = ::requestOpenDifficultyMenu,
+                        onDismissMode = { modeExpanded = false },
+                        onDismissDifficulty = { difficultyExpanded = false },
+                        onSelectMode = {
+                            modeExpanded = false
+                            viewModel.setGameMode(it)
+                            viewModel.startNewGame()
+                        },
+                        onSelectDifficulty = {
+                            difficultyExpanded = false
+                            viewModel.setDifficulty(it)
+                            viewModel.startNewGame()
+                        },
+                        onNewGame = viewModel::startNewGame
+                    )
 
-        if (uiState.isCompleted) {
-            Text("Gratulerer! Du løste brettet!")
-        }
-
-        BoardContainer(
-            uiState = uiState,
-            pendingOpenType = pendingOpenType,
-            onConfirmPending = {
-                when (pendingOpenType) {
-                    PendingOpenType.MODE_MENU -> modeExpanded = true
-                    PendingOpenType.DIFFICULTY_MENU -> difficultyExpanded = true
-                    null -> {}
+                    if (uiState.isCompleted) {
+                        Text("Gratulerer! Du løste brettet!")
+                    }
                 }
-                pendingOpenType = null
-            },
-            onDismissPending = { pendingOpenType = null },
-            onCellClick = viewModel::onCellClicked
-        )
+            }
 
-        NumberPad(
-            completedNumbers = uiState.completedNumbers,
-            gameMode = uiState.gameMode,
-            selectedNumber = uiState.selectedNumber,
-            onNumberClick = viewModel::onNumberInput,
-            onEraseClick = viewModel::onEraseInput
-        )
+            BoardPanelWithTimer(
+                elapsedSeconds = uiState.elapsedSeconds
+            ) {
+                BoardContainer(
+                    uiState = uiState,
+                    pendingOpenType = pendingOpenType,
+                    onConfirmPending = {
+                        when (pendingOpenType) {
+                            PendingOpenType.MODE_MENU -> modeExpanded = true
+                            PendingOpenType.DIFFICULTY_MENU -> difficultyExpanded = true
+                            null -> {}
+                        }
+                        pendingOpenType = null
+                    },
+                    onDismissPending = { pendingOpenType = null },
+                    onCellClick = viewModel::onCellClicked
+                )
+            }
 
-        Text("Tid: ${formatTime(uiState.elapsedSeconds)}")
+            TightPanelCard(
+                modifier = Modifier.widthIn(max = 360.dp)
+            ) {
+                NumberPad(
+                    completedNumbers = uiState.completedNumbers,
+                    gameMode = uiState.gameMode,
+                    selectedNumber = uiState.selectedNumber,
+                    onNumberClick = viewModel::onNumberInput,
+                    onEraseClick = viewModel::onEraseInput
+                )
+            }
+        }
     }
 }
 
 @Composable
 fun LandscapeGameContent(
     uiState: GameUiState,
-    viewModel: GameViewModel
+    viewModel: GameViewModel,
+    onTitleClick: () -> Unit
 ) {
     var difficultyExpanded by remember { mutableStateOf(false) }
     var modeExpanded by remember { mutableStateOf(false) }
@@ -150,98 +194,256 @@ fun LandscapeGameContent(
         }
     }
 
-    Row(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
+    GameBackground {
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            if (isLeftHanded) {
+                TightPanelCard {
+                    LandscapeNumberPadColumn(
+                        uiState = uiState,
+                        viewModel = viewModel
+                    )
+                }
+
+                BoardPanelWithTimer(
+                    elapsedSeconds = uiState.elapsedSeconds
+                ) {
+                    BoardContainer(
+                        uiState = uiState,
+                        pendingOpenType = pendingOpenType,
+                        onConfirmPending = {
+                            when (pendingOpenType) {
+                                PendingOpenType.MODE_MENU -> modeExpanded = true
+                                PendingOpenType.DIFFICULTY_MENU -> difficultyExpanded = true
+                                null -> {}
+                            }
+                            pendingOpenType = null
+                        },
+                        onDismissPending = { pendingOpenType = null },
+                        onCellClick = viewModel::onCellClicked
+                    )
+                }
+
+                PanelCard {
+                    LandscapeControlColumn(
+                        uiState = uiState,
+                        modeExpanded = modeExpanded,
+                        difficultyExpanded = difficultyExpanded,
+                        onTitleClick = onTitleClick,
+                        onOpenMode = ::requestOpenModeMenu,
+                        onOpenDifficulty = ::requestOpenDifficultyMenu,
+                        onDismissMode = { modeExpanded = false },
+                        onDismissDifficulty = { difficultyExpanded = false },
+                        onSelectMode = {
+                            modeExpanded = false
+                            viewModel.setGameMode(it)
+                            viewModel.startNewGame()
+                        },
+                        onSelectDifficulty = {
+                            difficultyExpanded = false
+                            viewModel.setDifficulty(it)
+                            viewModel.startNewGame()
+                        },
+                        onNewGame = viewModel::startNewGame,
+                        onSwapSides = { isLeftHanded = !isLeftHanded }
+                    )
+                }
+            } else {
+                PanelCard {
+                    LandscapeControlColumn(
+                        uiState = uiState,
+                        modeExpanded = modeExpanded,
+                        difficultyExpanded = difficultyExpanded,
+                        onTitleClick = onTitleClick,
+                        onOpenMode = ::requestOpenModeMenu,
+                        onOpenDifficulty = ::requestOpenDifficultyMenu,
+                        onDismissMode = { modeExpanded = false },
+                        onDismissDifficulty = { difficultyExpanded = false },
+                        onSelectMode = {
+                            modeExpanded = false
+                            viewModel.setGameMode(it)
+                            viewModel.startNewGame()
+                        },
+                        onSelectDifficulty = {
+                            difficultyExpanded = false
+                            viewModel.setDifficulty(it)
+                            viewModel.startNewGame()
+                        },
+                        onNewGame = viewModel::startNewGame,
+                        onSwapSides = { isLeftHanded = !isLeftHanded }
+                    )
+                }
+
+                BoardPanelWithTimer(
+                    elapsedSeconds = uiState.elapsedSeconds
+                ) {
+                    BoardContainer(
+                        uiState = uiState,
+                        pendingOpenType = pendingOpenType,
+                        onConfirmPending = {
+                            when (pendingOpenType) {
+                                PendingOpenType.MODE_MENU -> modeExpanded = true
+                                PendingOpenType.DIFFICULTY_MENU -> difficultyExpanded = true
+                                null -> {}
+                            }
+                            pendingOpenType = null
+                        },
+                        onDismissPending = { pendingOpenType = null },
+                        onCellClick = viewModel::onCellClicked
+                    )
+                }
+
+                TightPanelCard {
+                    LandscapeNumberPadColumn(
+                        uiState = uiState,
+                        viewModel = viewModel
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun GameBackground(
+    content: @Composable () -> Unit
+) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource(id = R.drawable.sudoku_background),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0x55FFF7EB))
+        )
+
+        content()
+    }
+}
+
+@Composable
+private fun PanelCard(
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
+    Box(
+        modifier = modifier
+            .clip(RoundedCornerShape(24.dp))
+            .background(PanelOuter)
+            .padding(2.dp)
+            .clip(RoundedCornerShape(22.dp))
+            .background(PanelInner)
+            .padding(1.dp)
+            .clip(RoundedCornerShape(21.dp))
+            .background(PanelFill)
+            .padding(14.dp)
     ) {
-        if (isLeftHanded) {
-            LandscapeNumberPadColumn(
-                uiState = uiState,
-                viewModel = viewModel
-            )
+        content()
+    }
+}
 
-            BoardContainer(
-                uiState = uiState,
-                pendingOpenType = pendingOpenType,
-                onConfirmPending = {
-                    when (pendingOpenType) {
-                        PendingOpenType.MODE_MENU -> modeExpanded = true
-                        PendingOpenType.DIFFICULTY_MENU -> difficultyExpanded = true
-                        null -> {}
-                    }
-                    pendingOpenType = null
-                },
-                onDismissPending = { pendingOpenType = null },
-                onCellClick = viewModel::onCellClicked
-            )
+@Composable
+private fun TightPanelCard(
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
+    Box(
+        modifier = modifier
+            .clip(RoundedCornerShape(24.dp))
+            .background(PanelOuter)
+            .padding(2.dp)
+            .clip(RoundedCornerShape(22.dp))
+            .background(PanelInner)
+            .padding(1.dp)
+            .clip(RoundedCornerShape(21.dp))
+            .background(PanelFill)
+            .padding(horizontal = 8.dp, vertical = 10.dp)
+    ) {
+        content()
+    }
+}
 
-            LandscapeControlColumn(
-                uiState = uiState,
-                modeExpanded = modeExpanded,
-                difficultyExpanded = difficultyExpanded,
-                onOpenMode = ::requestOpenModeMenu,
-                onOpenDifficulty = ::requestOpenDifficultyMenu,
-                onDismissMode = { modeExpanded = false },
-                onDismissDifficulty = { difficultyExpanded = false },
-                onSelectMode = {
-                    modeExpanded = false
-                    viewModel.setGameMode(it)
-                    viewModel.startNewGame()
-                },
-                onSelectDifficulty = {
-                    difficultyExpanded = false
-                    viewModel.setDifficulty(it)
-                    viewModel.startNewGame()
-                },
-                onNewGame = viewModel::startNewGame,
-                onSwapSides = { isLeftHanded = !isLeftHanded },
-                isLeftHanded = isLeftHanded
-            )
-        } else {
-            LandscapeControlColumn(
-                uiState = uiState,
-                modeExpanded = modeExpanded,
-                difficultyExpanded = difficultyExpanded,
-                onOpenMode = ::requestOpenModeMenu,
-                onOpenDifficulty = ::requestOpenDifficultyMenu,
-                onDismissMode = { modeExpanded = false },
-                onDismissDifficulty = { difficultyExpanded = false },
-                onSelectMode = {
-                    modeExpanded = false
-                    viewModel.setGameMode(it)
-                    viewModel.startNewGame()
-                },
-                onSelectDifficulty = {
-                    difficultyExpanded = false
-                    viewModel.setDifficulty(it)
-                    viewModel.startNewGame()
-                },
-                onNewGame = viewModel::startNewGame,
-                onSwapSides = { isLeftHanded = !isLeftHanded },
-                isLeftHanded = isLeftHanded
-            )
+@Composable
+private fun BoardPanelWithTimer(
+    elapsedSeconds: Int,
+    content: @Composable () -> Unit
+) {
+    PanelCard(
+        modifier = Modifier.widthIn(max = 420.dp)
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(6.dp)
+        ) {
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.TopEnd
+            ) {
+                Text(
+                    text = formatTime(elapsedSeconds),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color(0xFF5C4126)
+                )
+            }
 
-            BoardContainer(
-                uiState = uiState,
-                pendingOpenType = pendingOpenType,
-                onConfirmPending = {
-                    when (pendingOpenType) {
-                        PendingOpenType.MODE_MENU -> modeExpanded = true
-                        PendingOpenType.DIFFICULTY_MENU -> difficultyExpanded = true
-                        null -> {}
-                    }
-                    pendingOpenType = null
-                },
-                onDismissPending = { pendingOpenType = null },
-                onCellClick = viewModel::onCellClicked
-            )
+            Box(
+                modifier = Modifier.padding(top = 2.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                content()
+            }
+        }
+    }
+}
 
-            LandscapeNumberPadColumn(
-                uiState = uiState,
-                viewModel = viewModel
+@Composable
+private fun WoodButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    textFontSize: TextUnit = 18.sp,
+    textFontFamily: FontFamily = FontFamily.Serif
+) {
+    Button(
+        onClick = onClick,
+        modifier = modifier,
+        shape = RoundedCornerShape(18.dp),
+        border = BorderStroke(1.dp, WoodButtonDark),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = WoodButtonBase,
+            contentColor = WoodButtonText
+        )
+    ) {
+        Box(
+            modifier = Modifier
+                .background(
+                    brush = Brush.verticalGradient(
+                        listOf(
+                            WoodButtonLight.copy(alpha = 0.55f),
+                            Color.Transparent
+                        )
+                    )
+                )
+                .padding(horizontal = 4.dp, vertical = 2.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = text,
+                fontSize = textFontSize,
+                fontFamily = textFontFamily,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center
             )
         }
     }
@@ -266,9 +468,13 @@ private fun PortraitTopControls(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = onOpenMode) {
-                Text(uiState.gameMode.displayName)
-            }
+            WoodButton(
+                text = shortModeLabel(uiState.gameMode),
+                onClick = onOpenMode,
+                modifier = Modifier.width(92.dp),
+                textFontSize = 16.sp,
+                textFontFamily = FontFamily.Cursive
+            )
 
             DropdownMenu(
                 expanded = modeExpanded,
@@ -284,9 +490,13 @@ private fun PortraitTopControls(
         }
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = onOpenDifficulty) {
-                Text(uiState.difficulty.displayName)
-            }
+            WoodButton(
+                text = shortDifficultyLabel(uiState.difficulty),
+                onClick = onOpenDifficulty,
+                modifier = Modifier.width(92.dp),
+                textFontSize = 16.sp,
+                textFontFamily = FontFamily.Cursive
+            )
 
             DropdownMenu(
                 expanded = difficultyExpanded,
@@ -301,9 +511,13 @@ private fun PortraitTopControls(
             }
         }
 
-        Button(onClick = onNewGame) {
-            Text("Nytt spill")
-        }
+        WoodButton(
+            text = "Nytt",
+            onClick = onNewGame,
+            modifier = Modifier.width(108.dp),
+            textFontSize = 16.sp,
+            textFontFamily = FontFamily.Cursive
+        )
     }
 }
 
@@ -312,6 +526,7 @@ private fun LandscapeControlColumn(
     uiState: GameUiState,
     modeExpanded: Boolean,
     difficultyExpanded: Boolean,
+    onTitleClick: () -> Unit,
     onOpenMode: () -> Unit,
     onOpenDifficulty: () -> Unit,
     onDismissMode: () -> Unit,
@@ -319,11 +534,10 @@ private fun LandscapeControlColumn(
     onSelectMode: (GameMode) -> Unit,
     onSelectDifficulty: (Difficulty) -> Unit,
     onNewGame: () -> Unit,
-    onSwapSides: () -> Unit,
-    isLeftHanded: Boolean
+    onSwapSides: () -> Unit
 ) {
     Column(
-        modifier = Modifier.size(width = 180.dp, height = 360.dp),
+        modifier = Modifier.size(width = 190.dp, height = 370.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
@@ -331,13 +545,21 @@ private fun LandscapeControlColumn(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            Button(onClick = { }) {
-                Text("SimplySudoku")
-            }
+            WoodButton(
+                text = "SimplySudoku",
+                onClick = onTitleClick,
+                modifier = Modifier.width(168.dp),
+                textFontSize = 22.sp,
+                textFontFamily = FontFamily.Cursive
+            )
 
-            Button(onClick = onOpenMode) {
-                Text(uiState.gameMode.displayName)
-            }
+            WoodButton(
+                text = shortModeLabel(uiState.gameMode),
+                onClick = onOpenMode,
+                modifier = Modifier.width(140.dp),
+                textFontSize = 16.sp,
+                textFontFamily = FontFamily.Cursive
+            )
 
             DropdownMenu(
                 expanded = modeExpanded,
@@ -351,9 +573,13 @@ private fun LandscapeControlColumn(
                 }
             }
 
-            Button(onClick = onOpenDifficulty) {
-                Text(uiState.difficulty.displayName)
-            }
+            WoodButton(
+                text = shortDifficultyLabel(uiState.difficulty),
+                onClick = onOpenDifficulty,
+                modifier = Modifier.width(140.dp),
+                textFontSize = 16.sp,
+                textFontFamily = FontFamily.Cursive
+            )
 
             DropdownMenu(
                 expanded = difficultyExpanded,
@@ -367,9 +593,13 @@ private fun LandscapeControlColumn(
                 }
             }
 
-            Button(onClick = onNewGame) {
-                Text("Nytt spill")
-            }
+            WoodButton(
+                text = "Nytt",
+                onClick = onNewGame,
+                modifier = Modifier.width(140.dp),
+                textFontSize = 16.sp,
+                textFontFamily = FontFamily.Cursive
+            )
 
             if (uiState.isCompleted) {
                 Text("Ferdig!")
@@ -380,14 +610,13 @@ private fun LandscapeControlColumn(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Button(
+            WoodButton(
+                text = "Bytt",
                 onClick = onSwapSides,
-                shape = RoundedCornerShape(14.dp)
-            ) {
-                Text("Bytt side")
-            }
-
-            Text("Tid: ${formatTime(uiState.elapsedSeconds)}")
+                modifier = Modifier.width(128.dp),
+                textFontSize = 16.sp,
+                textFontFamily = FontFamily.Cursive
+            )
         }
     }
 }
@@ -398,7 +627,7 @@ private fun LandscapeNumberPadColumn(
     viewModel: GameViewModel
 ) {
     Column(
-        modifier = Modifier.size(width = 170.dp, height = 360.dp),
+        modifier = Modifier.size(width = 165.dp, height = 350.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -441,13 +670,12 @@ private fun LandscapeNumberPad(
                 onNumberClick = onNumberClick
             )
 
-            Button(
+            WoodButton(
+                text = "⌫",
                 onClick = onEraseClick,
                 modifier = Modifier.size(width = 60.dp, height = 46.dp),
-                shape = RoundedCornerShape(12.dp)
-            ) {
-                Text("⌫")
-            }
+                textFontSize = 22.sp
+            )
         }
     }
 }
@@ -496,24 +724,33 @@ private fun LandscapeSingleNumberButton(
     val isModernMode = gameMode == GameMode.MODERN
 
     val buttonColors = when {
-        isModernMode && isComplete -> androidx.compose.material3.ButtonDefaults.buttonColors(
-            containerColor = Color(0xFFC8E6C9)
+        isModernMode && isComplete -> ButtonDefaults.buttonColors(
+            containerColor = Color(0xFFC8E6C9),
+            contentColor = WoodButtonText
         )
-
-        isModernMode && isSelected -> androidx.compose.material3.ButtonDefaults.buttonColors(
-            containerColor = Color(0xFFBBDEFB)
+        isModernMode && isSelected -> ButtonDefaults.buttonColors(
+            containerColor = Color(0xFFBBDEFB),
+            contentColor = WoodButtonText
         )
-
-        else -> androidx.compose.material3.ButtonDefaults.buttonColors()
+        else -> ButtonDefaults.buttonColors(
+            containerColor = WoodButtonBase,
+            contentColor = WoodButtonText
+        )
     }
 
     Button(
         onClick = { onNumberClick(number) },
         modifier = Modifier.size(width = 60.dp, height = 46.dp),
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(14.dp),
+        border = BorderStroke(1.dp, WoodButtonDark),
         colors = buttonColors
     ) {
-        Text(number.toString())
+        Text(
+            text = number.toString(),
+            fontSize = 17.sp,
+            fontWeight = FontWeight.Bold,
+            fontFamily = FontFamily.Serif
+        )
     }
 }
 
@@ -552,6 +789,17 @@ private fun BoardContainer(
                 onDismiss = onDismissPending
             )
         }
+
+        if (uiState.isGenerating) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color(0xCCFFFFFF)),
+                contentAlignment = Alignment.Center
+            ) {
+                MiniSudokuLoader()
+            }
+        }
     }
 }
 
@@ -582,13 +830,39 @@ private fun ConfirmRestartOverlay(
         Row(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            Button(onClick = onDismiss) {
-                Text("Avbryt")
-            }
-            Button(onClick = onConfirm) {
-                Text("Fortsett")
-            }
+            WoodButton(
+                text = "Avbryt",
+                onClick = onDismiss,
+                modifier = Modifier.width(110.dp),
+                textFontSize = 15.sp,
+                textFontFamily = FontFamily.Cursive
+            )
+            WoodButton(
+                text = "Fortsett",
+                onClick = onConfirm,
+                modifier = Modifier.width(110.dp),
+                textFontSize = 15.sp,
+                textFontFamily = FontFamily.Cursive
+            )
         }
+    }
+}
+
+private fun shortModeLabel(mode: GameMode): String {
+    return when (mode) {
+        GameMode.MODERN -> "M"
+        GameMode.CLASSIC -> "K"
+    }
+}
+
+private fun shortDifficultyLabel(difficulty: Difficulty): String {
+    return when (difficulty) {
+        Difficulty.VERY_EASY -> "EL"
+        Difficulty.EASY -> "L"
+        Difficulty.MEDIUM -> "M"
+        Difficulty.HARD -> "V"
+        Difficulty.VERY_HARD -> "VV"
+        Difficulty.EXPERT -> "EX"
     }
 }
 
