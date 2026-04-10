@@ -1,6 +1,7 @@
 package com.example.simplysudoku.data.repository
 
 import android.content.Context
+import com.example.simplysudoku.data.backup.BackupFileManager
 import com.example.simplysudoku.data.local.RecordEntity
 import com.example.simplysudoku.model.BestTimeStat
 import com.example.simplysudoku.model.Difficulty
@@ -69,6 +70,17 @@ class RecordRepository(
 
     suspend fun getAllRecords(): List<RecordEntity> {
         return readRecords()
+    }
+
+    fun getAllRecordsSync(): List<RecordEntity> {
+        return readRecords()
+    }
+
+    suspend fun replaceAllRecords(
+        records: List<RecordEntity>,
+        triggerAutoBackup: Boolean = true
+    ) {
+        writeRecords(records, triggerAutoBackup = triggerAutoBackup)
     }
 
     suspend fun buildOverview(): RecordsOverview {
@@ -150,7 +162,10 @@ class RecordRepository(
         return records.sortedByDescending { it.startedAtMillis }
     }
 
-    private fun writeRecords(records: List<RecordEntity>) {
+    private fun writeRecords(
+        records: List<RecordEntity>,
+        triggerAutoBackup: Boolean = true
+    ) {
         val jsonArray = JSONArray()
 
         records.forEach { record ->
@@ -160,6 +175,24 @@ class RecordRepository(
         context.openFileOutput(fileName, Context.MODE_PRIVATE).bufferedWriter().use { writer ->
             writer.write(jsonArray.toString())
         }
+
+        if (triggerAutoBackup) {
+            triggerAutoBackup(records)
+        }
+    }
+
+    private fun triggerAutoBackup(records: List<RecordEntity>) {
+        val settingsRepository = SettingsRepository(context)
+        val settings = settingsRepository.getSettings()
+
+        if (!settings.autoBackupEnabled || settings.backupUri.isNullOrBlank()) return
+
+        BackupFileManager.writeBackupToTreeUri(
+            context = context,
+            treeUriString = settings.backupUri,
+            records = records,
+            settings = settings
+        )
     }
 
     private fun recordToJson(record: RecordEntity): JSONObject {

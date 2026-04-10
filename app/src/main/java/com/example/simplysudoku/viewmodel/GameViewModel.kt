@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.simplysudoku.data.repository.RecordRepository
+import com.example.simplysudoku.data.repository.SettingsRepository
 import com.example.simplysudoku.logic.GameEngine
 import com.example.simplysudoku.model.Difficulty
 import com.example.simplysudoku.model.GameMode
@@ -20,14 +21,17 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     private val gameEngine = GameEngine()
     private val recordRepository = RecordRepository(application.applicationContext)
+    private val settingsRepository = SettingsRepository(application.applicationContext)
+
+    private val initialSettings = settingsRepository.getSettings()
 
     private lateinit var solutionBoard: Array<IntArray>
 
     private val _uiState = MutableStateFlow(
         GameUiState(
             board = emptyList(),
-            difficulty = Difficulty.EASY,
-            gameMode = GameMode.MODERN,
+            difficulty = initialSettings.difficulty,
+            gameMode = initialSettings.gameMode,
             elapsedSeconds = 0,
             isCompleted = false,
             hasStarted = false,
@@ -122,6 +126,8 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     fun setDifficulty(difficulty: Difficulty) {
         if (_uiState.value.isGenerating) return
 
+        settingsRepository.saveDifficulty(difficulty)
+
         _uiState.update { state ->
             state.copy(difficulty = difficulty)
         }
@@ -130,6 +136,8 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     fun setGameMode(mode: GameMode) {
         if (!::solutionBoard.isInitialized) return
         if (_uiState.value.isGenerating) return
+
+        settingsRepository.saveGameMode(mode)
 
         _uiState.update { state ->
             val updatedState = state.copy(gameMode = mode)

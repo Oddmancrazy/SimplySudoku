@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,9 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import com.example.simplysudoku.model.GameMode
 import com.example.simplysudoku.model.SudokuCell
-import androidx.compose.ui.unit.sp
 
 @Composable
 fun SudokuBoard(
@@ -157,9 +156,10 @@ private fun cellBackgroundColor(
 
     val boxIndex = (cell.row / 3) * 3 + (cell.col / 3)
 
-    val isInCompletedRow = completedRows.contains(cell.row)
-    val isInCompletedColumn = completedColumns.contains(cell.col)
-    val isInCompletedBox = completedBoxes.contains(boxIndex)
+    val isInCompletedArea =
+        cell.row in completedRows ||
+                cell.col in completedColumns ||
+                boxIndex in completedBoxes
 
     val isSameNumber =
         isModernMode &&
@@ -167,21 +167,12 @@ private fun cellBackgroundColor(
                 cell.value != null &&
                 cell.value == selectedNumber
 
-    val baseBackground = Color.White
-
-    val completedTint = isInCompletedRow || isInCompletedColumn || isInCompletedBox
-    val completedBackground = when {
-        !completedTint -> baseBackground
-        else -> Color(0xFFF1F8F1)
-    }
-
     return when {
         isModernMode && cell.hasError -> Color(0xFFFFCDD2)
         cell.isSelected -> Color(0xFF90CAF9)
         isSameNumber -> Color(0xFFBBDEFB)
-        completedTint -> completedBackground
-        isModernMode && (isInSelectedRow || isInSelectedCol || isInSelectedBox) ->
-            Color(0xFFEAF4FF)
-        else -> baseBackground
+        isModernMode && (isInSelectedRow || isInSelectedCol || isInSelectedBox) -> Color(0xFFEAF4FF)
+        isInCompletedArea -> Color(0xFFF1F8F1)
+        else -> Color.White
     }
 }
