@@ -16,23 +16,35 @@
     <string name="language">Språk</string>
     <string name="language_desc">Velg standardspråk for appen. System brukes som standard ved første oppstart.</string>
     <string name="storage_and_backup">Lagring og backup</string>
-    <string name="storage_desc">Spilldata lagres alltid lokalt. Du kan i tillegg velge backupmappe, eksportere, dele eller importere backup.</string>
+    <string name="storage_desc">Spilldata lagres lokalt. For å spille på flere enheter, velg en felles backup-fil i skyen.</string>
     <string name="auto_backup">Automatisk backup</string>
     <string name="on">På</string>
     <string name="off">Av</string>
     <string name="selected_location">Valgt plassering</string>
     <string name="none_selected">Ingen valgt ennå</string>
-    <string name="choose_folder">Velg mappe</string>
-    <string name="export_now">Eksporter nå</string>
+    <string name="choose_folder">Lagre til...</string>
+    <string name="export_now">Lagre kopi</string>
     <string name="share_backup">Del backup</string>
-    <string name="import_label">Importer</string>
+    <string name="import_label">Importer fil</string>
+    <string name="auto_backup_active">✓ Automatisk lagring til skyen er aktiv</string>
     <string name="working">Jobber…</string>
     <string name="hide">Skjul</string>
-    <string name="about_app">Om appen</string>
+    <string name="about_app">Om SimplySudoku</string>
+    <string name="about_modes_title">Spillmoduser</string>
     <string name="classic">Klassisk</string>
-    <string name="classic_desc">Minimal hjelp og en mer tradisjonell Sudoku-opplevelse.</string>
+    <string name="classic_desc">For den tradisjonelle spilleren. Minimal hjelp, ingen feilmarkeringer underveis – akkurat som penn og papir.</string>
     <string name="modern">Moderne</string>
-    <string name="modern_desc">Gir mer visuell hjelp med markeringer og feilvisning underveis.</string>
+    <string name="modern_desc">Gir visuell støtte ved å markere duplikater og feil umiddelbart. Perfekt for en raskere og mer guidet opplevelse.</string>
+    <string name="about_features_title">Funksjoner</string>
+    <string name="feature_pause_title">Fair-Play Pause</string>
+    <string name="feature_pause_desc">Når du pauser spillet, dekkes brettet til. Dette sikrer at klokken stopper rettferdig, slik at du ikke kan planlegge neste trekk mens tiden står stille.</string>
+    <string name="feature_layout_title">Fleksibelt oppsett</string>
+    <string name="feature_layout_desc">Spiller du på stor skjerm eller er du venstrehendt? I liggende modus kan du enkelt bytte side på kontrollpanelet for best mulig ergonomi.</string>
+    <string name="feature_history_title">Statistikk og backup</string>
+    <string name="feature_history_desc">Appen holder kontroll på dine beste tider. Se raske høydepunkter på forsiden eller dykk ned i full historikk. Dine data er dine – du kan ta backup, slette alt, eller flytte dem til en ny enhet.</string>
+    <string name="about_story_title">Historien bak</string>
+    <string name="about_story_desc">SimplySudoku ble utviklet av en som bare ønsket seg en ren og pen app der man kunne sette i gang og spille med ett enkelt trykk, uten rot eller unødvendige menyer.</string>
+
     <string name="goal">Målet</string>
     <string name="goal_desc">Fyll hele brettet slik at hver rad, kolonne og 3×3-boks inneholder tallene 1 til 9 én gang hver.</string>
     <string name="all_history">All historikk</string>
@@ -81,6 +93,8 @@
     <string name="backup_imported">Backup importert.</string>
     <string name="share_backup_title">Del backup</string>
     <string name="app_by">App av %1$s</string>
+    <string name="backup_info_title">Slik fungerer synkronisering</string>
+    <string name="backup_info_desc">For å holde flere enheter like, anbefaler vi å bruke \"Lagre til...\" og opprette en fil i skyen (f.eks. Google Disk). \n\n1. Trykk \"Lagre til...\" og opprett en fil på din Google Disk.\n2. Appen vil nå automatisk lagre fremgangen din der hver gang du vinner.\n3. På din andre enhet trykker du \"Importer fil\" og velger den SAMME fila. \n\nAppen vil da automatisk flette sammen dine beste tider fra alle enheter til én felles oversikt, og bruke denne fila for fremtidige lagringer.</string>
     <!-- Difficulty Labels -->
     <!-- Game Modes -->
     <string name="game_mode_classic">Klassisk</string>

@@ -72,6 +72,22 @@ object BackupFileManager {
         }
     }
 
+    fun writeBackupToFileUri(
+        context: Context,
+        fileUriString: String,
+        records: List<RecordEntity>,
+        settings: AppSettings
+    ): Result<Unit> {
+        return runCatching {
+            val fileUri = Uri.parse(fileUriString)
+            val backupJson = buildBackupJson(records, settings)
+
+            context.contentResolver.openOutputStream(fileUri, "wt")?.bufferedWriter()?.use {
+                it.write(backupJson)
+            } ?: error("Kunne ikke åpne fil for skriving.")
+        }
+    }
+
     private fun buildBackupJson(
         records: List<RecordEntity>,
         settings: AppSettings

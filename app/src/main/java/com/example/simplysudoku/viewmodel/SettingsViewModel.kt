@@ -89,34 +89,55 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     fun exportBackupNow() {
         val backupUri = _uiState.value.settings.backupUri
+        if (backupUri.isNullOrBlank()) return
+        exportToFolder(backupUri)
+    }
 
-        if (backupUri.isNullOrBlank()) {
-            refreshWithMessage("Velg lagringsmappe først.")
-            return
-        }
-
+    fun exportToSingleFile(fileUriString: String) {
         _uiState.update { it.copy(isWorking = true, statusMessage = null) }
+        viewModelScope.launch(Dispatchers.IO) {
+            val records = recordRepository.getAllRecordsSync()
+            val settings = settingsRepository.getSettings()
 
+            val result = BackupFileManager.writeBackupToFileUri(
+                context = appContext,
+                fileUriString = fileUriString,
+                records = records,
+                settings = settings
+            )
+
+            if (result.isSuccess) {
+                // Lagre denne URI-en som fast backup-plassering
+                settingsRepository.saveBackupUri(fileUriString)
+            }
+
+            _uiState.update {
+                it.copy(
+                    settings = settingsRepository.getSettings(),
+                    isWorking = false,
+                    statusMessage = if (result.isSuccess) "Backup lagret og koblet til." else "Klarte ikke å lagre."
+                )
+            }
+        }
+    }
+
+    private fun exportToFolder(folderUri: String) {
+        _uiState.update { it.copy(isWorking = true, statusMessage = null) }
         viewModelScope.launch(Dispatchers.IO) {
             val records = recordRepository.getAllRecordsSync()
             val settings = settingsRepository.getSettings()
 
             val result = BackupFileManager.writeBackupToTreeUri(
                 context = appContext,
-                treeUriString = backupUri,
+                treeUriString = folderUri,
                 records = records,
                 settings = settings
             )
 
             _uiState.update {
                 it.copy(
-                    settings = settingsRepository.getSettings(),
                     isWorking = false,
-                    statusMessage = if (result.isSuccess) {
-                        "Backup eksportert."
-                    } else {
-                        "Klarte ikke å eksportere backup."
-                    }
+                    statusMessage = if (result.isSuccess) "Backup eksportert." else "Eksport feilet."
                 )
             }
         }
@@ -152,13 +173,21 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
                 return@launch
             }
 
-            recordRepository.replaceAllRecords(
-                records = snapshot.records,
+            // Fletter inn rekorder i stedet for å erstatte alt
+            recordRepository.mergeRecords(
+                newRecords = snapshot.records,
                 triggerAutoBackup = false
             )
 
+            // Vi bruker innstillingene fra backup-fila, 
+            // men vi TVINGER den til å bruke den nye fil-stien vi nettopp valgte.
+            val updatedSettings = snapshot.settings.copy(
+                backupUri = fileUriString,
+                autoBackupEnabled = true // Vi slår det på siden brukeren aktivt importerer
+            )
+
             settingsRepository.applySettings(
-                settings = snapshot.settings,
+                settings = updatedSettings,
                 triggerAutoBackup = false
             )
 
@@ -166,7 +195,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
                 it.copy(
                     settings = settingsRepository.getSettings(),
                     isWorking = false,
-                    statusMessage = "Backup importert."
+                    statusMessage = "Backup flettet inn og koblet til."
                 )
             }
         }

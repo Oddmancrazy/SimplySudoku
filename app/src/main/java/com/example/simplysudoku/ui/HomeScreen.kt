@@ -22,7 +22,12 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -112,9 +117,18 @@ fun HomeScreen(
         }
     }
 
+    val exportFileLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CreateDocument("*/*")
+    ) { uri ->
+        if (uri != null) {
+            settingsViewModel.exportToSingleFile(uri.toString())
+        }
+    }
+
     val importedMessage = stringResource(R.string.backup_imported)
     LaunchedEffect(settingsUiState.statusMessage) {
-        if (settingsUiState.statusMessage == "Backup importert." || settingsUiState.statusMessage == importedMessage) {
+        val msg = settingsUiState.statusMessage
+        if (msg == "Backup importert." || msg == "Backup flettet inn." || msg == importedMessage) {
             recordsViewModel.refresh()
         }
     }
@@ -218,20 +232,8 @@ fun HomeScreen(
                         isWorking = settingsUiState.isWorking,
                         statusMessage = settingsUiState.statusMessage,
                         onToggleAutoBackup = settingsViewModel::setAutoBackupEnabled,
-                        onChooseFolder = { folderPickerLauncher.launch(null) },
-                        onExportNow = settingsViewModel::exportBackupNow,
-                        onShareBackup = {
-                            val shareUri = settingsViewModel.createShareBackupUri()
-                            if (shareUri != null) {
-                                val shareIntent = Intent(Intent.ACTION_SEND).apply {
-                                    type = "application/json"
-                                    putExtra(Intent.EXTRA_STREAM, shareUri)
-                                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                                }
-                                context.startActivity(
-                                    Intent.createChooser(shareIntent, shareTitle)
-                                )
-                            }
+                        onConnectDrive = {
+                            exportFileLauncher.launch("simplysudoku_backup.json")
                         },
                         onImportBackup = {
                             importFileLauncher.launch(
@@ -248,7 +250,7 @@ fun HomeScreen(
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                    verticalArrangement = Arrangement.spacedBy(14.dp)
                 ) {
                     Text(
                         text = stringResource(R.string.about_app),
@@ -258,22 +260,72 @@ fun HomeScreen(
                         color = HomeKeyText
                     )
 
-                    AboutLine(
-                        title = stringResource(R.string.classic),
-                        text = stringResource(R.string.classic_desc)
-                    )
-
-                    AboutLine(
-                        title = stringResource(R.string.modern),
-                        text = stringResource(R.string.modern_desc)
-                    )
-
+                    // 1. Goal
                     AboutLine(
                         title = stringResource(R.string.goal),
                         text = stringResource(R.string.goal_desc)
                     )
 
-                    Spacer(modifier = Modifier.height(14.dp))
+                    // 2. Game Modes
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(
+                            text = stringResource(R.string.about_modes_title),
+                            fontSize = 19.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = HomeKeyText,
+                            fontFamily = FontFamily.Serif
+                        )
+                        AboutLine(
+                            title = stringResource(R.string.classic),
+                            text = stringResource(R.string.classic_desc)
+                        )
+                        AboutLine(
+                            title = stringResource(R.string.modern),
+                            text = stringResource(R.string.modern_desc)
+                        )
+                    }
+
+                    // 3. Features
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(
+                            text = stringResource(R.string.about_features_title),
+                            fontSize = 19.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = HomeKeyText,
+                            fontFamily = FontFamily.Serif
+                        )
+                        AboutLine(
+                            title = stringResource(R.string.feature_pause_title),
+                            text = stringResource(R.string.feature_pause_desc)
+                        )
+                        AboutLine(
+                            title = stringResource(R.string.feature_layout_title),
+                            text = stringResource(R.string.feature_layout_desc)
+                        )
+                        AboutLine(
+                            title = stringResource(R.string.feature_history_title),
+                            text = stringResource(R.string.feature_history_desc)
+                        )
+                    }
+
+                    // 4. Story
+                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(
+                            text = stringResource(R.string.about_story_title),
+                            fontSize = 19.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = HomeKeyText,
+                            fontFamily = FontFamily.Serif
+                        )
+                        Text(
+                            text = stringResource(R.string.about_story_desc),
+                            fontSize = 16.sp,
+                            color = Color(0xFF4E3822),
+                            lineHeight = 22.sp
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
 
                     Text(
                         text = stringResource(R.string.app_by, "Oddman"),
@@ -411,12 +463,12 @@ private fun BackupSection(
     isWorking: Boolean,
     statusMessage: String?,
     onToggleAutoBackup: (Boolean) -> Unit,
-    onChooseFolder: () -> Unit,
-    onExportNow: () -> Unit,
-    onShareBackup: () -> Unit,
+    onConnectDrive: () -> Unit,
     onImportBackup: () -> Unit,
     onClearStatus: () -> Unit
 ) {
+    var infoExpanded by remember { mutableStateOf(false) }
+
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -438,22 +490,12 @@ private fun BackupSection(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(
-                modifier = Modifier.weight(1f),
-                verticalArrangement = Arrangement.spacedBy(2.dp)
-            ) {
-                Text(
-                    text = stringResource(R.string.auto_backup),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = HomeKeyText
-                )
-                Text(
-                    text = if (autoBackupEnabled) stringResource(R.string.on) else stringResource(R.string.off),
-                    fontSize = 15.sp,
-                    color = Color(0xFF4E3822)
-                )
-            }
+            Text(
+                text = stringResource(R.string.auto_backup),
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                color = HomeKeyText
+            )
 
             Switch(
                 checked = autoBackupEnabled,
@@ -463,34 +505,37 @@ private fun BackupSection(
 
         StatLine(
             label = stringResource(R.string.selected_location),
-            value = backupUri?.takeLast(36) ?: stringResource(R.string.none_selected)
+            value = when {
+                backupUri == null -> stringResource(R.string.none_selected)
+                backupUri.contains("com.google.android.apps.docs") -> "Google Disk"
+                else -> "Sky / Fil"
+            }
         )
 
         Row(
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             SmallWoodButton(
-                text = stringResource(R.string.choose_folder),
-                onClick = onChooseFolder
-            )
-
-            SmallWoodButton(
-                text = stringResource(R.string.export_now),
-                onClick = onExportNow
-            )
-        }
-
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            SmallWoodButton(
-                text = stringResource(R.string.share_backup),
-                onClick = onShareBackup
+                text = "Lagre til...",
+                onClick = onConnectDrive,
+                modifier = Modifier.weight(1f)
             )
 
             SmallWoodButton(
                 text = stringResource(R.string.import_label),
-                onClick = onImportBackup
+                onClick = onImportBackup,
+                modifier = Modifier.weight(1f)
+            )
+        }
+
+        if (autoBackupEnabled && backupUri != null) {
+            Text(
+                text = stringResource(R.string.auto_backup_active),
+                fontSize = 13.sp,
+                color = Color(0xFF2E7D32),
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(top = 2.dp)
             )
         }
 
@@ -525,19 +570,77 @@ private fun BackupSection(
                 )
             }
         }
+
+        // Info-knapp og ekspanderende tekst
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            if (infoExpanded) {
+                Spacer(modifier = Modifier.height(10.dp))
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.backup_info_title),
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = HomeKeyText
+                    )
+                    Text(
+                        text = stringResource(R.string.backup_info_desc),
+                        fontSize = 15.sp,
+                        color = Color(0xFF4E3822),
+                        lineHeight = 22.sp
+                    )
+                }
+            }
+
+            Box(
+                modifier = Modifier
+                    .padding(top = 10.dp)
+                    .size(36.dp)
+                    .shadow(2.dp, RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(HomeKeyWoodDark)
+                    .clickable { infoExpanded = !infoExpanded }
+                    .padding(bottom = 3.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(
+                            Brush.verticalGradient(
+                                listOf(HomeKeyWoodLight, HomeKeyWoodMid)
+                            )
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = if (infoExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
+                        contentDescription = null,
+                        tint = HomeKeyText,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+            }
+        }
     }
 }
 
 @Composable
 private fun SmallWoodButton(
     text: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .shadow(4.dp, RoundedCornerShape(14.dp), clip = false)
             .height(44.dp)
             .clip(RoundedCornerShape(14.dp))

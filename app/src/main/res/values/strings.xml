@@ -16,23 +16,35 @@
     <string name="language">Language</string>
     <string name="language_desc">Choose the default language for the app. System is used as default on first startup.</string>
     <string name="storage_and_backup">Storage and Backup</string>
-    <string name="storage_desc">Game data is always saved locally. You can also choose a backup folder, export, share, or import backup.</string>
+    <string name="storage_desc">Game data is saved locally. To play on multiple devices, choose a shared backup file in the cloud.</string>
     <string name="auto_backup">Automatic Backup</string>
     <string name="on">On</string>
     <string name="off">Off</string>
     <string name="selected_location">Selected location</string>
     <string name="none_selected">None selected yet</string>
-    <string name="choose_folder">Choose folder</string>
-    <string name="export_now">Export now</string>
+    <string name="choose_folder">Save to...</string>
+    <string name="export_now">Save copy</string>
     <string name="share_backup">Share backup</string>
-    <string name="import_label">Import</string>
+    <string name="import_label">Import file</string>
+    <string name="auto_backup_active">✓ Automatic cloud backup is active</string>
     <string name="working">Working…</string>
     <string name="hide">Hide</string>
-    <string name="about_app">About the App</string>
+    <string name="about_app">About SimplySudoku</string>
+    <string name="about_modes_title">Game Modes</string>
     <string name="classic">Classic</string>
-    <string name="classic_desc">Minimal help and a more traditional Sudoku experience.</string>
+    <string name="classic_desc">For the traditional player. Minimal help, no error markings along the way – just like pen and paper.</string>
     <string name="modern">Modern</string>
-    <string name="modern_desc">Provides more visual help with markings and error display along the way.</string>
+    <string name="modern_desc">Provides visual support by highlighting duplicates and errors immediately. Perfect for a faster and more guided experience.</string>
+    <string name="about_features_title">Features</string>
+    <string name="feature_pause_title">Fair-Play Pause</string>
+    <string name="feature_pause_desc">When you pause the game, the board is covered. This ensures the clock stops fairly, so you can\'t plan your next move while time is standing still.</string>
+    <string name="feature_layout_title">Flexible Layout</string>
+    <string name="feature_layout_desc">Playing on a large screen or left-handed? In landscape mode, you can easily swap sides of the control panel for the best ergonomics.</string>
+    <string name="feature_history_title">Stats &amp; Backup</string>
+    <string name="feature_history_desc">The app tracks your best times. See quick highlights on the front page or dive into your full history. Your data is yours – you can back it up, delete it, or move it to a new device.</string>
+    <string name="about_story_title">The Story Behind</string>
+    <string name="about_story_desc">SimplySudoku was developed by someone who just wanted a clean and beautiful app where you could start playing with a single tap, without clutter or unnecessary menus.</string>
+
     <string name="goal">Goal</string>
     <string name="goal_desc">Fill the entire board so that each row, column, and 3×3 box contains the numbers 1 to 9 once each.</string>
     <string name="all_history">All History</string>
@@ -81,6 +93,8 @@
     <string name="backup_imported">Backup imported.</string>
     <string name="share_backup_title">Share backup</string>
     <string name="app_by">App by %1$s</string>
+    <string name="backup_info_title">How synchronization works</string>
+    <string name="backup_info_desc">To keep multiple devices in sync, we recommend using \"Save to...\" and creating a file in the cloud (e.g., Google Drive). \n\n1. Press \"Save to...\" and create a file on your Google Drive.\n2. The app will now automatically save your progress there every time you win.\n3. On your other device, press \"Import file\" and select the SAME file. \n\nThe app will then automatically merge your best times from all devices into one shared overview, and use this file for future saves.</string>
     <!-- Difficulty Labels -->
     <!-- Game Modes -->
     <string name="game_mode_classic">Classic</string>

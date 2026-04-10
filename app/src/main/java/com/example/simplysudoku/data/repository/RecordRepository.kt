@@ -83,6 +83,36 @@ class RecordRepository(
         writeRecords(records, triggerAutoBackup = triggerAutoBackup)
     }
 
+    /**
+     * Fletter inn nye rekorder med de eksisterende.
+     * Bruker startedAtMillis som unik identifikator for å unngå duplikater.
+     */
+    suspend fun mergeRecords(
+        newRecords: List<RecordEntity>,
+        triggerAutoBackup: Boolean = true
+    ) {
+        val existingRecords = readRecords()
+        
+        // Lag et map av eksisterende rekorder med startedAtMillis som nøkkel
+        val mergedMap = existingRecords.associateBy { it.startedAtMillis }.toMutableMap()
+        
+        // Legg til nye rekorder. Hvis startedAtMillis allerede finnes, 
+        // beholder vi den som er markert som fullført (isCompleted).
+        newRecords.forEach { newRecord ->
+            val existing = mergedMap[newRecord.startedAtMillis]
+            if (existing == null || (!existing.isCompleted && newRecord.isCompleted)) {
+                mergedMap[newRecord.startedAtMillis] = newRecord
+            }
+        }
+        
+        // Sorter og skriv tilbake
+        val finalRecords = mergedMap.values.toList().sortedByDescending { it.startedAtMillis }
+        
+        // Vi må kanskje re-indeksere ID-ene hvis vi vil at de skal være sekvensielle, 
+        // men det er ikke strengt tatt nødvendig for logikken.
+        writeRecords(finalRecords, triggerAutoBackup = triggerAutoBackup)
+    }
+
     suspend fun buildOverview(): RecordsOverview {
         val allRecords = readRecords()
 

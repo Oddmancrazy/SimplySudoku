@@ -22,10 +22,11 @@
     <string name="off">Fra</string>
     <string name="selected_location">Valgt placering</string>
     <string name="none_selected">Ingen valgt endnu</string>
-    <string name="choose_folder">Vælg mappe</string>
-    <string name="export_now">Eksporter nu</string>
+    <string name="choose_folder">Gem til...</string>
+    <string name="export_now">Gem kopi</string>
     <string name="share_backup">Del backup</string>
-    <string name="import_label">Importer</string>
+    <string name="import_label">Importer fil</string>
+    <string name="auto_backup_active">✓ Automatisk lagring til skyen er aktiv</string>
     <string name="working">Arbejder…</string>
     <string name="hide">Skjul</string>
     <string name="about_app">Om appen</string>

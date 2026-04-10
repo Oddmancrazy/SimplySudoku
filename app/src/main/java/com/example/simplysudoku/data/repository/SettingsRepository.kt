@@ -101,12 +101,22 @@ class SettingsRepository(
 
         val records = RecordRepository(context).getAllRecordsSync()
 
-        BackupFileManager.writeBackupToTreeUri(
-            context = context,
-            treeUriString = settings.backupUri,
-            records = records,
-            settings = settings
-        )
+        // Sjekk om det er en mappe (tree) eller en spesifikk fil
+        if (settings.backupUri.contains("document")) {
+            BackupFileManager.writeBackupToFileUri(
+                context = context,
+                fileUriString = settings.backupUri,
+                records = records,
+                settings = settings
+            )
+        } else {
+            BackupFileManager.writeBackupToTreeUri(
+                context = context,
+                treeUriString = settings.backupUri,
+                records = records,
+                settings = settings
+            )
+        }
     }
 
     companion object {
