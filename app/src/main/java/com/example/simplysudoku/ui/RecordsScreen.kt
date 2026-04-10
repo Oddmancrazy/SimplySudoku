@@ -125,7 +125,9 @@ fun RecordsScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            RecordsWoodFramePanel {
+            RecordsWoodFramePanel(
+                modifier = Modifier.widthIn(max = 600.dp)
+            ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -152,7 +154,7 @@ fun RecordsScreen(
 
             if (uiState.isLoading) {
                 RecordsWoodFramePanel(
-                    modifier = Modifier.widthIn(max = 760.dp)
+                    modifier = Modifier.widthIn(max = 600.dp)
                 ) {
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(10.dp),
@@ -167,13 +169,13 @@ fun RecordsScreen(
 
                 if (overview == null) {
                     RecordsWoodFramePanel(
-                        modifier = Modifier.widthIn(max = 760.dp)
+                        modifier = Modifier.widthIn(max = 600.dp)
                     ) {
                         Text(stringResource(R.string.no_data))
                     }
                 } else {
                     RecordsWoodFramePanel(
-                        modifier = Modifier.widthIn(max = 760.dp)
+                        modifier = Modifier.widthIn(max = 600.dp)
                     ) {
                         Column(
                             modifier = Modifier.fillMaxWidth(),
@@ -188,7 +190,7 @@ fun RecordsScreen(
                     }
 
                     RecordsWoodFramePanel(
-                        modifier = Modifier.widthIn(max = 760.dp)
+                        modifier = Modifier.widthIn(max = 600.dp)
                     ) {
                         Column(
                             modifier = Modifier.fillMaxWidth(),
@@ -200,7 +202,7 @@ fun RecordsScreen(
                     }
 
                     RecordsWoodFramePanel(
-                        modifier = Modifier.widthIn(max = 760.dp)
+                        modifier = Modifier.widthIn(max = 600.dp)
                     ) {
                         Column(
                             modifier = Modifier.fillMaxWidth(),
@@ -211,7 +213,9 @@ fun RecordsScreen(
                         }
                     }
 
-                    RecordsWoodFramePanel {
+                    RecordsWoodFramePanel(
+                        modifier = Modifier.widthIn(max = 600.dp)
+                    ) {
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.spacedBy(10.dp)

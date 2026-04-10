@@ -1,6 +1,5 @@
 package com.example.simplysudoku.ui
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -36,7 +35,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.ContentScale.Companion.Crop
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
@@ -69,8 +67,7 @@ private val KeyText = Color(0xFF3B210E)
 
 private val LandscapeSidePanelWidth = 220.dp
 private val LandscapeNumberPadWidth = 154.dp
-private val LandscapeBoardWidth = 404.dp
-private val LandscapeGap = 10.dp
+private val LandscapeGap = 16.dp
 
 @Composable
 fun PortraitGameContent(
@@ -78,6 +75,7 @@ fun PortraitGameContent(
     viewModel: GameViewModel,
     onTitleClick: () -> Unit
 ) {
+    // Layout calculations based on screen width
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
 
@@ -168,7 +166,8 @@ fun PortraitGameContent(
                         pendingOpenType = null
                     },
                     onDismissPending = { pendingOpenType = null },
-                    onCellClick = viewModel::onCellClicked
+                    onCellClick = viewModel::onCellClicked,
+                    onResume = viewModel::resumeGame
                 )
             }
 
@@ -190,6 +189,14 @@ fun LandscapeGameContent(
     viewModel: GameViewModel,
     onTitleClick: () -> Unit
 ) {
+    val configuration = LocalConfiguration.current
+    val screenHeight = configuration.screenHeightDp.dp
+
+    // Dynamically calculate board size based on screen height for landscape
+    // We want the board to fit comfortably within the height with padding
+    val boardSize = clampDp(screenHeight - 80.dp, 340.dp, 440.dp)
+    val boardPanelWidth = boardSize + 44.dp // Add some extra for the WoodFramePanel
+
     var difficultyExpanded by remember { mutableStateOf(false) }
     var modeExpanded by remember { mutableStateOf(false) }
     var pendingOpenType by remember { mutableStateOf<PendingOpenType?>(null) }
@@ -238,19 +245,19 @@ fun LandscapeGameContent(
                 }
 
                 Box(
-                    modifier = Modifier.width(LandscapeBoardWidth),
+                    modifier = Modifier.width(boardPanelWidth),
                     contentAlignment = Alignment.Center
                 ) {
                     BoardPanelWithTimer(
                         elapsedSeconds = uiState.elapsedSeconds,
                         isCompleted = uiState.isCompleted,
-                        maxWidth = LandscapeBoardWidth,
+                        maxWidth = boardPanelWidth,
                         compactFrame = true
                     ) {
                         BoardContainer(
                             uiState = uiState,
                             pendingOpenType = pendingOpenType,
-                            boardSize = 360.dp,
+                            boardSize = boardSize,
                             onConfirmPending = {
                                 when (pendingOpenType) {
                                     PendingOpenType.MODE_MENU -> modeExpanded = true
@@ -260,7 +267,8 @@ fun LandscapeGameContent(
                                 pendingOpenType = null
                             },
                             onDismissPending = { pendingOpenType = null },
-                            onCellClick = viewModel::onCellClicked
+                            onCellClick = viewModel::onCellClicked,
+                            onResume = viewModel::resumeGame
                         )
                     }
                 }
@@ -326,19 +334,19 @@ fun LandscapeGameContent(
                 }
 
                 Box(
-                    modifier = Modifier.width(LandscapeBoardWidth),
+                    modifier = Modifier.width(boardPanelWidth),
                     contentAlignment = Alignment.Center
                 ) {
                     BoardPanelWithTimer(
                         elapsedSeconds = uiState.elapsedSeconds,
                         isCompleted = uiState.isCompleted,
-                        maxWidth = LandscapeBoardWidth,
+                        maxWidth = boardPanelWidth,
                         compactFrame = true
                     ) {
                         BoardContainer(
                             uiState = uiState,
                             pendingOpenType = pendingOpenType,
-                            boardSize = 360.dp,
+                            boardSize = boardSize,
                             onConfirmPending = {
                                 when (pendingOpenType) {
                                     PendingOpenType.MODE_MENU -> modeExpanded = true
@@ -348,7 +356,8 @@ fun LandscapeGameContent(
                                 pendingOpenType = null
                             },
                             onDismissPending = { pendingOpenType = null },
-                            onCellClick = viewModel::onCellClicked
+                            onCellClick = viewModel::onCellClicked,
+                            onResume = viewModel::resumeGame
                         )
                     }
                 }
@@ -526,7 +535,7 @@ private fun TitleImageButton(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(110.dp),
-                contentScale = ContentScale.Crop
+                contentScale = Crop
             )
         }
     }
@@ -835,23 +844,53 @@ private fun BoardContainer(
     boardSize: Dp,
     onConfirmPending: () -> Unit,
     onDismissPending: () -> Unit,
-    onCellClick: (Int, Int) -> Unit
+    onCellClick: (Int, Int) -> Unit,
+    onResume: () -> Unit
 ) {
     Box(
         modifier = Modifier.size(boardSize),
         contentAlignment = Alignment.Center
     ) {
-        SudokuBoard(
-            board = uiState.board,
-            gameMode = uiState.gameMode,
-            selectedNumber = uiState.selectedNumber,
-            completedRows = uiState.completedRows,
-            completedColumns = uiState.completedColumns,
-            completedBoxes = uiState.completedBoxes,
-            onCellClick = onCellClick
-        )
+        if (!uiState.isPaused) {
+            SudokuBoard(
+                board = uiState.board,
+                gameMode = uiState.gameMode,
+                selectedNumber = uiState.selectedNumber,
+                completedRows = uiState.completedRows,
+                completedColumns = uiState.completedColumns,
+                completedBoxes = uiState.completedBoxes,
+                onCellClick = onCellClick
+            )
+        }
 
-        if (pendingOpenType != null) {
+        if (uiState.isPaused) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(PanelInner)
+                    .border(2.dp, PanelOuter, RoundedCornerShape(8.dp)),
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.game_paused),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = KeyText
+                    )
+                    TopWoodTextButton(
+                        text = stringResource(R.string.resume),
+                        onClick = onResume,
+                        modifier = Modifier.width(160.dp)
+                    )
+                }
+            }
+        }
+
+        if (pendingOpenType != null && !uiState.isPaused) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -865,7 +904,7 @@ private fun BoardContainer(
             )
         }
 
-        if (uiState.isGenerating) {
+        if (uiState.isGenerating && !uiState.isPaused) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -945,5 +984,3 @@ private fun clampDp(value: Dp, min: Dp, max: Dp): Dp {
         else -> value
     }
 }
-
-private operator fun Dp.times(factor: Float): Dp = (value * factor).dp

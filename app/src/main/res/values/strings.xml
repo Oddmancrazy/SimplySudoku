@@ -42,6 +42,8 @@
     <string name="new_game">New Game</string>
     <string name="new_game_short">New</string>
     <string name="swap_sides">Swap sides</string>
+    <string name="game_paused">Game Paused</string>
+    <string name="resume">Resume</string>
     <string name="confirm_restart">Changing this starts a new game. Do you want to continue?</string>
     <string name="cancel">Cancel</string>
     <string name="continue_btn">Continue</string>

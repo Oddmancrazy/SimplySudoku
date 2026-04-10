@@ -42,6 +42,8 @@
     <string name="new_game">Nieuw spel</string>
     <string name="new_game_short">Nieuw</string>
     <string name="swap_sides">Kant wisselen</string>
+    <string name="game_paused">Spel gepauzeerd</string>
+    <string name="resume">Hervatten</string>
     <string name="confirm_restart">Dit wijzigen start een nieuw spel. Wilt u doorgaan?</string>
     <string name="cancel">Annuleren</string>
     <string name="continue_btn">Doorgaan</string>

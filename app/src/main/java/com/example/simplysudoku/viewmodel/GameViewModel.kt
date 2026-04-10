@@ -60,7 +60,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             while (true) {
                 delay(1000)
                 _uiState.update { state ->
-                    if (!state.hasStarted || state.isCompleted || state.isGenerating) {
+                    if (!state.hasStarted || state.isCompleted || state.isGenerating || state.isPaused) {
                         state
                     } else {
                         state.copy(elapsedSeconds = state.elapsedSeconds + 1)
@@ -68,6 +68,28 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
                 }
             }
         }
+    }
+
+    fun pauseGame() {
+        _uiState.update { it.copy(isPaused = true) }
+    }
+
+    fun resumeGame() {
+        _uiState.update { it.copy(isPaused = false) }
+    }
+
+    fun cancelGame() {
+        _uiState.update { state ->
+            state.copy(
+                hasStarted = false,
+                isPaused = false,
+                elapsedSeconds = 0,
+                selectedRow = null,
+                selectedCol = null,
+                selectedNumber = null
+            )
+        }
+        currentRecordId = null
     }
 
     fun onCellClicked(row: Int, col: Int) {

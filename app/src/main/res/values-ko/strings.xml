@@ -42,6 +42,8 @@
     <string name="new_game">새 게임</string>
     <string name="new_game_short">새 게임</string>
     <string name="swap_sides">방향 전환</string>
+    <string name="game_paused">게임 일시 중지</string>
+    <string name="resume">재개</string>
     <string name="confirm_restart">설정을 변경하면 새 게임이 시작됩니다. 계속하시겠습니까?</string>
     <string name="cancel">취소</string>
     <string name="continue_btn">계속</string>

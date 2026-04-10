@@ -42,6 +42,8 @@
     <string name="new_game">Nytt spel</string>
     <string name="new_game_short">Nytt</string>
     <string name="swap_sides">Byt sida</string>
+    <string name="game_paused">Spelet är pausat</string>
+    <string name="resume">Återuppta</string>
     <string name="confirm_restart">Om du ändrar detta startas ett nytt spel. Vill du fortsätta?</string>
     <string name="cancel">Avbryt</string>
     <string name="continue_btn">Fortsätt</string>

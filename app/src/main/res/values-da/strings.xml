@@ -42,6 +42,8 @@
     <string name="new_game">Nyt spil</string>
     <string name="new_game_short">Nyt</string>
     <string name="swap_sides">Skift side</string>
+    <string name="game_paused">Spillet er pauset</string>
+    <string name="resume">Genoptag</string>
     <string name="confirm_restart">Ændring af dette starter et nyt spil. Vil du fortsætte?</string>
     <string name="cancel">Annuller</string>
     <string name="continue_btn">Fortsæt</string>

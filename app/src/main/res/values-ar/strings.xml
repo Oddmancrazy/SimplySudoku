@@ -46,6 +46,8 @@
     <string name="cancel">إلغاء</string>
     <string name="continue_btn">استمرار</string>
     <string name="continue_label">متابعة</string>
+    <string name="game_paused">اللعبة متوقفة</string>
+    <string name="resume">استئناف</string>
 
     <!-- Statistics -->
     <string name="total_time_played">إجمالي وقت اللعب</string>

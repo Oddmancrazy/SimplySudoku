@@ -47,6 +47,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -78,6 +79,7 @@ fun HomeScreen(
     val recordsUiState by recordsViewModel.uiState.collectAsState()
     val settingsUiState by settingsViewModel.uiState.collectAsState()
 
+    val shareTitle = stringResource(R.string.share_backup_title)
     val folderPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocumentTree()
     ) { uri ->
@@ -110,8 +112,8 @@ fun HomeScreen(
         }
     }
 
+    val importedMessage = stringResource(R.string.backup_imported)
     LaunchedEffect(settingsUiState.statusMessage) {
-        val importedMessage = context.getString(R.string.backup_imported)
         if (settingsUiState.statusMessage == "Backup importert." || settingsUiState.statusMessage == importedMessage) {
             recordsViewModel.refresh()
         }
@@ -126,7 +128,9 @@ fun HomeScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            HomeWoodFramePanel {
+            HomeWoodFramePanel(
+                modifier = Modifier.widthIn(max = 600.dp)
+            ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -142,7 +146,7 @@ fun HomeScreen(
             }
 
             HomeWoodFramePanel(
-                modifier = Modifier.widthIn(max = 720.dp)
+                modifier = Modifier.widthIn(max = 600.dp)
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
@@ -170,13 +174,26 @@ fun HomeScreen(
                             Text(stringResource(R.string.no_stats))
                         } else {
                             HighlightsSection(overview)
+
+                            Spacer(modifier = Modifier.height(10.dp))
+
+                            Box(
+                                modifier = Modifier.fillMaxWidth(),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                HomeHistoryButton(
+                                    text = stringResource(R.string.all_history),
+                                    onClick = onOpenAllHistory,
+                                    modifier = Modifier.width(180.dp)
+                                )
+                            }
                         }
                     }
                 }
             }
 
             HomeWoodFramePanel(
-                modifier = Modifier.widthIn(max = 720.dp)
+                modifier = Modifier.widthIn(max = 600.dp)
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
@@ -212,7 +229,7 @@ fun HomeScreen(
                                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                                 }
                                 context.startActivity(
-                                    Intent.createChooser(shareIntent, context.getString(R.string.share_backup_title))
+                                    Intent.createChooser(shareIntent, shareTitle)
                                 )
                             }
                         },
@@ -227,7 +244,7 @@ fun HomeScreen(
             }
 
             HomeWoodFramePanel(
-                modifier = Modifier.widthIn(max = 720.dp)
+                modifier = Modifier.widthIn(max = 600.dp)
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
@@ -255,25 +272,17 @@ fun HomeScreen(
                         title = stringResource(R.string.goal),
                         text = stringResource(R.string.goal_desc)
                     )
-                }
-            }
 
-            HomeWoodFramePanel {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(10.dp)
-                ) {
-                    HomeWideButton(
-                        text = stringResource(R.string.all_history),
-                        onClick = onOpenAllHistory,
-                        modifier = Modifier.width(220.dp)
-                    )
+                    Spacer(modifier = Modifier.height(14.dp))
 
                     Text(
                         text = stringResource(R.string.app_by, "Oddman"),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF5C4126)
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = FontFamily.Serif,
+                        fontStyle = FontStyle.Italic,
+                        color = Color(0xFF5C4126),
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
                     )
                 }
             }
@@ -349,7 +358,7 @@ private fun LanguageSection(
         Box {
             LanguageChoiceButton(
                 text = displayText,
-                isSelected = false,
+                isSelected = expanded,
                 onClick = { expanded = true }
             )
 
@@ -743,6 +752,57 @@ private fun HomeTitleBanner() {
             modifier = Modifier.fillMaxSize(),
             contentScale = Crop
         )
+    }
+}
+
+@Composable
+private fun HomeHistoryButton(
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+
+    Box(
+        modifier = modifier
+            .shadow(4.dp, RoundedCornerShape(12.dp), clip = false)
+            .height(44.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .background(HomeKeyWoodDark)
+            .clickable(
+                interactionSource = interactionSource,
+                indication = null,
+                onClick = onClick
+            )
+            .padding(bottom = if (isPressed) 2.dp else 4.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(RoundedCornerShape(12.dp))
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            if (isPressed) Color(0xFFF3C777) else HomeKeyWoodLight,
+                            if (isPressed) Color(0xFFD8892F) else HomeKeyWoodMid
+                        )
+                    )
+                )
+        )
+
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = text,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Serif,
+                color = HomeKeyText
+            )
+        }
     }
 }
 

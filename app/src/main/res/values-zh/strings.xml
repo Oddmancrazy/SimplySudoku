@@ -42,6 +42,8 @@
     <string name="new_game">新游戏</string>
     <string name="new_game_short">新游戏</string>
     <string name="swap_sides">切换侧边</string>
+    <string name="game_paused">游戏暂停</string>
+    <string name="resume">恢复</string>
     <string name="confirm_restart">更改此项将开始新游戏。是否继续？</string>
     <string name="cancel">取消</string>
     <string name="continue_btn">继续</string>
