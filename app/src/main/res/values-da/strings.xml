@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">SimplySudoku</string>
+
+    <!-- General -->
+    <string name="welcome_to">Velkommen til</string>
+    <string name="select_language">Vælg sprog</string>
+    <string name="start_game">Start spil</string>
+    <string name="system">System</string>
+
+    <!-- Home Screen -->
+    <string name="to_game">Til spillet</string>
+    <string name="highlights">Højdepunkter</string>
+    <string name="loading_stats">Indlæser statistik…</string>
+    <string name="no_stats">Ingen statistik endnu.</string>
+    <string name="settings">Indstillinger</string>
+    <string name="language">Sprog</string>
+    <string name="language_desc">Vælg standardsprog for appen. System bruges som standard ved første opstart.</string>
+    <string name="storage_and_backup">Lagring og backup</string>
+    <string name="storage_desc">Spildata gemmes altid lokalt. Du kan også vælge en mappe til backup, eksportere, dele eller importere backup.</string>
+    <string name="auto_backup">Automatisk backup</string>
+    <string name="on">Til</string>
+    <string name="off">Fra</string>
+    <string name="selected_location">Valgt placering</string>
+    <string name="none_selected">Ingen valgt endnu</string>
+    <string name="choose_folder">Vælg mappe</string>
+    <string name="export_now">Eksporter nu</string>
+    <string name="share_backup">Del backup</string>
+    <string name="import_label">Importer</string>
+    <string name="working">Arbejder…</string>
+    <string name="hide">Skjul</string>
+    <string name="about_app">Om appen</string>
+    <string name="classic">Klassisk</string>
+    <string name="classic_desc">Minimal hjælp og en mere traditionel Sudoku-oplevelse.</string>
+    <string name="modern">Moderne</string>
+    <string name="modern_desc">Giver mere visuel hjælp med markeringer og fejlvisning undervejs.</string>
+    <string name="goal">Mål</string>
+    <string name="goal_desc">Udfyld hele pladen, så hver række, kolonne og 3×3 boks indeholder tallene 1 til 9 præcis én gang.</string>
+    <string name="all_history">Al historik</string>
+
+    <!-- Game Screen -->
+    <string name="congratulations">Tillykke!</string>
+    <string name="new_game">Nyt spil</string>
+    <string name="new_game_short">Nyt</string>
+    <string name="swap_sides">Skift side</string>
+    <string name="confirm_restart">Ændring af dette starter et nyt spil. Vil du fortsætte?</string>
+    <string name="cancel">Annuller</string>
+    <string name="continue_btn">Fortsæt</string>
+    <string name="continue_label">Fortsæt</string>
+
+    <!-- Statistics -->
+    <string name="total_time_played">Samlet spilletid</string>
+    <string name="completed_games">Gennemførte spil</string>
+    <string name="best_time_per_difficulty">Bedste tid pr. sværhedsgrad</string>
+
+    <!-- Time Formatting -->
+    <string name="time_h_m_s">%1$dt %2$02dm %3$02ds</string>
+    <string name="time_m_s">%1$02dm %2$02ds</string>
+
+    <!-- Records Screen -->
+    <string name="delete_history_title">Slet historik?</string>
+    <string name="delete_history_msg">Er du sikker på, at du vil slette al historik?</string>
+    <string name="yes">Ja</string>
+    <string name="confirm_delete_title">Bekræft sletning</string>
+    <string name="confirm_delete_msg">Dette kan ikke fortrydes. Vil du virkelig slette alt?</string>
+    <string name="delete_all_btn">Slet alt</string>
+    <string name="back">Tilbage</string>
+    <string name="refresh">Opdater</string>
+    <string name="no_data">Ingen data tilgængelige.</string>
+    <string name="overview">Oversigt</string>
+    <string name="combined">Kombineret</string>
+    <string name="perfect_games">Gennemført uden fejl</string>
+    <string name="classic_per_difficulty">Klassisk pr. sværhedsgrad</string>
+    <string name="modern_per_difficulty">Moderne pr. sværhedsgrad</string>
+    <string name="delete_all_history">Slet al historik</string>
+    <string name="started">Startet</string>
+    <string name="completed">Gennemført</string>
+    <string name="time_played">Spilletid</string>
+    <string name="best_time">Bedste tid</string>
+    <string name="achieved">Opnået</string>
+    <string name="backup_imported">Backup importeret.</string>
+    <string name="share_backup_title">Del backup</string>
+    <string name="app_by">App af %1$s</string>
+
+    <!-- Game Modes -->
+    <string name="game_mode_classic">Klassisk</string>
+    <string name="game_mode_modern">Moderne</string>
+
+    <!-- Difficulty Labels -->
+    <string name="difficulty_very_easy">Meget let</string>
+    <string name="difficulty_easy">Let</string>
+    <string name="difficulty_medium">Mellem</string>
+    <string name="difficulty_hard">Svær</string>
+    <string name="difficulty_very_hard">Meget svær</string>
+    <string name="difficulty_expert">Ekspert</string>
+
+    <!-- Difficulty Labels (Short) -->
+    <string name="diff_very_easy">ML</string>
+    <string name="diff_easy">L</string>
+    <string name="diff_medium">M</string>
+    <string name="diff_hard">S</string>
+    <string name="diff_very_hard">MS</string>
+    <string name="diff_expert">EX</string>
+
+    <!-- Mode Labels (Short) -->
+    <string name="mode_modern">M</string>
+    <string name="mode_classic">K</string>
+    <string name="mode_modern_short">M</string>
+    <string name="mode_classic_short">K</string>
+    <string name="title">SimplySudoku</string>
+</resources>

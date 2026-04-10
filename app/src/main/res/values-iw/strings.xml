@@ -1,0 +1,106 @@
+<resources>
+    <string name="app_name">SimplySudoku</string>
+
+    <!-- General -->
+    <string name="welcome_to">ברוכים הבאים אל</string>
+    <string name="select_language">בחר שפה</string>
+    <string name="start_game">התחל משחק</string>
+    <string name="system">מערכת</string>
+
+    <!-- Home Screen -->
+    <string name="to_game">למשחק</string>
+    <string name="highlights">שיאים</string>
+    <string name="loading_stats">טוען סטטיסטיקה…</string>
+    <string name="no_stats">אין עדיין סטטיסטיקה.</string>
+    <string name="settings">הגדרות</string>
+    <string name="language">שפה</string>
+    <string name="language_desc">בחר את שפת ברירת המחדל. הגדרות המערכת משמשות כברירת מחדל בהפעלה הראשונה.</string>
+    <string name="storage_and_backup">אחסון וגיבוי</string>
+    <string name="storage_desc">נתוני המשחק נשמרים מקומית. ניתן לבחור תיקיית גיבוי, לייצא, לשתף או לייבא גיבוי.</string>
+    <string name="auto_backup">גיבוי אוטומטי</string>
+    <string name="on">פעיל</string>
+    <string name="off">כבוי</string>
+    <string name="selected_location">מיקום נבחר</string>
+    <string name="none_selected">טרם נבחר</string>
+    <string name="choose_folder">בחר תיקייה</string>
+    <string name="export_now">ייצא כעת</string>
+    <string name="share_backup">שתף גיבוי</string>
+    <string name="import_label">ייבא</string>
+    <string name="working">מעבד…</string>
+    <string name="hide">הסתר</string>
+    <string name="about_app">אודות האפליקציה</string>
+    <string name="classic">קלאסי</string>
+    <string name="classic_desc">עזרה מינימלית וחוויית סודוקו מסורתית יותר.</string>
+    <string name="modern">מודרני</string>
+    <string name="modern_desc">מספק עזרה חזותית רבה יותר עם סימונים ותצוגת שגיאות תוך כדי תנועה.</string>
+    <string name="goal">מטרה</string>
+    <string name="goal_desc">מלא את הלוח כך שכל שורה, עמודה ותיבת 3×3 יכילו את המספרים 1 עד 9 פעם אחת בדיוק.</string>
+    <string name="all_history">כל ההיסטוריה</string>
+
+    <!-- Game Screen -->
+    <string name="congratulations">כל הכבוד!</string>
+    <string name="new_game">חדש</string>
+    <string name="swap_sides">החלף צדדים</string>
+    <string name="confirm_restart">שינוי זה יתחיל משחק חדש. האם להמשיך?</string>
+    <string name="cancel">ביטול</string>
+    <string name="continue_btn">המשך</string>
+
+    <!-- Statistics -->
+    <string name="total_time_played">זמן משחק כולל</string>
+    <string name="completed_games">משחקים שהושלמו</string>
+    <string name="best_time_per_difficulty">זמן שיא לפי רמת קושי</string>
+
+    <!-- Time Formatting -->
+    <string name="time_h_m_s">%1$dש %2$02ד %3$02ש</string>
+    <string name="time_m_s">%1$02ד %2$02ש</string>
+
+    <!-- Records Screen -->
+    <string name="delete_history_title">למחוק היסטוריה?</string>
+    <string name="delete_history_msg">האם אתה בטוח שברצונך למחוק את כל ההיסטוריה?</string>
+    <string name="yes">כן</string>
+    <string name="confirm_delete_title">אישור מחיקה</string>
+    <string name="confirm_delete_msg">פעולה זו אינה ניתנת לביטול. האם באמת למחוק הכל?</string>
+    <string name="delete_all_btn">מחק הכל</string>
+    <string name="back">חזור</string>
+    <string name="refresh">רענן</string>
+    <string name="no_data">אין נתונים זמינים.</string>
+    <string name="overview">סקירה כללית</string>
+    <string name="combined">משולב</string>
+    <string name="perfect_games">הושלם ללא טעויות</string>
+    <string name="classic_per_difficulty">קלאסי לפי קושי</string>
+    <string name="modern_per_difficulty">מודרני לפי קושי</string>
+    <string name="delete_all_history">מחק את כל ההיסטוריה</string>
+    <string name="started">התחיל</string>
+    <string name="completed">הושלם</string>
+    <string name="time_played">זמן משחק</string>
+    <string name="best_time">זמן שיא</string>
+    <string name="achieved">הושג</string>
+    <string name="backup_imported">הגיבוי יובא בהצלחה.</string>
+    <string name="share_backup_title">שתף גיבוי</string>
+    <string name="app_by">אפליקציה מאת %1$s</string>
+
+    <!-- Game Modes -->
+    <string name="game_mode_classic">קלאסי</string>
+    <string name="game_mode_modern">מודרני</string>
+
+    <!-- Difficulty Labels -->
+    <string name="difficulty_very_easy">קל מאוד</string>
+    <string name="difficulty_easy">קל</string>
+    <string name="difficulty_medium">בינוני</string>
+    <string name="difficulty_hard">קשה</string>
+    <string name="difficulty_very_hard">קשה מאוד</string>
+    <string name="difficulty_expert">מומחה</string>
+
+    <!-- Difficulty Labels (Short) -->
+    <string name="diff_very_easy">קמ</string>
+    <string name="diff_easy">קל</string>
+    <string name="diff_medium">בינ</string>
+    <string name="diff_hard">קשה</string>
+    <string name="diff_very_hard">ק"מ</string>
+    <string name="diff_expert">מומ</string>
+
+    <!-- Mode Labels (Short) -->
+    <string name="mode_modern">M</string>
+    <string name="mode_classic">C</string>
+    <string name="title">SimplySudoku</string>
+</resources>

@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">SimplySudoku</string>
+
+    <!-- General -->
+    <string name="welcome_to">Welkom bij</string>
+    <string name="select_language">Selecteer taal</string>
+    <string name="start_game">Start spel</string>
+    <string name="system">Systeem</string>
+
+    <!-- Home Screen -->
+    <string name="to_game">Naar het spel</string>
+    <string name="highlights">Hoogtepunten</string>
+    <string name="loading_stats">Statistieken laden…</string>
+    <string name="no_stats">Nog geen statistieken.</string>
+    <string name="settings">Instellingen</string>
+    <string name="language">Taal</string>
+    <string name="language_desc">Kies de standaardtaal voor de app. Systeem wordt gebruikt als standaard bij de eerste opstart.</string>
+    <string name="storage_and_backup">Opslag en back-up</string>
+    <string name="storage_desc">Spelgegevens worden altijd lokaal opgeslagen. U kunt ook een back-upmap kiezen, exporteren, delen of een back-up importeren.</string>
+    <string name="auto_backup">Automatische back-up</string>
+    <string name="on">Aan</string>
+    <string name="off">Uit</string>
+    <string name="selected_location">Geselecteerde locatie</string>
+    <string name="none_selected">Nog niets geselecteerd</string>
+    <string name="choose_folder">Kies map</string>
+    <string name="export_now">Nu exporteren</string>
+    <string name="share_backup">Back-up delen</string>
+    <string name="import_label">Importeren</string>
+    <string name="working">Bezig…</string>
+    <string name="hide">Verbergen</string>
+    <string name="about_app">Over de app</string>
+    <string name="classic">Klassiek</string>
+    <string name="classic_desc">Minimale hulp en een meer traditionele Sudoku-ervaring.</string>
+    <string name="modern">Modern</string>
+    <string name="modern_desc">Biedt meer visuele hulp met markeringen en foutweergave tijdens het spel.</string>
+    <string name="goal">Doel</string>
+    <string name="goal_desc">Vul het hele bord zo in dat elke rij, kolom en 3×3-box de getallen 1 tot 9 elk precies één keer bevat.</string>
+    <string name="all_history">Alle geschiedenis</string>
+
+    <!-- Game Screen -->
+    <string name="congratulations">Gefeliciteerd!</string>
+    <string name="new_game">Nieuw spel</string>
+    <string name="new_game_short">Nieuw</string>
+    <string name="swap_sides">Kant wisselen</string>
+    <string name="confirm_restart">Dit wijzigen start een nieuw spel. Wilt u doorgaan?</string>
+    <string name="cancel">Annuleren</string>
+    <string name="continue_btn">Doorgaan</string>
+    <string name="continue_label">Doorgaan</string>
+
+    <!-- Statistics -->
+    <string name="total_time_played">Totale speeltijd</string>
+    <string name="completed_games">Voltooide spellen</string>
+    <string name="best_time_per_difficulty">Beste tijd per moeilijkheidsgraad</string>
+
+    <!-- Time Formatting -->
+    <string name="time_h_m_s">%1$du %2$02dm %3$02ds</string>
+    <string name="time_m_s">%1$02dm %2$02ds</string>
+
+    <!-- Records Screen -->
+    <string name="delete_history_title">Geschiedenis verwijderen?</string>
+    <string name="delete_history_msg">Weet u zeker dat u alle geschiedenis wilt verwijderen?</string>
+    <string name="yes">Ja</string>
+    <string name="confirm_delete_title">Bevestig verwijdering</string>
+    <string name="confirm_delete_msg">Dit kan niet ongedaan worden gemaakt. Wilt u echt alles verwijderen?</string>
+    <string name="delete_all_btn">Alles verwijderen</string>
+    <string name="back">Terug</string>
+    <string name="refresh">Vernieuwen</string>
+    <string name="no_data">Geen gegevens beschikbaar.</string>
+    <string name="overview">Overzicht</string>
+    <string name="combined">Gecombineerd</string>
+    <string name="perfect_games">Voltooid zonder fouten</string>
+    <string name="classic_per_difficulty">Klassiek per moeilijkheidsgraad</string>
+    <string name="modern_per_difficulty">Modern per moeilijkheidsgraad</string>
+    <string name="delete_all_history">Wis alle geschiedenis</string>
+    <string name="started">Gestart</string>
+    <string name="completed">Voltooid</string>
+    <string name="time_played">Speeltijd</string>
+    <string name="best_time">Beste tijd</string>
+    <string name="achieved">Behaald</string>
+    <string name="backup_imported">Back-up geïmporteerd.</string>
+    <string name="share_backup_title">Back-up delen</string>
+    <string name="app_by">App door %1$s</string>
+
+    <!-- Game Modes -->
+    <string name="game_mode_classic">Klassiek</string>
+    <string name="game_mode_modern">Modern</string>
+
+    <!-- Difficulty Labels -->
+    <string name="difficulty_very_easy">Zeer eenvoudig</string>
+    <string name="difficulty_easy">Eenvoudig</string>
+    <string name="difficulty_medium">Gemiddeld</string>
+    <string name="difficulty_hard">Moeilijk</string>
+    <string name="difficulty_very_hard">Zeer moeilijk</string>
+    <string name="difficulty_expert">Expert</string>
+
+    <!-- Difficulty Labels (Short) -->
+    <string name="diff_very_easy">ZE</string>
+    <string name="diff_easy">E</string>
+    <string name="diff_medium">G</string>
+    <string name="diff_hard">M</string>
+    <string name="diff_very_hard">ZM</string>
+    <string name="diff_expert">EX</string>
+
+    <!-- Mode Labels (Short) -->
+    <string name="mode_modern">M</string>
+    <string name="mode_classic">K</string>
+    <string name="mode_modern_short">M</string>
+    <string name="mode_classic_short">K</string>
+    <string name="title">SimplySudoku</string>
+</resources>

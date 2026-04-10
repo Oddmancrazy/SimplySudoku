@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">SimplySudoku</string>
+
+    <!-- General -->
+    <string name="welcome_to">Willkommen bei</string>
+    <string name="select_language">Sprache wählen</string>
+    <string name="start_game">Spiel starten</string>
+    <string name="system">System</string>
+
+    <!-- Home Screen -->
+    <string name="to_game">Zum Spiel</string>
+    <string name="highlights">Highlights</string>
+    <string name="loading_stats">Statistiken werden geladen…</string>
+    <string name="no_stats">Noch keine Statistiken.</string>
+    <string name="settings">Einstellungen</string>
+    <string name="language">Sprache</string>
+    <string name="language_desc">Wählen Sie die Standardsprache für die App. System wird beim ersten Start als Standard verwendet.</string>
+    <string name="storage_and_backup">Speicher und Backup</string>
+    <string name="storage_desc">Spieldaten werden immer lokal gespeichert. Sie können auch einen Backup-Ordner wählen, exportieren, teilen oder ein Backup importieren.</string>
+    <string name="auto_backup">Automatisches Backup</string>
+    <string name="on">Ein</string>
+    <string name="off">Aus</string>
+    <string name="selected_location">Ausgewählter Ort</string>
+    <string name="none_selected">Noch nichts ausgewählt</string>
+    <string name="choose_folder">Ordner wählen</string>
+    <string name="export_now">Jetzt exportieren</string>
+    <string name="share_backup">Backup teilen</string>
+    <string name="import_label">Importieren</string>
+    <string name="working">In Arbeit…</string>
+    <string name="hide">Ausblenden</string>
+    <string name="about_app">Über die App</string>
+    <string name="classic">Klassisch</string>
+    <string name="classic_desc">Minimale Hilfe und ein traditionelleres Sudoku-Erlebnis.</string>
+    <string name="modern">Modern</string>
+    <string name="modern_desc">Bietet mehr visuelle Hilfe mit Markierungen und Fehleranzeige während des Spiels.</string>
+    <string name="goal">Ziel</string>
+    <string name="goal_desc">Füllen Sie das gesamte Brett so aus, dass jede Zeile, Spalte und jeder 3×3-Block die Zahlen 1 bis 9 jeweils genau einmal enthält.</string>
+    <string name="all_history">Gesamter Verlauf</string>
+
+    <!-- Game Screen -->
+    <string name="congratulations">Herzlichen Glückwunsch!</string>
+    <string name="new_game">Neues Spiel</string>
+    <string name="new_game_short">Neu</string>
+    <string name="swap_sides">Seiten wechseln</string>
+    <string name="confirm_restart">Das Ändern startet ein neues Spiel. Möchten Sie fortfahren?</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="continue_btn">Fortfahren</string>
+    <string name="continue_label">Fortfahren</string>
+
+    <!-- Statistics -->
+    <string name="total_time_played">Gesamtspielzeit</string>
+    <string name="completed_games">Abgeschlossene Spiele</string>
+    <string name="best_time_per_difficulty">Bestzeit pro Schwierigkeitsgrad</string>
+
+    <!-- Time Formatting -->
+    <string name="time_h_m_s">%1$dst %2$02dmin %3$02ds</string>
+    <string name="time_m_s">%1$02dmin %2$02ds</string>
+
+    <!-- Records Screen -->
+    <string name="delete_history_title">Verlauf löschen?</string>
+    <string name="delete_history_msg">Sind Sie sicher, dass Sie den gesamten Verlauf löschen möchten?</string>
+    <string name="yes">Ja</string>
+    <string name="confirm_delete_title">Löschen bestätigen</string>
+    <string name="confirm_delete_msg">Dies kann nicht rückgängig gemacht werden. Möchten Sie wirklich alles löschen?</string>
+    <string name="delete_all_btn">Alles löschen</string>
+    <string name="back">Zurück</string>
+    <string name="refresh">Aktualisieren</string>
+    <string name="no_data">Keine Daten verfügbar.</string>
+    <string name="overview">Übersicht</string>
+    <string name="combined">Kombiniert</string>
+    <string name="perfect_games">Ohne Fehler abgeschlossen</string>
+    <string name="classic_per_difficulty">Klassisch pro Schwierigkeit</string>
+    <string name="modern_per_difficulty">Modern pro Schwierigkeit</string>
+    <string name="delete_all_history">Gesamten Verlauf löschen</string>
+    <string name="started">Gestartet</string>
+    <string name="completed">Abgeschlossen</string>
+    <string name="time_played">Spielzeit</string>
+    <string name="best_time">Bestzeit</string>
+    <string name="achieved">Erreicht</string>
+    <string name="backup_imported">Backup importiert.</string>
+    <string name="share_backup_title">Backup teilen</string>
+    <string name="app_by">App von %1$s</string>
+
+    <!-- Game Modes -->
+    <string name="game_mode_classic">Klassisch</string>
+    <string name="game_mode_modern">Modern</string>
+
+    <!-- Difficulty Labels -->
+    <string name="difficulty_very_easy">Sehr einfach</string>
+    <string name="difficulty_easy">Einfach</string>
+    <string name="difficulty_medium">Mittel</string>
+    <string name="difficulty_hard">Schwer</string>
+    <string name="difficulty_very_hard">Sehr schwer</string>
+    <string name="difficulty_expert">Experte</string>
+
+    <!-- Difficulty Labels (Short) -->
+    <string name="diff_very_easy">SE</string>
+    <string name="diff_easy">E</string>
+    <string name="diff_medium">M</string>
+    <string name="diff_hard">S</string>
+    <string name="diff_very_hard">SS</string>
+    <string name="diff_expert">EX</string>
+
+    <!-- Mode Labels (Short) -->
+    <string name="mode_modern">M</string>
+    <string name="mode_classic">K</string>
+    <string name="mode_modern_short">M</string>
+    <string name="mode_classic_short">K</string>
+    <string name="title">SimplySudoku</string>
+</resources>

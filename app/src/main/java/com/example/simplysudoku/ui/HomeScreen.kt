@@ -28,8 +28,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,6 +45,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale.Companion.Crop
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -104,7 +111,8 @@ fun HomeScreen(
     }
 
     LaunchedEffect(settingsUiState.statusMessage) {
-        if (settingsUiState.statusMessage == "Backup importert.") {
+        val importedMessage = context.getString(R.string.backup_imported)
+        if (settingsUiState.statusMessage == "Backup importert." || settingsUiState.statusMessage == importedMessage) {
             recordsViewModel.refresh()
         }
     }
@@ -126,7 +134,7 @@ fun HomeScreen(
                     HomeTitleBanner()
 
                     HomeWideButton(
-                        text = "Til spillet",
+                        text = stringResource(R.string.to_game),
                         onClick = onBackToGame,
                         modifier = Modifier.width(220.dp)
                     )
@@ -141,7 +149,7 @@ fun HomeScreen(
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Text(
-                        text = "Høydepunkter",
+                        text = stringResource(R.string.highlights),
                         fontSize = 22.sp,
                         fontWeight = FontWeight.ExtraBold,
                         fontFamily = FontFamily.Serif,
@@ -154,12 +162,12 @@ fun HomeScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             CircularProgressIndicator()
-                            Text("Laster statistikk...")
+                            Text(stringResource(R.string.loading_stats))
                         }
                     } else {
                         val overview = recordsUiState.overview
                         if (overview == null) {
-                            Text("Ingen statistikk ennå.")
+                            Text(stringResource(R.string.no_stats))
                         } else {
                             HighlightsSection(overview)
                         }
@@ -175,7 +183,7 @@ fun HomeScreen(
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     Text(
-                        text = "Innstillinger",
+                        text = stringResource(R.string.settings),
                         fontSize = 22.sp,
                         fontWeight = FontWeight.ExtraBold,
                         fontFamily = FontFamily.Serif,
@@ -204,7 +212,7 @@ fun HomeScreen(
                                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                                 }
                                 context.startActivity(
-                                    Intent.createChooser(shareIntent, "Del backup")
+                                    Intent.createChooser(shareIntent, context.getString(R.string.share_backup_title))
                                 )
                             }
                         },
@@ -226,7 +234,7 @@ fun HomeScreen(
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Text(
-                        text = "Om appen",
+                        text = stringResource(R.string.about_app),
                         fontSize = 22.sp,
                         fontWeight = FontWeight.ExtraBold,
                         fontFamily = FontFamily.Serif,
@@ -234,18 +242,18 @@ fun HomeScreen(
                     )
 
                     AboutLine(
-                        title = "Klassisk",
-                        text = "Minimal hjelp og en mer tradisjonell Sudoku-opplevelse."
+                        title = stringResource(R.string.classic),
+                        text = stringResource(R.string.classic_desc)
                     )
 
                     AboutLine(
-                        title = "Moderne",
-                        text = "Gir mer visuell hjelp med markeringer og feilvisning underveis."
+                        title = stringResource(R.string.modern),
+                        text = stringResource(R.string.modern_desc)
                     )
 
                     AboutLine(
-                        title = "Målet",
-                        text = "Fyll hele brettet slik at hver rad, kolonne og 3×3-boks inneholder tallene 1 til 9 én gang hver."
+                        title = stringResource(R.string.goal),
+                        text = stringResource(R.string.goal_desc)
                     )
                 }
             }
@@ -256,13 +264,13 @@ fun HomeScreen(
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     HomeWideButton(
-                        text = "All historikk",
+                        text = stringResource(R.string.all_history),
                         onClick = onOpenAllHistory,
                         modifier = Modifier.width(220.dp)
                     )
 
                     Text(
-                        text = "App by Oddman",
+                        text = stringResource(R.string.app_by, "Oddman"),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = Color(0xFF5C4126)
@@ -280,19 +288,19 @@ private fun HighlightsSection(
     overview: RecordsOverview
 ) {
     StatLine(
-        label = "Total tid spilt",
+        label = stringResource(R.string.total_time_played),
         value = formatLongTime(overview.combinedSummary.totalSecondsPlayed)
     )
 
     StatLine(
-        label = "Fullførte spill",
+        label = stringResource(R.string.completed_games),
         value = overview.combinedSummary.completedCount.toString()
     )
 
     Spacer(modifier = Modifier.height(4.dp))
 
     Text(
-        text = "Beste tid per vanskelighetsgrad",
+        text = stringResource(R.string.best_time_per_difficulty),
         fontSize = 18.sp,
         fontWeight = FontWeight.Bold,
         color = HomeKeyText
@@ -303,7 +311,7 @@ private fun HighlightsSection(
         val best = stat?.bestTime?.fastestSeconds
 
         StatLine(
-            label = difficulty.displayName,
+            label = stringResource(difficulty.nameRes),
             value = if (best != null) formatShortTime(best) else "–"
         )
     }
@@ -314,42 +322,75 @@ private fun LanguageSection(
     selectedLanguage: AppLanguage,
     onSelectLanguage: (AppLanguage) -> Unit
 ) {
+    var expanded by remember { mutableStateOf(false) }
+
+    val displayText = if (selectedLanguage == AppLanguage.SYSTEM) {
+        "${selectedLanguage.flag} " + stringResource(R.string.system)
+    } else {
+        "${selectedLanguage.flag} ${selectedLanguage.displayName}"
+    }
+
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
-            text = "Språk",
+            text = stringResource(R.string.language),
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
             color = HomeKeyText
         )
 
         Text(
-            text = "Velg standardspråk for appen. System brukes som standard ved første oppstart.",
+            text = stringResource(R.string.language_desc),
             fontSize = 15.sp,
             color = Color(0xFF4E3822)
         )
 
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
+        Box {
             LanguageChoiceButton(
-                text = "System",
-                isSelected = selectedLanguage == AppLanguage.SYSTEM,
-                onClick = { onSelectLanguage(AppLanguage.SYSTEM) }
+                text = displayText,
+                isSelected = false,
+                onClick = { expanded = true }
             )
 
-            LanguageChoiceButton(
-                text = "Norsk",
-                isSelected = selectedLanguage == AppLanguage.NORWEGIAN_BOKMAL,
-                onClick = { onSelectLanguage(AppLanguage.NORWEGIAN_BOKMAL) }
-            )
-
-            LanguageChoiceButton(
-                text = "English",
-                isSelected = selectedLanguage == AppLanguage.ENGLISH,
-                onClick = { onSelectLanguage(AppLanguage.ENGLISH) }
-            )
+            // Tre-tema Dropdown
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                modifier = Modifier
+                    .width(220.dp)
+                    .heightIn(max = (48 * 6).dp) // Plass til ca 6 elementer (48dp per item)
+                    .background(HomePanelInner)
+                    .border(2.dp, HomePanelOuter, RoundedCornerShape(8.dp))
+            ) {
+                // Vi viser bare de faktiske språkene i listen, ikke "System"
+                AppLanguage.entries.filter { it != AppLanguage.SYSTEM }.forEach { language ->
+                    DropdownMenuItem(
+                        text = {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(
+                                    text = language.flag,
+                                    fontSize = 20.sp,
+                                    modifier = Modifier.padding(end = 12.dp)
+                                )
+                                Text(
+                                    text = language.displayName,
+                                    fontSize = 16.sp,
+                                    fontWeight = if (selectedLanguage == language) FontWeight.ExtraBold else FontWeight.Medium,
+                                    color = HomeKeyText
+                                )
+                            }
+                        },
+                        onClick = {
+                            onSelectLanguage(language)
+                            expanded = false
+                        },
+                        modifier = Modifier.background(
+                            if (selectedLanguage == language) Color(0x20D8892F) else Color.Transparent
+                        )
+                    )
+                }
+            }
         }
     }
 }
@@ -371,14 +412,14 @@ private fun BackupSection(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
-            text = "Lagring og backup",
+            text = stringResource(R.string.storage_and_backup),
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
             color = HomeKeyText
         )
 
         Text(
-            text = "Spilldata lagres alltid lokalt. Du kan i tillegg velge backupmappe, eksportere, dele eller importere backup.",
+            text = stringResource(R.string.storage_desc),
             fontSize = 15.sp,
             color = Color(0xFF4E3822)
         )
@@ -393,13 +434,13 @@ private fun BackupSection(
                 verticalArrangement = Arrangement.spacedBy(2.dp)
             ) {
                 Text(
-                    text = "Automatisk backup",
+                    text = stringResource(R.string.auto_backup),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     color = HomeKeyText
                 )
                 Text(
-                    text = if (autoBackupEnabled) "På" else "Av",
+                    text = if (autoBackupEnabled) stringResource(R.string.on) else stringResource(R.string.off),
                     fontSize = 15.sp,
                     color = Color(0xFF4E3822)
                 )
@@ -412,20 +453,20 @@ private fun BackupSection(
         }
 
         StatLine(
-            label = "Valgt plassering",
-            value = backupUri?.takeLast(36) ?: "Ingen valgt ennå"
+            label = stringResource(R.string.selected_location),
+            value = backupUri?.takeLast(36) ?: stringResource(R.string.none_selected)
         )
 
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             SmallWoodButton(
-                text = "Velg mappe",
+                text = stringResource(R.string.choose_folder),
                 onClick = onChooseFolder
             )
 
             SmallWoodButton(
-                text = "Eksporter nå",
+                text = stringResource(R.string.export_now),
                 onClick = onExportNow
             )
         }
@@ -434,12 +475,12 @@ private fun BackupSection(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             SmallWoodButton(
-                text = "Del backup",
+                text = stringResource(R.string.share_backup),
                 onClick = onShareBackup
             )
 
             SmallWoodButton(
-                text = "Importer",
+                text = stringResource(R.string.import_label),
                 onClick = onImportBackup
             )
         }
@@ -450,7 +491,7 @@ private fun BackupSection(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 CircularProgressIndicator()
-                Text("Jobber...")
+                Text(stringResource(R.string.working))
             }
         }
 
@@ -467,7 +508,7 @@ private fun BackupSection(
                 )
 
                 Text(
-                    text = "Skjul",
+                    text = stringResource(R.string.hide),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     color = HomeKeyText,

@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
@@ -39,6 +40,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.ContentScale.Companion.Crop
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -472,7 +474,7 @@ private fun BoardPanelWithTimer(
                     ) {
                         if (isCompleted) {
                             Text(
-                                text = "Gratulerer!",
+                                text = stringResource(R.string.congratulations),
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold,
                                 color = Color(0xFF5C4126)
@@ -647,22 +649,27 @@ private fun PortraitTopControls(
             DropdownMenu(
                 expanded = modeExpanded,
                 onDismissRequest = onDismissMode,
-                shape = RoundedCornerShape(16.dp),
-                containerColor = Color(0xFFF8F1E6),
-                tonalElevation = 6.dp,
-                shadowElevation = 8.dp,
-                border = BorderStroke(1.dp, Color(0xFFB6702E))
+                modifier = Modifier
+                    .width(180.dp)
+                    .heightIn(max = (48 * 6).dp)
+                    .background(PanelInner)
+                    .border(2.dp, PanelOuter, RoundedCornerShape(8.dp))
             ) {
-                GameMode.values().forEach { mode ->
+                GameMode.entries.forEach { mode ->
+                    val isSelected = uiState.gameMode == mode
                     DropdownMenuItem(
-                        text = { 
+                        text = {
                             Text(
-                                text = mode.displayName,
+                                text = stringResource(mode.nameRes),
                                 color = KeyText,
-                                fontWeight = FontWeight.Medium
-                            ) 
+                                fontSize = 16.sp,
+                                fontWeight = if (isSelected) FontWeight.ExtraBold else FontWeight.Medium
+                            )
                         },
-                        onClick = { onSelectMode(mode) }
+                        onClick = { onSelectMode(mode) },
+                        modifier = Modifier.background(
+                            if (isSelected) Color(0x20D8892F) else Color.Transparent
+                        )
                     )
                 }
             }
@@ -678,29 +685,34 @@ private fun PortraitTopControls(
             DropdownMenu(
                 expanded = difficultyExpanded,
                 onDismissRequest = onDismissDifficulty,
-                shape = RoundedCornerShape(16.dp),
-                containerColor = Color(0xFFF8F1E6),
-                tonalElevation = 6.dp,
-                shadowElevation = 8.dp,
-                border = BorderStroke(1.dp, Color(0xFFB6702E))
+                modifier = Modifier
+                    .width(180.dp)
+                    .heightIn(max = (48 * 6).dp)
+                    .background(PanelInner)
+                    .border(2.dp, PanelOuter, RoundedCornerShape(8.dp))
             ) {
-                Difficulty.values().forEach { difficulty ->
+                Difficulty.entries.forEach { difficulty ->
+                    val isSelected = uiState.difficulty == difficulty
                     DropdownMenuItem(
-                        text = { 
+                        text = {
                             Text(
-                                text = difficulty.displayName,
+                                text = stringResource(difficulty.nameRes),
                                 color = KeyText,
-                                fontWeight = FontWeight.Medium
-                            ) 
+                                fontSize = 16.sp,
+                                fontWeight = if (isSelected) FontWeight.ExtraBold else FontWeight.Medium
+                            )
                         },
-                        onClick = { onSelectDifficulty(difficulty) }
+                        onClick = { onSelectDifficulty(difficulty) },
+                        modifier = Modifier.background(
+                            if (isSelected) Color(0x20D8892F) else Color.Transparent
+                        )
                     )
                 }
             }
         }
 
         TopWoodTextButton(
-            text = "Nytt",
+            text = stringResource(R.string.new_game_short),
             onClick = onNewGame,
             modifier = Modifier.width(108.dp)
         )
@@ -742,16 +754,27 @@ private fun LandscapeControlColumn(
             DropdownMenu(
                 expanded = modeExpanded,
                 onDismissRequest = onDismissMode,
-                shape = RoundedCornerShape(16.dp),
-                containerColor = Color(0xFFF8F1E6),
-                tonalElevation = 6.dp,
-                shadowElevation = 8.dp,
-                border = BorderStroke(1.dp, Color(0xFFB6702E))
+                modifier = Modifier
+                    .width(190.dp)
+                    .heightIn(max = (48 * 6).dp)
+                    .background(PanelInner)
+                    .border(2.dp, PanelOuter, RoundedCornerShape(8.dp))
             ) {
-                GameMode.values().forEach { mode ->
+                GameMode.entries.forEach { mode ->
+                    val isSelected = uiState.gameMode == mode
                     DropdownMenuItem(
-                        text = { Text(mode.displayName) },
-                        onClick = { onSelectMode(mode) }
+                        text = {
+                            Text(
+                                text = stringResource(mode.nameRes),
+                                color = KeyText,
+                                fontSize = 16.sp,
+                                fontWeight = if (isSelected) FontWeight.ExtraBold else FontWeight.Medium
+                            )
+                        },
+                        onClick = { onSelectMode(mode) },
+                        modifier = Modifier.background(
+                            if (isSelected) Color(0x20D8892F) else Color.Transparent
+                        )
                     )
                 }
             }
@@ -765,29 +788,40 @@ private fun LandscapeControlColumn(
             DropdownMenu(
                 expanded = difficultyExpanded,
                 onDismissRequest = onDismissDifficulty,
-                shape = RoundedCornerShape(16.dp),
-                containerColor = Color(0xFFF8F1E6),
-                tonalElevation = 6.dp,
-                shadowElevation = 8.dp,
-                border = BorderStroke(1.dp, Color(0xFFB6702E))
+                modifier = Modifier
+                    .width(190.dp)
+                    .heightIn(max = (48 * 6).dp)
+                    .background(PanelInner)
+                    .border(2.dp, PanelOuter, RoundedCornerShape(8.dp))
             ) {
-                Difficulty.values().forEach { difficulty ->
+                Difficulty.entries.forEach { difficulty ->
+                    val isSelected = uiState.difficulty == difficulty
                     DropdownMenuItem(
-                        text = { Text(difficulty.displayName) },
-                        onClick = { onSelectDifficulty(difficulty) }
+                        text = {
+                            Text(
+                                text = stringResource(difficulty.nameRes),
+                                color = KeyText,
+                                fontSize = 16.sp,
+                                fontWeight = if (isSelected) FontWeight.ExtraBold else FontWeight.Medium
+                            )
+                        },
+                        onClick = { onSelectDifficulty(difficulty) },
+                        modifier = Modifier.background(
+                            if (isSelected) Color(0x20D8892F) else Color.Transparent
+                        )
                     )
                 }
             }
 
             TopWoodTextButton(
-                text = "Nytt",
+                text = stringResource(R.string.new_game_short),
                 onClick = onNewGame,
                 modifier = Modifier.width(190.dp)
             )
         }
 
         TopWoodTextButton(
-            text = "Bytt side",
+            text = stringResource(R.string.swap_sides),
             onClick = onSwapSides,
             modifier = Modifier.width(190.dp)
         )
@@ -825,7 +859,7 @@ private fun BoardContainer(
             )
 
             ConfirmRestartOverlay(
-                message = "Å endre dette starter et nytt spill. Vil du fortsette?",
+                message = stringResource(R.string.confirm_restart),
                 onConfirm = onConfirmPending,
                 onDismiss = onDismissPending
             )
@@ -872,12 +906,12 @@ private fun ConfirmRestartOverlay(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             TopWoodTextButton(
-                text = "Avbryt",
+                text = stringResource(R.string.cancel),
                 onClick = onDismiss,
                 modifier = Modifier.width(110.dp)
             )
             TopWoodTextButton(
-                text = "Fortsett",
+                text = stringResource(R.string.continue_label),
                 onClick = onConfirm,
                 modifier = Modifier.width(110.dp)
             )
@@ -885,22 +919,17 @@ private fun ConfirmRestartOverlay(
     }
 }
 
+@Composable
 private fun shortModeLabel(mode: GameMode): String {
-    return when (mode) {
-        GameMode.MODERN -> "M"
-        GameMode.CLASSIC -> "K"
-    }
+    return stringResource(when (mode) {
+        GameMode.MODERN -> R.string.mode_modern_short
+        GameMode.CLASSIC -> R.string.mode_classic_short
+    })
 }
 
+@Composable
 private fun shortDifficultyLabel(difficulty: Difficulty): String {
-    return when (difficulty) {
-        Difficulty.VERY_EASY -> "EL"
-        Difficulty.EASY -> "L"
-        Difficulty.MEDIUM -> "M"
-        Difficulty.HARD -> "V"
-        Difficulty.VERY_HARD -> "VV"
-        Difficulty.EXPERT -> "EX"
-    }
+    return stringResource(difficulty.shortRes)
 }
 
 private fun formatTime(totalSeconds: Int): String {

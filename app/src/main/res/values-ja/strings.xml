@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">SimplySudoku</string>
+
+    <!-- General -->
+    <string name="welcome_to">ようこそ</string>
+    <string name="select_language">言語を選択</string>
+    <string name="start_game">ゲームを開始</string>
+    <string name="system">システム設定</string>
+
+    <!-- Home Screen -->
+    <string name="to_game">ゲームに戻る</string>
+    <string name="highlights">ハイライト</string>
+    <string name="loading_stats">統計を読み込み中…</string>
+    <string name="no_stats">統計データがありません。</string>
+    <string name="settings">設定</string>
+    <string name="language">言語</string>
+    <string name="language_desc">アプリのデフォルト言語を選択してください。初回起動時はシステム設定が使用されます。</string>
+    <string name="storage_and_backup">ストレージとバックアップ</string>
+    <string name="storage_desc">ゲームデータは常にローカルに保存されます。バックアップフォルダの選択、書き出し、共有、読み込みが可能です。</string>
+    <string name="auto_backup">自動バックアップ</string>
+    <string name="on">オン</string>
+    <string name="off">オフ</string>
+    <string name="selected_location">選択された場所</string>
+    <string name="none_selected">未選択</string>
+    <string name="choose_folder">フォルダを選択</string>
+    <string name="export_now">今すぐ書き出し</string>
+    <string name="share_backup">バックアップを共有</string>
+    <string name="import_label">読み込み</string>
+    <string name="working">処理中…</string>
+    <string name="hide">非表示</string>
+    <string name="about_app">アプリについて</string>
+    <string name="classic">クラシックモード</string>
+    <string name="classic_desc">最小限のヒントで、伝統的な数独を楽しめます。</string>
+    <string name="modern">モダンモード</string>
+    <string name="modern_desc">メモ機能やリアルタイムのエラー表示など、視覚的なサポートを提供します。</string>
+    <string name="goal">目標</string>
+    <string name="goal_desc">すべての行、列、3×3のブロックに1から9までの数字が重複なく1つずつ入るように埋めてください。</string>
+    <string name="all_history">すべての履歴</string>
+
+    <!-- Game Screen -->
+    <string name="congratulations">おめでとうございます！</string>
+    <string name="new_game">新規ゲーム</string>
+    <string name="new_game_short">新規</string>
+    <string name="swap_sides">左右入れ替え</string>
+    <string name="confirm_restart">この設定を変更すると新しいゲームが始まります。続けますか？</string>
+    <string name="cancel">キャンセル</string>
+    <string name="continue_btn">続行</string>
+    <string name="continue_label">続行</string>
+
+    <!-- Statistics -->
+    <string name="total_time_played">総プレイ時間</string>
+    <string name="completed_games">完了したゲーム数</string>
+    <string name="best_time_per_difficulty">難易度別の最高記録</string>
+
+    <!-- Time Formatting -->
+    <string name="time_h_m_s">%1$d時間 %2$02d分 %3$02d秒</string>
+    <string name="time_m_s">%1$02d分 %2$02d秒</string>
+
+    <!-- Records Screen -->
+    <string name="delete_history_title">履歴を削除しますか？</string>
+    <string name="delete_history_msg">すべての履歴を削除してもよろしいですか？</string>
+    <string name="yes">はい</string>
+    <string name="confirm_delete_title">削除の確認</string>
+    <string name="confirm_delete_msg">この操作は取り消せません。本当にすべて削除しますか？</string>
+    <string name="delete_all_btn">すべて削除</string>
+    <string name="back">戻る</string>
+    <string name="refresh">更新</string>
+    <string name="no_data">データがありません。</string>
+    <string name="overview">概要</string>
+    <string name="combined">統合</string>
+    <string name="perfect_games">ミスなしで完了</string>
+    <string name="classic_per_difficulty">難易度別クラシック記録</string>
+    <string name="modern_per_difficulty">難易度別モダン記録</string>
+    <string name="delete_all_history">すべての履歴を削除</string>
+    <string name="started">開始</string>
+    <string name="completed">完了</string>
+    <string name="time_played">プレイ時間</string>
+    <string name="best_time">最高記録</string>
+    <string name="achieved">達成日</string>
+    <string name="backup_imported">バックアップを読み込みました。</string>
+    <string name="share_backup_title">バックアップを共有</string>
+    <string name="app_by">アプリ作成：%1$s</string>
+
+    <!-- Game Modes -->
+    <string name="game_mode_classic">クラシック</string>
+    <string name="game_mode_modern">モダン</string>
+
+    <!-- Difficulty Labels -->
+    <string name="difficulty_very_easy">超初級</string>
+    <string name="difficulty_easy">初級</string>
+    <string name="difficulty_medium">中級</string>
+    <string name="difficulty_hard">上級</string>
+    <string name="difficulty_very_hard">超上級</string>
+    <string name="difficulty_expert">エキスパート</string>
+
+    <!-- Difficulty Labels (Short) -->
+    <string name="diff_very_easy">超初</string>
+    <string name="diff_easy">初級</string>
+    <string name="diff_medium">中級</string>
+    <string name="diff_hard">上級</string>
+    <string name="diff_very_hard">超上</string>
+    <string name="diff_expert">達人</string>
+
+    <!-- Mode Labels (Short) -->
+    <string name="mode_modern">モダン</string>
+    <string name="mode_classic">標準</string>
+    <string name="mode_modern_short">モダン</string>
+    <string name="mode_classic_short">標準</string>
+    <string name="title">SimplySudoku</string>
+</resources>

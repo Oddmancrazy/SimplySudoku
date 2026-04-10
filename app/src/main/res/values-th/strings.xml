@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">SimplySudoku</string>
+
+    <!-- General -->
+    <string name="welcome_to">ยินดีต้อนรับสู่</string>
+    <string name="select_language">เลือกภาษา</string>
+    <string name="start_game">เริ่มเกม</string>
+    <string name="system">ระบบ</string>
+
+    <!-- Home Screen -->
+    <string name="to_game">ไปที่เกม</string>
+    <string name="highlights">ไฮไลท์</string>
+    <string name="loading_stats">กำลังโหลดสถิติ…</string>
+    <string name="no_stats">ยังไม่มีสถิติ</string>
+    <string name="settings">การตั้งค่า</string>
+    <string name="language">ภาษา</string>
+    <string name="language_desc">เลือกภาษาเริ่มต้นสำหรับแอป ระบบจะถูกใช้เป็นค่าเริ่มต้นในการเริ่มทำงานครั้งแรก</string>
+    <string name="storage_and_backup">พื้นที่เก็บข้อมูลและการสำรองข้อมูล</string>
+    <string name="storage_desc">ข้อมูลเกมจะถูกบันทึกไว้ในเครื่องเสมอ คุณยังสามารถเลือกโฟลเดอร์สำรองข้อมูล ส่งออก แชร์ หรือนำเข้าข้อมูลสำรองได้</string>
+    <string name="auto_backup">สำรองข้อมูลอัตโนมัติ</string>
+    <string name="on">เปิด</string>
+    <string name="off">ปิด</string>
+    <string name="selected_location">ตำแหน่งที่เลือก</string>
+    <string name="none_selected">ยังไม่ได้เลือก</string>
+    <string name="choose_folder">เลือกโฟลเดอร์</string>
+    <string name="export_now">ส่งออกตอนนี้</string>
+    <string name="share_backup">แชร์ข้อมูลสำรอง</string>
+    <string name="import_label">นำเข้า</string>
+    <string name="working">กำลังดำเนินการ…</string>
+    <string name="hide">ซ่อน</string>
+    <string name="about_app">เกี่ยวกับแอป</string>
+    <string name="classic">คลาสสิก</string>
+    <string name="classic_desc">ความช่วยเหลือขั้นต่ำและประสบการณ์ซูโดกุแบบดั้งเดิมมากขึ้น</string>
+    <string name="modern">โมเดิร์น</string>
+    <string name="modern_desc">ให้ความช่วยเหลือด้านภาพมากขึ้นด้วยเครื่องหมายและการแสดงข้อผิดพลาดตลอดการเล่น</string>
+    <string name="goal">เป้าหมาย</string>
+    <string name="goal_desc">เติมข้อมูลในกระดานทั้งหมดเพื่อให้แต่ละแถว คอลัมน์ และกล่อง 3×3 มีตัวเลข 1 ถึง 9 อย่างละหนึ่งตัวพอดี</string>
+    <string name="all_history">ประวัติทั้งหมด</string>
+
+    <!-- Game Screen -->
+    <string name="congratulations">ยินดีด้วย!</string>
+    <string name="new_game">เกมใหม่</string>
+    <string name="new_game_short">ใหม่</string>
+    <string name="swap_sides">สลับฝั่ง</string>
+    <string name="confirm_restart">การเปลี่ยนสิ่งนี้จะเริ่มเกมใหม่ คุณต้องการดำเนินการต่อหรือไม่?</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="continue_btn">ดำเนินการต่อ</string>
+    <string name="continue_label">ต่อ</string>
+
+    <!-- Statistics -->
+    <string name="total_time_played">เวลาเล่นทั้งหมด</string>
+    <string name="completed_games">เกมที่เล่นจบแล้ว</string>
+    <string name="best_time_per_difficulty">เวลาที่ดีที่สุดตามระดับความยาก</string>
+
+    <!-- Time Formatting -->
+    <string name="time_h_m_s">%1$dชม. %2$02dน. %3$02ดว.</string>
+    <string name="time_m_s">%1$02dน. %2$02ดว.</string>
+
+    <!-- Records Screen -->
+    <string name="delete_history_title">ลบประวัติหรือไม่?</string>
+    <string name="delete_history_msg">คุณแน่ใจหรือไม่ว่าต้องการลบประวัติทั้งหมด?</string>
+    <string name="yes">ใช่</string>
+    <string name="confirm_delete_title">ยืนยันการลบ</string>
+    <string name="confirm_delete_msg">การดำเนินการนี้ไม่สามารถย้อนกลับได้ คุณต้องการลบทุกอย่างจริงหรือไม่?</string>
+    <string name="delete_all_btn">ลบทั้งหมด</string>
+    <string name="back">กลับ</string>
+    <string name="refresh">รีเฟรช</string>
+    <string name="no_data">ไม่มีข้อมูล</string>
+    <string name="overview">ภาพรวม</string>
+    <string name="combined">รวม</string>
+    <string name="perfect_games">เสร็จสิ้นโดยไม่มีข้อผิดพลาด</string>
+    <string name="classic_per_difficulty">คลาสสิกตามความยาก</string>
+    <string name="modern_per_difficulty">โมเดิร์นตามความยาก</string>
+    <string name="delete_all_history">ลบประวัติทั้งหมด</string>
+    <string name="started">เริ่มเมื่อ</string>
+    <string name="completed">เสร็จสิ้นเมื่อ</string>
+    <string name="time_played">เวลาที่ใช้เล่น</string>
+    <string name="best_time">เวลาที่ดีที่สุด</string>
+    <string name="achieved">สำเร็จเมื่อ</string>
+    <string name="backup_imported">นำเข้าข้อมูลสำรองแล้ว</string>
+    <string name="share_backup_title">แชร์ข้อมูลสำรอง</string>
+    <string name="app_by">แอปโดย %1$s</string>
+
+    <!-- Game Modes -->
+    <string name="game_mode_classic">คลาสสิก</string>
+    <string name="game_mode_modern">โมเดิร์น</string>
+
+    <!-- Difficulty Labels -->
+    <string name="difficulty_very_easy">ง่ายมาก</string>
+    <string name="difficulty_easy">ง่าย</string>
+    <string name="difficulty_medium">ปานกลาง</string>
+    <string name="difficulty_hard">ยาก</string>
+    <string name="difficulty_very_hard">ยากมาก</string>
+    <string name="difficulty_expert">ผู้เชี่ยวชาญ</string>
+
+    <!-- Difficulty Labels (Short) -->
+    <string name="diff_very_easy">งม</string>
+    <string name="diff_easy">ง่าย</string>
+    <string name="diff_medium">กลาง</string>
+    <string name="diff_hard">ยาก</string>
+    <string name="diff_very_hard">ยม</string>
+    <string name="diff_expert">พช</string>
+
+    <!-- Mode Labels (Short) -->
+    <string name="mode_modern">โมเดิร์น</string>
+    <string name="mode_classic">คลาสสิก</string>
+    <string name="mode_modern_short">โมเดิร์น</string>
+    <string name="mode_classic_short">คลาสสิก</string>
+    <string name="title">SimplySudoku</string>
+</resources>

@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale.Companion.Crop
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -72,8 +73,8 @@ fun RecordsScreen(
     if (showFirstDeleteDialog.value) {
         AlertDialog(
             onDismissRequest = { showFirstDeleteDialog.value = false },
-            title = { Text("Slette historikk?") },
-            text = { Text("Er du sikker på at du vil slette all historikk?") },
+            title = { Text(stringResource(R.string.delete_history_title)) },
+            text = { Text(stringResource(R.string.delete_history_msg)) },
             confirmButton = {
                 TextButton(
                     onClick = {
@@ -81,12 +82,12 @@ fun RecordsScreen(
                         showSecondDeleteDialog.value = true
                     }
                 ) {
-                    Text("Ja")
+                    Text(stringResource(R.string.yes))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showFirstDeleteDialog.value = false }) {
-                    Text("Avbryt")
+                    Text(stringResource(R.string.cancel))
                 }
             }
         )
@@ -95,8 +96,8 @@ fun RecordsScreen(
     if (showSecondDeleteDialog.value) {
         AlertDialog(
             onDismissRequest = { showSecondDeleteDialog.value = false },
-            title = { Text("Bekreft sletting") },
-            text = { Text("Dette kan ikke angres. Vil du virkelig slette alt?") },
+            title = { Text(stringResource(R.string.confirm_delete_title)) },
+            text = { Text(stringResource(R.string.confirm_delete_msg)) },
             confirmButton = {
                 TextButton(
                     onClick = {
@@ -104,12 +105,12 @@ fun RecordsScreen(
                         viewModel.deleteAllHistory()
                     }
                 ) {
-                    Text("Slett alt")
+                    Text(stringResource(R.string.delete_all_btn))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showSecondDeleteDialog.value = false }) {
-                    Text("Avbryt")
+                    Text(stringResource(R.string.cancel))
                 }
             }
         )
@@ -135,13 +136,13 @@ fun RecordsScreen(
                         horizontalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
                         RecordsWideButton(
-                            text = "Tilbake",
+                            text = stringResource(R.string.back),
                             onClick = onBackClick,
                             modifier = Modifier.width(150.dp)
                         )
 
                         RecordsWideButton(
-                            text = "Oppdater",
+                            text = stringResource(R.string.refresh),
                             onClick = viewModel::refresh,
                             modifier = Modifier.width(150.dp)
                         )
@@ -158,7 +159,7 @@ fun RecordsScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         CircularProgressIndicator()
-                        Text("Laster statistikk...")
+                        Text(stringResource(R.string.loading_stats))
                     }
                 }
             } else {
@@ -168,7 +169,7 @@ fun RecordsScreen(
                     RecordsWoodFramePanel(
                         modifier = Modifier.widthIn(max = 760.dp)
                     ) {
-                        Text("Ingen data tilgjengelig.")
+                        Text(stringResource(R.string.no_data))
                     }
                 } else {
                     RecordsWoodFramePanel(
@@ -178,11 +179,11 @@ fun RecordsScreen(
                             modifier = Modifier.fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
-                            SectionTitle("Oversikt")
+                            SectionTitle(stringResource(R.string.overview))
 
-                            SummaryCard("Samlet", overview.combinedSummary)
-                            SummaryCard("Klassisk", overview.classicSummary)
-                            SummaryCard("Moderne", overview.modernSummary)
+                            SummaryCard(stringResource(R.string.combined), overview.combinedSummary)
+                            SummaryCard(stringResource(R.string.classic), overview.classicSummary)
+                            SummaryCard(stringResource(R.string.modern), overview.modernSummary)
                         }
                     }
 
@@ -193,7 +194,7 @@ fun RecordsScreen(
                             modifier = Modifier.fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
-                            SectionTitle("Klassisk per vanskelighetsgrad")
+                            SectionTitle(stringResource(R.string.classic_per_difficulty))
                             DifficultySection(stats = overview.classicByDifficulty)
                         }
                     }
@@ -205,7 +206,7 @@ fun RecordsScreen(
                             modifier = Modifier.fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
-                            SectionTitle("Moderne per vanskelighetsgrad")
+                            SectionTitle(stringResource(R.string.modern_per_difficulty))
                             DifficultySection(stats = overview.modernByDifficulty)
                         }
                     }
@@ -216,7 +217,7 @@ fun RecordsScreen(
                             verticalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
                             RecordsWideButton(
-                                text = "Slett all historikk",
+                                text = stringResource(R.string.delete_all_history),
                                 onClick = { showFirstDeleteDialog.value = true },
                                 modifier = Modifier.width(240.dp)
                             )
@@ -257,9 +258,9 @@ private fun SummaryCard(
                 color = RecordsKeyText
             )
 
-            StatLine("Fullførte spill", summary.completedCount.toString())
-            StatLine("Fullført uten feil", summary.perfectCount.toString())
-            StatLine("Total tid spilt", formatLongTime(summary.totalSecondsPlayed))
+            StatLine(stringResource(R.string.completed_games), summary.completedCount.toString())
+            StatLine(stringResource(R.string.perfect_games), summary.perfectCount.toString())
+            StatLine(stringResource(R.string.total_time_played), formatLongTime(summary.totalSecondsPlayed))
         }
     }
 }
@@ -295,27 +296,27 @@ private fun DifficultyRow(
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         Text(
-            text = stat.difficulty.displayName,
+            text = stringResource(stat.difficulty.nameRes),
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
             color = RecordsKeyText
         )
 
-        StatLine("Startet", stat.startedCount.toString())
-        StatLine("Fullført", stat.completedCount.toString())
-        StatLine("Fullført uten feil", stat.perfectCount.toString())
-        StatLine("Tid spilt", formatLongTime(stat.totalSecondsPlayed))
+        StatLine(stringResource(R.string.started), stat.startedCount.toString())
+        StatLine(stringResource(R.string.completed), stat.completedCount.toString())
+        StatLine(stringResource(R.string.perfect_games), stat.perfectCount.toString())
+        StatLine(stringResource(R.string.time_played), formatLongTime(stat.totalSecondsPlayed))
 
         val bestSeconds = stat.bestTime.fastestSeconds
         val bestDate = stat.bestTime.achievedAtMillis
 
         StatLine(
-            "Beste tid",
+            stringResource(R.string.best_time),
             if (bestSeconds != null) formatShortTime(bestSeconds) else "–"
         )
 
         StatLine(
-            "Satt",
+            stringResource(R.string.achieved),
             if (bestDate != null) formatDate(bestDate) else "–"
         )
     }

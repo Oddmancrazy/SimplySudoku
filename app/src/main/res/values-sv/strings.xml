@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">SimplySudoku</string>
+
+    <!-- General -->
+    <string name="welcome_to">Välkommen till</string>
+    <string name="select_language">Välj språk</string>
+    <string name="start_game">Starta spel</string>
+    <string name="system">System</string>
+
+    <!-- Home Screen -->
+    <string name="to_game">Till spelet</string>
+    <string name="highlights">Höjdpunkter</string>
+    <string name="loading_stats">Laddar statistik…</string>
+    <string name="no_stats">Ingen statistik än.</string>
+    <string name="settings">Inställningar</string>
+    <string name="language">Språk</string>
+    <string name="language_desc">Välj standardspråk för appen. System används som standard vid första uppstart.</string>
+    <string name="storage_and_backup">Lagring och säkerhetskopiering</string>
+    <string name="storage_desc">Speldata sparas alltid lokalt. Du kan också välja en mapp för säkerhetskopiering, exportera, dela eller importera säkerhetskopia.</string>
+    <string name="auto_backup">Automatisk säkerhetskopiering</string>
+    <string name="on">På</string>
+    <string name="off">Av</string>
+    <string name="selected_location">Vald plats</string>
+    <string name="none_selected">Ingen vald än</string>
+    <string name="choose_folder">Välj mapp</string>
+    <string name="export_now">Exportera nu</string>
+    <string name="share_backup">Dela säkerhetskopia</string>
+    <string name="import_label">Importera</string>
+    <string name="working">Arbetar…</string>
+    <string name="hide">Dölj</string>
+    <string name="about_app">Om appen</string>
+    <string name="classic">Klassisk</string>
+    <string name="classic_desc">Minimal hjälp och en mer traditionell Sudoku-upplevelse.</string>
+    <string name="modern">Modern</string>
+    <string name="modern_desc">Ger mer visuell hjälp med markeringar och felvisning under spelets gång.</string>
+    <string name="goal">Mål</string>
+    <string name="goal_desc">Fyll hela brädet så att varje rad, kolumn och 3×3-box innehåller siffrorna 1 till 9 exakt en gång.</string>
+    <string name="all_history">All historik</string>
+
+    <!-- Game Screen -->
+    <string name="congratulations">Grattis!</string>
+    <string name="new_game">Nytt spel</string>
+    <string name="new_game_short">Nytt</string>
+    <string name="swap_sides">Byt sida</string>
+    <string name="confirm_restart">Om du ändrar detta startas ett nytt spel. Vill du fortsätta?</string>
+    <string name="cancel">Avbryt</string>
+    <string name="continue_btn">Fortsätt</string>
+    <string name="continue_label">Fortsätt</string>
+
+    <!-- Statistics -->
+    <string name="total_time_played">Total speltid</string>
+    <string name="completed_games">Slutförda spel</string>
+    <string name="best_time_per_difficulty">Bästa tid per svårighetsgrad</string>
+
+    <!-- Time Formatting -->
+    <string name="time_h_m_s">%1$dt %2$02dm %3$02ds</string>
+    <string name="time_m_s">%1$02dm %2$02ds</string>
+
+    <!-- Records Screen -->
+    <string name="delete_history_title">Radera historik?</string>
+    <string name="delete_history_msg">Är du säker på att du vill radera all historik?</string>
+    <string name="yes">Ja</string>
+    <string name="confirm_delete_title">Bekräfta radering</string>
+    <string name="confirm_delete_msg">Detta kan inte ångras. Vill du verkligen radera allt?</string>
+    <string name="delete_all_btn">Radera allt</string>
+    <string name="back">Tillbaka</string>
+    <string name="refresh">Uppdatera</string>
+    <string name="no_data">Ingen data tillgänglig.</string>
+    <string name="overview">Översikt</string>
+    <string name="combined">Kombinerat</string>
+    <string name="perfect_games">Slutförda utan fel</string>
+    <string name="classic_per_difficulty">Klassisk per svårighetsgrad</string>
+    <string name="modern_per_difficulty">Modern per svårighetsgrad</string>
+    <string name="delete_all_history">Radera all historik</string>
+    <string name="started">Startat</string>
+    <string name="completed">Slutfört</string>
+    <string name="time_played">Speltid</string>
+    <string name="best_time">Bästa tid</string>
+    <string name="achieved">Uppnått</string>
+    <string name="backup_imported">Säkerhetskopia importerad.</string>
+    <string name="share_backup_title">Dela säkerhetskopia</string>
+    <string name="app_by">App av %1$s</string>
+
+    <!-- Game Modes -->
+    <string name="game_mode_classic">Klassisk</string>
+    <string name="game_mode_modern">Modern</string>
+
+    <!-- Difficulty Labels -->
+    <string name="difficulty_very_easy">Mycket lätt</string>
+    <string name="difficulty_easy">Lätt</string>
+    <string name="difficulty_medium">Medium</string>
+    <string name="difficulty_hard">Svår</string>
+    <string name="difficulty_very_hard">Mycket svår</string>
+    <string name="difficulty_expert">Expert</string>
+
+    <!-- Difficulty Labels (Short) -->
+    <string name="diff_very_easy">ML</string>
+    <string name="diff_easy">L</string>
+    <string name="diff_medium">M</string>
+    <string name="diff_hard">S</string>
+    <string name="diff_very_hard">MS</string>
+    <string name="diff_expert">EX</string>
+
+    <!-- Mode Labels (Short) -->
+    <string name="mode_modern">M</string>
+    <string name="mode_classic">K</string>
+    <string name="mode_modern_short">M</string>
+    <string name="mode_classic_short">K</string>
+    <string name="title">SimplySudoku</string>
+</resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.SimplySudoku" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- We must use a Theme.AppCompat or Theme.MaterialComponents theme when using AppCompatActivity -->
+    <style name="Theme.SimplySudoku" parent="Theme.AppCompat.Light.NoActionBar" />
 </resources>

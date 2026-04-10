@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">SimplySudoku</string>
+
+    <!-- General -->
+    <string name="welcome_to">환영합니다: </string>
+    <string name="select_language">언어 선택</string>
+    <string name="start_game">게임 시작</string>
+    <string name="system">시스템 설정</string>
+
+    <!-- Home Screen -->
+    <string name="to_game">게임으로</string>
+    <string name="highlights">하이라이트</string>
+    <string name="loading_stats">통계 로딩 중…</string>
+    <string name="no_stats">아직 통계가 없습니다.</string>
+    <string name="settings">설정</string>
+    <string name="language">언어</string>
+    <string name="language_desc">앱의 기본 언어를 선택하세요. 처음 시작할 때는 시스템 설정이 기본으로 사용됩니다.</string>
+    <string name="storage_and_backup">저장 및 백업</string>
+    <string name="storage_desc">게임 데이터는 항상 로컬에 저장됩니다. 백업 폴더를 선택하거나, 내보내기, 공유, 가져오기를 할 수 있습니다.</string>
+    <string name="auto_backup">자동 백업</string>
+    <string name="on">켜짐</string>
+    <string name="off">꺼짐</string>
+    <string name="selected_location">선택된 위치</string>
+    <string name="none_selected">선택되지 않음</string>
+    <string name="choose_folder">폴더 선택</string>
+    <string name="export_now">지금 내보내기</string>
+    <string name="share_backup">백업 공유</string>
+    <string name="import_label">가져오기</string>
+    <string name="working">작업 중…</string>
+    <string name="hide">숨기기</string>
+    <string name="about_app">앱 정보</string>
+    <string name="classic">클래식 모드</string>
+    <string name="classic_desc">최소한의 도움으로 정통 스도쿠를 즐기세요.</string>
+    <string name="modern">모던 모드</string>
+    <string name="modern_desc">메모 및 실시간 오류 표시 등 시각적 도움을 제공합니다.</string>
+    <string name="goal">목표</string>
+    <string name="goal_desc">모든 행, 열, 3×3 박스에 1부터 9까지의 숫자가 중복 없이 한 번씩만 들어가도록 채우세요.</string>
+    <string name="all_history">전체 기록</string>
+
+    <!-- Game Screen -->
+    <string name="congratulations">축하합니다!</string>
+    <string name="new_game">새 게임</string>
+    <string name="new_game_short">새 게임</string>
+    <string name="swap_sides">방향 전환</string>
+    <string name="confirm_restart">설정을 변경하면 새 게임이 시작됩니다. 계속하시겠습니까?</string>
+    <string name="cancel">취소</string>
+    <string name="continue_btn">계속</string>
+    <string name="continue_label">계속</string>
+
+    <!-- Statistics -->
+    <string name="total_time_played">총 플레이 시간</string>
+    <string name="completed_games">완료한 게임</string>
+    <string name="best_time_per_difficulty">난이도별 최고 기록</string>
+
+    <!-- Time Formatting -->
+    <string name="time_h_m_s">%1$d시간 %2$02d분 %3$02d초</string>
+    <string name="time_m_s">%1$02d분 %2$02d초</string>
+
+    <!-- Records Screen -->
+    <string name="delete_history_title">기록을 삭제할까요?</string>
+    <string name="delete_history_msg">모든 기록을 삭제하시겠습니까?</string>
+    <string name="yes">예</string>
+    <string name="confirm_delete_title">삭제 확인</string>
+    <string name="confirm_delete_msg">이 작업은 되돌릴 수 없습니다. 정말로 모두 삭제하시겠습니까?</string>
+    <string name="delete_all_btn">모두 삭제</string>
+    <string name="back">뒤로</string>
+    <string name="refresh">새로고침</string>
+    <string name="no_data">데이터가 없습니다.</string>
+    <string name="overview">개요</string>
+    <string name="combined">통합</string>
+    <string name="perfect_games">실수 없이 완료</string>
+    <string name="classic_per_difficulty">난이도별 클래식 기록</string>
+    <string name="modern_per_difficulty">난이도별 모던 기록</string>
+    <string name="delete_all_history">전체 기록 삭제</string>
+    <string name="started">시작</string>
+    <string name="completed">완료</string>
+    <string name="time_played">플레이 시간</string>
+    <string name="best_time">최고 기록</string>
+    <string name="achieved">달성일</string>
+    <string name="backup_imported">백업을 가져왔습니다.</string>
+    <string name="share_backup_title">백업 공유</string>
+    <string name="app_by">제작: %1$s</string>
+
+    <!-- Game Modes -->
+    <string name="game_mode_classic">클래식</string>
+    <string name="game_mode_modern">모던</string>
+
+    <!-- Difficulty Labels -->
+    <string name="difficulty_very_easy">매우 쉬움</string>
+    <string name="difficulty_easy">쉬움</string>
+    <string name="difficulty_medium">보통</string>
+    <string name="difficulty_hard">어려움</string>
+    <string name="difficulty_very_hard">매우 어려움</string>
+    <string name="difficulty_expert">전문가</string>
+
+    <!-- Difficulty Labels (Short) -->
+    <string name="diff_very_easy">매쉬</string>
+    <string name="diff_easy">쉬움</string>
+    <string name="diff_medium">보통</string>
+    <string name="diff_hard">어려</string>
+    <string name="diff_very_hard">매어</string>
+    <string name="diff_expert">전문</string>
+
+    <!-- Mode Labels (Short) -->
+    <string name="mode_modern">모던</string>
+    <string name="mode_classic">클래식</string>
+    <string name="mode_modern_short">모던</string>
+    <string name="mode_classic_short">클래식</string>
+    <string name="title">SimplySudoku</string>
+</resources>

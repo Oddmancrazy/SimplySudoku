@@ -4,6 +4,8 @@ import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import com.example.simplysudoku.data.backup.BackupFileManager
 import com.example.simplysudoku.data.repository.RecordRepository
 import com.example.simplysudoku.data.repository.SettingsRepository
@@ -46,7 +48,16 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     fun setLanguage(language: AppLanguage) {
         settingsRepository.saveLanguage(language)
-        refreshWithMessage("Språk lagret.")
+        
+        // Bruk AppCompatDelegate for å aktivere språket umiddelbart
+        val appLocale: LocaleListCompat = if (language == AppLanguage.SYSTEM) {
+            LocaleListCompat.getEmptyLocaleList()
+        } else {
+            LocaleListCompat.forLanguageTags(language.storageValue)
+        }
+        AppCompatDelegate.setApplicationLocales(appLocale)
+
+        refresh()
     }
 
     fun setAutoBackupEnabled(enabled: Boolean) {
