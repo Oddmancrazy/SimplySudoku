@@ -29,11 +29,22 @@
     <string name="auto_backup_active">✓ Automatisk molnlagring är aktiv</string>
     <string name="working">Arbetar…</string>
     <string name="hide">Dölj</string>
-    <string name="about_app">Om appen</string>
+    <string name="about_app">Om SimplySudoku</string>
+    <string name="about_modes_title">Spelmodi</string>
     <string name="classic">Klassisk</string>
-    <string name="classic_desc">Minimal hjälp och en mer traditionell Sudoku-upplevelse.</string>
+    <string name="classic_desc">För den traditionella spelaren. Minimal hjälp, inga felmarkeringar under vägen – precis som penna och papper.</string>
     <string name="modern">Modern</string>
-    <string name="modern_desc">Ger mer visuell hjälp med markeringar och felvisning under spelets gång.</string>
+    <string name="modern_desc">Ger visuellt stöd genom att markera dubbletter och fel omedelbart. Perfekt för en snabbare och mer guidad upplevelse.</string>
+    <string name="about_features_title">Funktioner</string>
+    <string name="feature_pause_title">Fair-Play Paus</string>
+    <string name="feature_pause_desc">När du pausar spelet täcks brädet. Detta säkerställer att klockan stannar rättvist, så att du inte kan planera ditt nästa drag medan tiden står still.</string>
+    <string name="feature_layout_title">Flexibel layout</string>
+    <string name="feature_layout_desc">Spelar du på en stor skärm eller är du vänsterhänt? I liggande läge kan du enkelt byta sida på kontrollpanelen för bästa ergonomi.</string>
+    <string name="feature_history_title">Statistik &amp; Backup</string>
+    <string name="feature_history_desc">Appen håller koll på dina bästa tider. Se snabba höjdpunkter på startsidan eller dyk ner i din fulla historik. Dina data är dina – du kan säkerhetskopiera dem, radera dem eller flytta dem till en ny enhet.</string>
+    <string name="about_story_title">Historien bakom</string>
+    <string name="about_story_desc">SimplySudoku utvecklades av någon som bara ville ha en ren och snygg app där man kunde börja spela med ett enda tryck, utan röriga eller onödiga menyer.</string>
+
     <string name="goal">Mål</string>
     <string name="goal_desc">Fyll hela brädet så att varje rad, kolumn och 3×3-box innehåller siffrorna 1 till 9 exakt en gång.</string>
     <string name="all_history">All historik</string>
@@ -58,7 +69,6 @@
     <!-- Time Formatting -->
     <string name="time_h_m_s">%1$dt %2$02dm %3$02ds</string>
     <string name="time_m_s">%1$02dm %2$02ds</string>
-
     <!-- Records Screen -->
     <string name="delete_history_title">Radera historik?</string>
     <string name="delete_history_msg">Är du säker på att du vill radera all historik?</string>
@@ -83,12 +93,13 @@
     <string name="backup_imported">Säkerhetskopia importerad.</string>
     <string name="share_backup_title">Dela säkerhetskopia</string>
     <string name="app_by">App av %1$s</string>
-
+    <string name="backup_info_title">Hur synkronisering fungerar</string>
+    <string name="backup_info_desc">För att hålla flera enheter synkroniserade rekommenderar vi att du använder \"Spara till...\" och skapar en fil i molnet (t.ex. Google Drive). \n\n1. Tryck på \"Spara till...\" och skapa en fil på din Google Drive.\n2. Appen sparar nu automatiskt dina framsteg där varje gång du vinner.\n3. På din andra enhet, tryck på \"Importera fil\" och välj SAMMA fil. \n\nAppen kommer då automatiskt att slå samman dina bästa tider från alla enheter till en gemensam översikt och använda denna fil för framtida sparande.</string>
+    <!-- Difficulty Labels -->
     <!-- Game Modes -->
     <string name="game_mode_classic">Klassisk</string>
     <string name="game_mode_modern">Modern</string>
 
-    <!-- Difficulty Labels -->
     <string name="difficulty_very_easy">Mycket lätt</string>
     <string name="difficulty_easy">Lätt</string>
     <string name="difficulty_medium">Medium</string>

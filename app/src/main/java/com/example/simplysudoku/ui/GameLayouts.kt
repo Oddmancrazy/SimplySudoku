@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -78,17 +79,18 @@ fun PortraitGameContent(
     // Layout calculations based on screen width
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
+    val isTablet = configuration.screenWidthDp >= 600
 
-    val topPanelWidth = clampDp(screenWidth - 28.dp, 320.dp, 370.dp)
-    val titleWidth = clampDp(screenWidth * 0.62f, 220.dp, 320.dp)
-    val boardSize = clampDp(screenWidth * 0.80f, 300.dp, 348.dp)
-    val numberPadWidth = clampDp(boardSize * 0.82f, 250.dp, 286.dp)
-    val compactPad = numberPadWidth < 280.dp
+    val topPanelWidth = if (isTablet) 500.dp else clampDp(screenWidth - 28.dp, 320.dp, 370.dp)
+    val titleWidth = if (isTablet) 360.dp else clampDp(screenWidth * 0.62f, 220.dp, 320.dp)
+    
+    val numberPadWidth = if (isTablet) 420.dp else clampDp(screenWidth * 0.82f, 250.dp, 286.dp)
+    val compactPad = !isTablet && numberPadWidth < 280.dp
 
     var difficultyExpanded by remember { mutableStateOf(false) }
     var modeExpanded by remember { mutableStateOf(false) }
     var pendingOpenType by remember { mutableStateOf<PendingOpenType?>(null) }
-
+    
     fun requestOpenModeMenu() {
         if (uiState.hasStarted && !uiState.isCompleted) {
             pendingOpenType = PendingOpenType.MODE_MENU
@@ -109,9 +111,9 @@ fun PortraitGameContent(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 12.dp, vertical = 12.dp),
+                .padding(horizontal = 12.dp, vertical = if (isTablet) 24.dp else 12.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            verticalArrangement = Arrangement.spacedBy(if (isTablet) 16.dp else 10.dp)
         ) {
             WoodFramePanel(
                 modifier = Modifier.width(topPanelWidth)
@@ -149,26 +151,49 @@ fun PortraitGameContent(
                 }
             }
 
-            BoardPanelWithTimer(
-                elapsedSeconds = uiState.elapsedSeconds,
-                isCompleted = uiState.isCompleted
+            // Dynamic Board Area
+            BoxWithConstraints(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center
             ) {
-                BoardContainer(
-                    uiState = uiState,
-                    pendingOpenType = pendingOpenType,
-                    boardSize = boardSize,
-                    onConfirmPending = {
-                        when (pendingOpenType) {
-                            PendingOpenType.MODE_MENU -> modeExpanded = true
-                            PendingOpenType.DIFFICULTY_MENU -> difficultyExpanded = true
-                            null -> {}
-                        }
-                        pendingOpenType = null
-                    },
-                    onDismissPending = { pendingOpenType = null },
-                    onCellClick = viewModel::onCellClicked,
-                    onResume = viewModel::resumeGame
-                )
+                // Overhead calculation: wood frame (approx 12dp) + inner padding (10dp) + timer (~24dp)
+                val hOverhead = (12.dp + 10.dp) * 2
+                val vOverhead = (12.dp + 10.dp) * 2 + 26.dp
+                
+                val availableWidth = maxWidth
+                val availableHeight = maxHeight
+                
+                val boardSize = minOf(availableWidth - hOverhead, availableHeight - vOverhead)
+                val constrainedBoardSize = if (isTablet) {
+                    clampDp(boardSize, 380.dp, 580.dp)
+                } else {
+                    clampDp(boardSize, 280.dp, 400.dp)
+                }
+
+                BoardPanelWithTimer(
+                    elapsedSeconds = uiState.elapsedSeconds,
+                    isCompleted = uiState.isCompleted,
+                    maxWidth = constrainedBoardSize + hOverhead
+                ) {
+                    BoardContainer(
+                        uiState = uiState,
+                        pendingOpenType = pendingOpenType,
+                        boardSize = constrainedBoardSize,
+                        onConfirmPending = {
+                            when (pendingOpenType) {
+                                PendingOpenType.MODE_MENU -> modeExpanded = true
+                                PendingOpenType.DIFFICULTY_MENU -> difficultyExpanded = true
+                                null -> {}
+                            }
+                            pendingOpenType = null
+                        },
+                        onDismissPending = { pendingOpenType = null },
+                        onCellClick = viewModel::onCellClicked,
+                        onResume = viewModel::resumeGame
+                    )
+                }
             }
 
             NumberPad(
@@ -177,7 +202,8 @@ fun PortraitGameContent(
                 onNumberClick = viewModel::onNumberInput,
                 onEraseClick = viewModel::onEraseInput,
                 panelWidth = numberPadWidth,
-                compact = compactPad
+                compact = compactPad,
+                isTablet = isTablet
             )
         }
     }
@@ -192,10 +218,17 @@ fun LandscapeGameContent(
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
 
+    val isTablet = configuration.screenWidthDp >= 900 // Wide tablet in landscape
     // Dynamically calculate board size based on screen height for landscape
     // We want the board to fit comfortably within the height with padding
-    val boardSize = clampDp(screenHeight - 80.dp, 340.dp, 440.dp)
-    val boardPanelWidth = boardSize + 44.dp // Add some extra for the WoodFramePanel
+    val boardSize = if (isTablet) 
+        clampDp(screenHeight - 100.dp, 400.dp, 560.dp)
+    else 
+        clampDp(screenHeight - 80.dp, 340.dp, 440.dp)
+    
+    val boardPanelWidth = boardSize + (if (isTablet) 60.dp else 44.dp)
+    val sidePanelWidth = if (isTablet) 240.dp else LandscapeSidePanelWidth
+    val numPadWidth = if (isTablet) 190.dp else LandscapeNumberPadWidth
 
     var difficultyExpanded by remember { mutableStateOf(false) }
     var modeExpanded by remember { mutableStateOf(false) }
@@ -222,25 +255,26 @@ fun LandscapeGameContent(
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 10.dp, vertical = 12.dp),
-            horizontalArrangement = Arrangement.spacedBy(
+                .padding(horizontal = if (isTablet) 40.dp else 10.dp, vertical = 12.dp),
+            horizontalArrangement = if (isTablet) Arrangement.SpaceBetween else Arrangement.spacedBy(
                 LandscapeGap,
                 Alignment.CenterHorizontally
             ),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Spacer(modifier = Modifier.width(2.dp))
+            if (!isTablet) Spacer(modifier = Modifier.width(2.dp))
 
             if (isLeftHanded) {
                 Box(
-                    modifier = Modifier.width(LandscapeNumberPadWidth),
+                    modifier = Modifier.width(numPadWidth),
                     contentAlignment = Alignment.Center
                 ) {
                     LandscapeNumberPad(
                         completedNumbers = uiState.completedNumbers,
                         selectedNumber = uiState.selectedNumber,
                         onNumberClick = viewModel::onNumberInput,
-                        onEraseClick = viewModel::onEraseInput
+                        onEraseClick = viewModel::onEraseInput,
+                        isTablet = isTablet
                     )
                 }
 
@@ -274,7 +308,7 @@ fun LandscapeGameContent(
                 }
 
                 Box(
-                    modifier = Modifier.width(LandscapeSidePanelWidth),
+                    modifier = Modifier.width(sidePanelWidth),
                     contentAlignment = Alignment.Center
                 ) {
                     WoodFramePanel {
@@ -298,13 +332,14 @@ fun LandscapeGameContent(
                                 viewModel.startNewGame()
                             },
                             onNewGame = viewModel::startNewGame,
-                            onSwapSides = { isLeftHanded = !isLeftHanded }
+                            onSwapSides = { isLeftHanded = !isLeftHanded },
+                            width = sidePanelWidth - 30.dp
                         )
                     }
                 }
             } else {
                 Box(
-                    modifier = Modifier.width(LandscapeSidePanelWidth),
+                    modifier = Modifier.width(sidePanelWidth),
                     contentAlignment = Alignment.Center
                 ) {
                     WoodFramePanel {
@@ -328,7 +363,8 @@ fun LandscapeGameContent(
                                 viewModel.startNewGame()
                             },
                             onNewGame = viewModel::startNewGame,
-                            onSwapSides = { isLeftHanded = !isLeftHanded }
+                            onSwapSides = { isLeftHanded = !isLeftHanded },
+                            width = sidePanelWidth - 30.dp
                         )
                     }
                 }
@@ -363,19 +399,20 @@ fun LandscapeGameContent(
                 }
 
                 Box(
-                    modifier = Modifier.width(LandscapeNumberPadWidth),
+                    modifier = Modifier.width(numPadWidth),
                     contentAlignment = Alignment.Center
                 ) {
                     LandscapeNumberPad(
                         completedNumbers = uiState.completedNumbers,
                         selectedNumber = uiState.selectedNumber,
                         onNumberClick = viewModel::onNumberInput,
-                        onEraseClick = viewModel::onEraseInput
+                        onEraseClick = viewModel::onEraseInput,
+                        isTablet = isTablet
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.width(2.dp))
+            if (!isTablet) Spacer(modifier = Modifier.width(2.dp))
         }
     }
 }
@@ -444,13 +481,13 @@ private fun BoardPanelWithTimer(
     compactFrame: Boolean = false,
     content: @Composable () -> Unit
 ) {
-    val innerPadding = if (compactFrame) 9.dp else 14.dp
+    val innerPadding = if (compactFrame) 8.dp else 10.dp
     val midPadding = if (compactFrame) 3.dp else 4.dp
     val bottomLip = if (compactFrame) 4.dp else 5.dp
 
     Box(
         modifier = Modifier
-            .widthIn(max = maxWidth)
+            .width(maxWidth)
             .shadow(10.dp, RoundedCornerShape(30.dp), clip = false)
             .clip(RoundedCornerShape(30.dp))
             .background(PanelOuter)
@@ -474,7 +511,7 @@ private fun BoardPanelWithTimer(
             ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -741,10 +778,11 @@ private fun LandscapeControlColumn(
     onSelectMode: (GameMode) -> Unit,
     onSelectDifficulty: (Difficulty) -> Unit,
     onNewGame: () -> Unit,
-    onSwapSides: () -> Unit
+    onSwapSides: () -> Unit,
+    width: Dp = 190.dp
 ) {
     Column(
-        modifier = Modifier.size(width = 190.dp, height = 370.dp),
+        modifier = Modifier.size(width = width, height = 370.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
@@ -752,19 +790,19 @@ private fun LandscapeControlColumn(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            TitleImageButton(onClick = onTitleClick, width = 190.dp)
+            TitleImageButton(onClick = onTitleClick, width = width)
 
             TopWoodTextButton(
                 text = shortModeLabel(uiState.gameMode),
                 onClick = onOpenMode,
-                modifier = Modifier.width(190.dp)
+                modifier = Modifier.width(width)
             )
 
             DropdownMenu(
                 expanded = modeExpanded,
                 onDismissRequest = onDismissMode,
                 modifier = Modifier
-                    .width(190.dp)
+                    .width(width)
                     .heightIn(max = (48 * 6).dp)
                     .background(PanelInner)
                     .border(2.dp, PanelOuter, RoundedCornerShape(8.dp))
@@ -791,14 +829,14 @@ private fun LandscapeControlColumn(
             TopWoodTextButton(
                 text = shortDifficultyLabel(uiState.difficulty),
                 onClick = onOpenDifficulty,
-                modifier = Modifier.width(190.dp)
+                modifier = Modifier.width(width)
             )
 
             DropdownMenu(
                 expanded = difficultyExpanded,
                 onDismissRequest = onDismissDifficulty,
                 modifier = Modifier
-                    .width(190.dp)
+                    .width(width)
                     .heightIn(max = (48 * 6).dp)
                     .background(PanelInner)
                     .border(2.dp, PanelOuter, RoundedCornerShape(8.dp))
@@ -825,14 +863,14 @@ private fun LandscapeControlColumn(
             TopWoodTextButton(
                 text = stringResource(R.string.new_game_short),
                 onClick = onNewGame,
-                modifier = Modifier.width(190.dp)
+                modifier = Modifier.width(width)
             )
         }
 
         TopWoodTextButton(
             text = stringResource(R.string.swap_sides),
             onClick = onSwapSides,
-            modifier = Modifier.width(190.dp)
+            modifier = Modifier.width(width)
         )
     }
 }

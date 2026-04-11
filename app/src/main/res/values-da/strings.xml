@@ -16,7 +16,7 @@
     <string name="language">Sprog</string>
     <string name="language_desc">Vælg standardsprog for appen. System bruges som standard ved første opstart.</string>
     <string name="storage_and_backup">Lagring og backup</string>
-    <string name="storage_desc">Spildata gemmes altid lokalt. Du kan også vælge en mappe til backup, eksportere, dele eller importere backup.</string>
+    <string name="storage_desc">Spildata gemmes lokalt. For at spille på flere enheder skal du vælge en fælles backup-fil i skyen.</string>
     <string name="auto_backup">Automatisk backup</string>
     <string name="on">Til</string>
     <string name="off">Fra</string>
@@ -29,11 +29,22 @@
     <string name="auto_backup_active">✓ Automatisk lagring til skyen er aktiv</string>
     <string name="working">Arbejder…</string>
     <string name="hide">Skjul</string>
-    <string name="about_app">Om appen</string>
+    <string name="about_app">Om SimplySudoku</string>
+    <string name="about_modes_title">Spiltilstande</string>
     <string name="classic">Klassisk</string>
-    <string name="classic_desc">Minimal hjælp og en mere traditionel Sudoku-oplevelse.</string>
+    <string name="classic_desc">Til den traditionelle spiller. Minimal hjælp, ingen fejlmarkeringer undervejs – ligesom pen og papir.</string>
     <string name="modern">Moderne</string>
-    <string name="modern_desc">Giver mere visuel hjælp med markeringer og fejlvisning undervejs.</string>
+    <string name="modern_desc">Giver visuel støtte ved at markere dubletter og fejl med det samme. Perfekt til en hurtigere og mere guidet oplevelse.</string>
+    <string name="about_features_title">Funktioner</string>
+    <string name="feature_pause_title">Fair-Play Pause</string>
+    <string name="feature_pause_desc">Når du pauser spillet, dækkes pladen. Dette sikrer, at uret stopper retfærdigt, så du ikke kan planlægge dit næste træk, mens tiden står stille.</string>
+    <string name="feature_layout_title">Fleksibelt layout</string>
+    <string name="feature_layout_desc">Spiller du på en stor skærm eller er du venstrehåndet? I liggende tilstand kan du nemt skifte side på kontrolpanelet for den bedste ergonomi.</string>
+    <string name="feature_history_title">Statistik &amp; Backup</string>
+    <string name="feature_history_desc">Appen holder styr på dine bedste tider. Se hurtige højdepunkter på forsiden eller dyk ned i din fulde historik. Dine data er dine – du kan tage backup, slette dem eller flytte dem til en ny enhed.</string>
+    <string name="about_story_title">Historien bag</string>
+    <string name="about_story_desc">SimplySudoku blev udviklet af en, der bare ønskede en ren og smuk app, hvor man kunne begynde at spille med et enkelt tryk, uden rod eller unødvendige menuer.</string>
+
     <string name="goal">Mål</string>
     <string name="goal_desc">Udfyld hele pladen, så hver række, kolonne og 3×3 boks indeholder tallene 1 til 9 præcis én gang.</string>
     <string name="all_history">Al historik</string>
@@ -58,7 +69,6 @@
     <!-- Time Formatting -->
     <string name="time_h_m_s">%1$dt %2$02dm %3$02ds</string>
     <string name="time_m_s">%1$02dm %2$02ds</string>
-
     <!-- Records Screen -->
     <string name="delete_history_title">Slet historik?</string>
     <string name="delete_history_msg">Er du sikker på, at du vil slette al historik?</string>
@@ -83,12 +93,13 @@
     <string name="backup_imported">Backup importeret.</string>
     <string name="share_backup_title">Del backup</string>
     <string name="app_by">App af %1$s</string>
-
+    <string name="backup_info_title">Sådan fungerer synkronisering</string>
+    <string name="backup_info_desc">For at holde flere enheder synkroniseret anbefaler vi at bruge \"Gem til...\" og oprette en fil i skyen (f.eks. Google Drev). \n\n1. Tryk på \"Gem til...\" og opret en fil på dit Google Drev.\n2. Appen gemmer nu automatisk dine fremskridt der, hver gang du vinder.\n3. På din anden enhed skal du trykke på \"Importer fil\" og vælge den SAMME fil. \n\nAppen vil derefter automatisk flette dine bedste tider fra alle enheder til én fælles oversigt og bruge denne fil til fremtidige gemninger.</string>
+    <!-- Difficulty Labels -->
     <!-- Game Modes -->
     <string name="game_mode_classic">Klassisk</string>
     <string name="game_mode_modern">Moderne</string>
 
-    <!-- Difficulty Labels -->
     <string name="difficulty_very_easy">Meget let</string>
     <string name="difficulty_easy">Let</string>
     <string name="difficulty_medium">Mellem</string>

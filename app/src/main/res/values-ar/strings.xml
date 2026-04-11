@@ -2,7 +2,7 @@
     <string name="app_name">SimplySudoku</string>
 
     <!-- General -->
-    <string name="welcome_to">مرحباً بكم في</string>
+    <string name="welcome_to">مرحباً بك في</string>
     <string name="select_language">اختر اللغة</string>
     <string name="start_game">ابدأ اللعبة</string>
     <string name="system">النظام</string>
@@ -10,32 +10,43 @@
     <!-- Home Screen -->
     <string name="to_game">إلى اللعبة</string>
     <string name="highlights">الإنجازات</string>
-    <string name="loading_stats">جاري تحميل الإحصائيات…</string>
+    <string name="loading_stats">جارٍ تحميل الإحصائيات…</string>
     <string name="no_stats">لا توجد إحصائيات بعد.</string>
     <string name="settings">الإعدادات</string>
     <string name="language">اللغة</string>
-    <string name="language_desc">اختر اللغة الافتراضية للتطبيق. يتم استخدام لغة النظام عند التشغيل الأول.</string>
+    <string name="language_desc">اختر اللغة الافتراضية للتطبيق. يتم استخدام لغة النظام كافتراضية عند التشغيل الأول.</string>
     <string name="storage_and_backup">التخزين والنسخ الاحتياطي</string>
-    <string name="storage_desc">يتم حفظ بيانات اللعبة محلياً. للعب على أجهزة متعددة، اختر ملفاً مشتركاً للنسخ الاحتياطي في السحابة.</string>
+    <string name="storage_desc">يتم حفظ بيانات اللعبة محلياً. للعب على أجهزة متعددة، اختر ملف نسخ احتياطي مشترك في السحابة.</string>
     <string name="auto_backup">نسخ احتياطي تلقائي</string>
     <string name="on">تشغيل</string>
     <string name="off">إيقاف</string>
     <string name="selected_location">الموقع المختار</string>
-    <string name="none_selected">لم يتم الاختيار بعد</string>
-    <string name="choose_folder">حفظ باسم&#8230;</string>
+    <string name="none_selected">لم يتم اختيار أي موقع بعد</string>
+    <string name="choose_folder">حفظ في...</string>
     <string name="export_now">حفظ نسخة</string>
     <string name="share_backup">مشاركة النسخة الاحتياطية</string>
     <string name="import_label">استيراد ملف</string>
     <string name="auto_backup_active">✓ النسخ الاحتياطي السحابي التلقائي نشط</string>
     <string name="working">جاري العمل…</string>
     <string name="hide">إخفاء</string>
-    <string name="about_app">حول التطبيق</string>
+    <string name="about_app">حول SimplySudoku</string>
+    <string name="about_modes_title">أوضاع اللعبة</string>
     <string name="classic">كلاسيكي</string>
-    <string name="classic_desc">مساعدة محدودة وتجربة سودوكו تقليدية.</string>
-    <string name="modern">حديث</string>
-    <string name="modern_desc">يوفر مساعدة بصرية أكبر مع علامات وعرض الأخطاء أثناء اللعب.</string>
+    <string name="classic_desc">للاعب التقليدي. مساعدة محدودة، لا توجد علامات خطأ أثناء اللعب – تماماً مثل القلم والورق.</string>
+    <string name="modern">مودرن</string>
+    <string name="modern_desc">يوفر دعماً بصرياً من خلال تمييز التكرارات والأخطاء على الفور. مثالي لتجربة أسرع وأكثر توجيهاً.</string>
+    <string name="about_features_title">الميزات</string>
+    <string name="feature_pause_title">إيقاف اللعب النظيف</string>
+    <string name="feature_pause_desc">عند إيقاف اللعبة مؤقتاً، يتم تغطية اللوحة. يضمن ذلك توقف الوقت بشكل عادل، حتى لا تتمكن من التخطيط لخطوتك التالية أثناء توقف الوقت.</string>
+    <string name="feature_layout_title">تخطيط مرن</string>
+    <string name="feature_layout_desc">هل تلعب على شاشة كبيرة أو تستخدم اليد اليسرى؟ في الوضع الأفقي، يمكنك بسهولة تبديل جوانب لوحة التحكم للحصول على أفضل راحة.</string>
+    <string name="feature_history_title">الإحصائيات والنسخ الاحتياطي</string>
+    <string name="feature_history_desc">يتتبع التطبيق أفضل أوقاتك. شاهد الإنجازات السريعة على الصفحة الرئيسية أو تعمق في سجلك الكامل. بياناتك ملكك – يمكنك نسخها احتياطياً أو حذفها أو نقلها إلى جهاز جديد.</string>
+    <string name="about_story_title">القصة وراء التطبيق</string>
+    <string name="about_story_desc">تم تطوير SimplySudoku من قبل شخص أراد تطبيقاً نظيفاً وجميلاً حيث يمكنك البدء باللعب بنقرة واحدة، دون فوضى أو قوائم غير ضرورية.</string>
+
     <string name="goal">الهدف</string>
-    <string name="goal_desc">املأ اللوحة بحيث يحتوي كل صف وعمود ومربع 3×3 على الأرقام من 1 إلى 9 مرة واحدة فقط.</string>
+    <string name="goal_desc">املأ اللوحة بالكامل بحيث يحتوي كل صف وعمود ومربع 3×3 على الأرقام من 1 إلى 9 مرة واحدة فقط.</string>
     <string name="all_history">السجل الكامل</string>
 
     <!-- Game Screen -->
@@ -43,12 +54,12 @@
     <string name="new_game">لعبة جديدة</string>
     <string name="new_game_short">جديد</string>
     <string name="swap_sides">تبديل الجوانب</string>
+    <string name="game_paused">اللعبة متوقفة مؤقتاً</string>
+    <string name="resume">استئناف</string>
     <string name="confirm_restart">تغيير هذا سيبدأ لعبة جديدة. هل تريد الاستمرار؟</string>
     <string name="cancel">إلغاء</string>
     <string name="continue_btn">استمرار</string>
-    <string name="continue_label">متابعة</string>
-    <string name="game_paused">اللعبة متوقفة</string>
-    <string name="resume">استئناف</string>
+    <string name="continue_label">استمرار</string>
 
     <!-- Statistics -->
     <string name="total_time_played">إجمالي وقت اللعب</string>
@@ -56,39 +67,39 @@
     <string name="best_time_per_difficulty">أفضل وقت حسب الصعوبة</string>
 
     <!-- Time Formatting -->
-    <string name="time_h_m_s">%1$dس %2$02د %3$02ث</string>
-    <string name="time_m_s">%1$02د %2$02ث</string>
-
+    <string name="time_h_m_s">%1$d س %2$02d د %3$02d ث</string>
+    <string name="time_m_s">%1$02d د %2$02d ث</string>
     <!-- Records Screen -->
     <string name="delete_history_title">حذف السجل؟</string>
     <string name="delete_history_msg">هل أنت متأكد من حذف السجل بالكامل؟</string>
     <string name="yes">نعم</string>
     <string name="confirm_delete_title">تأكيد الحذف</string>
-    <string name="confirm_delete_msg">لا يمكن التراجع عن هذا الإجراء. هل تريد الحذف فعلاً؟</string>
+    <string name="confirm_delete_msg">لا يمكن التراجع عن هذا الإجراء. هل تريد حقاً حذف كل شيء؟</string>
     <string name="delete_all_btn">حذف الكل</string>
     <string name="back">رجوع</string>
     <string name="refresh">تحديث</string>
     <string name="no_data">لا توجد بيانات متاحة.</string>
     <string name="overview">نظرة عامة</string>
     <string name="combined">مشترك</string>
-    <string name="perfect_games">اكتملت بدون أخطاء</string>
+    <string name="perfect_games">مكتملة بدون أخطاء</string>
     <string name="classic_per_difficulty">كلاسيكي حسب الصعوبة</string>
-    <string name="modern_per_difficulty">حديث حسب الصعوبة</string>
-    <string name="delete_all_history">حذف السجل بالكامل</string>
+    <string name="modern_per_difficulty">مودرن حسب الصعوبة</string>
+    <string name="delete_all_history">حذف كل السجل</string>
     <string name="started">بدأت</string>
     <string name="completed">اكتملت</string>
     <string name="time_played">وقت اللعب</string>
     <string name="best_time">أفضل وقت</string>
-    <string name="achieved">تم تحقيقها</string>
+    <string name="achieved">تم تحقيقه</string>
     <string name="backup_imported">تم استيراد النسخة الاحتياطية.</string>
     <string name="share_backup_title">مشاركة النسخة الاحتياطية</string>
-    <string name="app_by">تطبيق من %1$s</string>
-
+    <string name="app_by">التطبيق من قبل %1$s</string>
+    <string name="backup_info_title">كيفية عمل المزامنة</string>
+    <string name="backup_info_desc">للحفاظ على مزامنة أجهزة متعددة، نوصي باستخدام \"حفظ في...\" وإنشاء ملف في السحابة (مثل Google Drive). \n\n1. اضغط على \"حفظ في...\" وأنشئ ملفاً في Google Drive الخاص بك.\n2. سيقوم التطبيق الآن تلقائياً بحفظ تقدمك هناك في كل مرة تفوز فيها.\n3. في جهازك الآخر، اضغط على \"استيراد ملف\" واختر نفس الملف تماماً. \n\nسيقوم التطبيق بعد ذلك تلقائياً بدمج أفضل أوقاتك من جميع الأجهزة في نظرة عامة مشتركة واحدة، واستخدام هذا الملف لعمليات الحفظ المستقبلية.</string>
+    <!-- Difficulty Labels -->
     <!-- Game Modes -->
     <string name="game_mode_classic">كلاسيكي</string>
-    <string name="game_mode_modern">حديث</string>
+    <string name="game_mode_modern">مودرن</string>
 
-    <!-- Difficulty Labels -->
     <string name="difficulty_very_easy">سهل جداً</string>
     <string name="difficulty_easy">سهل</string>
     <string name="difficulty_medium">متوسط</string>
@@ -97,17 +108,17 @@
     <string name="difficulty_expert">خبير</string>
 
     <!-- Difficulty Labels (Short) -->
-    <string name="diff_very_easy">سج</string>
+    <string name="diff_very_easy">س ج</string>
     <string name="diff_easy">سهل</string>
     <string name="diff_medium">متو</string>
     <string name="diff_hard">صعب</string>
-    <string name="diff_very_hard">صج</string>
+    <string name="diff_very_hard">ص ج</string>
     <string name="diff_expert">خبي</string>
 
     <!-- Mode Labels (Short) -->
-    <string name="mode_modern">حديث</string>
-    <string name="mode_classic">كلاسيكي</string>
-    <string name="mode_modern_short">حديث</string>
-    <string name="mode_classic_short">كلاسيكي</string>
+    <string name="mode_modern">M</string>
+    <string name="mode_classic">C</string>
+    <string name="mode_modern_short">M</string>
+    <string name="mode_classic_short">C</string>
     <string name="title">SimplySudoku</string>
 </resources>

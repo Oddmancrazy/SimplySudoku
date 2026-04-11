@@ -2,61 +2,73 @@
     <string name="app_name">SimplySudoku</string>
 
     <!-- General -->
-    <string name="welcome_to">ยินดีต้อนรับสู่</string>
+    <string name="welcome_to">ยินดีต้อนรับสู่ SimplySudoku</string>
     <string name="select_language">เลือกภาษา</string>
     <string name="start_game">เริ่มเกม</string>
     <string name="system">ระบบ</string>
 
     <!-- Home Screen -->
     <string name="to_game">ไปที่เกม</string>
-    <string name="highlights">ไฮไลท์</string>
+    <string name="highlights">สถิติไฮไลท์</string>
     <string name="loading_stats">กำลังโหลดสถิติ…</string>
     <string name="no_stats">ยังไม่มีสถิติ</string>
     <string name="settings">การตั้งค่า</string>
     <string name="language">ภาษา</string>
-    <string name="language_desc">เลือกภาษาเริ่มต้นสำหรับแอป ระบบจะถูกใช้เป็นค่าเริ่มต้นในการเริ่มทำงานครั้งแรก</string>
-    <string name="storage_and_backup">พื้นที่เก็บข้อมูลและการสำรองข้อมูล</string>
-    <string name="storage_desc">ข้อมูลเกมจะถูกบันทึกไว้ในเครื่องเสมอ เพื่อเล่นบนหลายอุปกรณ์ ให้เลือกไฟล์สำรองข้อมูลที่แชร์ในคลาวด์</string>
+    <string name="language_desc">เลือกภาษาเริ่มต้นของแอป ภาษาของระบบจะถูกใช้เป็นค่าเริ่มต้นเมื่อเริ่มใช้งานครั้งแรก</string>
+    <string name="storage_and_backup">การจัดเก็บและสำรองข้อมูล</string>
+    <string name="storage_desc">ข้อมูลเกมจะถูกเก็บไว้ในเครื่อง หากต้องการเล่นบนหลายเครื่อง ให้เลือกไฟล์สำรองข้อมูลที่แชร์ในคลาวด์</string>
     <string name="auto_backup">สำรองข้อมูลอัตโนมัติ</string>
     <string name="on">เปิด</string>
     <string name="off">ปิด</string>
     <string name="selected_location">ตำแหน่งที่เลือก</string>
     <string name="none_selected">ยังไม่ได้เลือก</string>
-    <string name="choose_folder">บันทึกเป็น&#8230;</string>
+    <string name="choose_folder">บันทึกที่…</string>
     <string name="export_now">บันทึกสำเนา</string>
     <string name="share_backup">แชร์ข้อมูลสำรอง</string>
     <string name="import_label">นำเข้าไฟล์</string>
-    <string name="auto_backup_active">✓ การสำรองข้อมูลบนคลาวด์อัตโนมัติทำงานอยู่</string>
+    <string name="auto_backup_active">✓ เปิดใช้งานการสำรองข้อมูลคลาวด์อัตโนมัติแล้ว</string>
     <string name="working">กำลังดำเนินการ…</string>
     <string name="hide">ซ่อน</string>
-    <string name="about_app">เกี่ยวกับแอป</string>
+    <string name="about_app">เกี่ยวกับ SimplySudoku</string>
+    <string name="about_modes_title">โหมดเกม</string>
     <string name="classic">คลาสสิก</string>
-    <string name="classic_desc">ความช่วยเหลือขั้นต่ำและประสบการณ์ซูโดกุแบบดั้งเดิมมากขึ้น</string>
+    <string name="classic_desc">สำหรับผู้เล่นดั้งเดิม มีความช่วยเหลือจำกัด ไม่มีการแจ้งเตือนข้อผิดพลาดขณะเล่น เหมือนใช้ดินสอและกระดาษ</string>
     <string name="modern">โมเดิร์น</string>
-    <string name="modern_desc">ให้ความช่วยเหลือด้านภาพมากขึ้นด้วยเครื่องหมายและการแสดงข้อผิดพลาดตลอดการเล่น</string>
+    <string name="modern_desc">ให้การสนับสนุนทางสายตาโดยเน้นเลขที่ซ้ำและข้อผิดพลาดทันที เหมาะสำหรับประสบการณ์ที่รวดเร็วและมีคำแนะนำ</string>
+    <string name="about_features_title">คุณสมบัติ</string>
+    <string name="feature_pause_title">หยุดชั่วคราวอย่างยุติธรรม</string>
+    <string name="feature_pause_desc">เมื่อหยุดเกมชั่วคราว กระดานจะถูกปิดบัง เพื่อให้แน่ใจว่าเวลาจะหยุดอย่างยุติธรรม คุณจึงไม่สามารถวางแผนการเดินครั้งต่อไปในขณะที่เวลาหยุดลง</string>
+    <string name="feature_layout_title">เลย์เอาต์ที่ยืดหยุ่น</string>
+    <string name="feature_layout_desc">เล่นบนหน้าจอขนาดใหญ่หรือถนัดซ้าย? ในโหมดแนวนอน คุณสามารถสลับด้านของแผงควบคุมเพื่อให้เหมาะกับสรีระได้ง่าย</string>
+    <string name="feature_history_title">สถิติและการสำรองข้อมูล</string>
+    <string name="feature_history_desc">แอปจะติดตามเวลาที่ดีที่สุดของคุณ ดูไฮไลท์บนหน้าแรกหรือดูประวัติทั้งหมด ข้อมูลเป็นของคุณ คุณสามารถสำรอง ลบ หรือย้ายไปยังเครื่องใหม่ได้</string>
+    <string name="about_story_title">เรื่องราวเบื้องหลัง</string>
+    <string name="about_story_desc">SimplySudoku พัฒนาโดยผู้ที่ต้องการแอปที่สะอาดและสวยงาม ซึ่งคุณสามารถเริ่มเล่นได้ด้วยการแตะเพียงครั้งเดียว โดยไม่มีเมนูที่ไม่จำเป็นหรือความวุ่นวาย</string>
+
     <string name="goal">เป้าหมาย</string>
-    <string name="goal_desc">เติมข้อมูลในกระดานทั้งหมดเพื่อให้แต่ละแถว คอลัมน์ และกล่อง 3×3 มีตัวเลข 1 ถึง 9 อย่างละหนึ่งตัวพอดี</string>
+    <string name="goal_desc">เติมเลขในกระดานให้เต็ม โดยทุกแถว ทุกคอลัมน์ และทุกบล็อกขนาด 3×3 ต้องมีตัวเลข 1 ถึง 9 เพียงตัวเดียวเท่านั้น</string>
     <string name="all_history">ประวัติทั้งหมด</string>
 
     <!-- Game Screen -->
-    <string name="congratulations">ยินดีด้วย!</string>
-    <string name="new_game">เกมใหม่</string>
+    <string name="congratulations">ขอแสดงความยินดี!</string>
+    <string name="new_game">เริ่มเกมใหม่</string>
     <string name="new_game_short">ใหม่</string>
-    <string name="swap_sides">สลับฝั่ง</string>
-    <string name="confirm_restart">การเปลี่ยนสิ่งนี้จะเริ่มเกมใหม่ คุณต้องการดำเนินการต่อหรือไม่?</string>
+    <string name="swap_sides">สลับด้าน</string>
+    <string name="game_paused">หยุดเกมชั่วคราว</string>
+    <string name="resume">เล่นต่อ</string>
+    <string name="confirm_restart">การเปลี่ยนสิ่งนี้จะทำให้เริ่มเกมใหม่ คุณต้องการดำเนินการต่อหรือไม่?</string>
     <string name="cancel">ยกเลิก</string>
     <string name="continue_btn">ดำเนินการต่อ</string>
-    <string name="continue_label">ต่อ</string>
+    <string name="continue_label">เล่นต่อ</string>
 
     <!-- Statistics -->
     <string name="total_time_played">เวลาเล่นทั้งหมด</string>
-    <string name="completed_games">เกมที่เล่นจบแล้ว</string>
+    <string name="completed_games">เกมที่เล่นจบ</string>
     <string name="best_time_per_difficulty">เวลาที่ดีที่สุดตามระดับความยาก</string>
 
     <!-- Time Formatting -->
-    <string name="time_h_m_s">%1$dชม. %2$02dน. %3$02ดว.</string>
-    <string name="time_m_s">%1$02dน. %2$02ดว.</string>
-
+    <string name="time_h_m_s">%1$d ชม. %2$02d นาที %3$02d วินาที</string>
+    <string name="time_m_s">%1$02d นาที %2$02d วินาที</string>
     <!-- Records Screen -->
     <string name="delete_history_title">ลบประวัติหรือไม่?</string>
     <string name="delete_history_msg">คุณแน่ใจหรือไม่ว่าต้องการลบประวัติทั้งหมด?</string>
@@ -69,24 +81,25 @@
     <string name="no_data">ไม่มีข้อมูล</string>
     <string name="overview">ภาพรวม</string>
     <string name="combined">รวม</string>
-    <string name="perfect_games">เสร็จสิ้นโดยไม่มีข้อผิดพลาด</string>
-    <string name="classic_per_difficulty">คลาสสิกตามความยาก</string>
-    <string name="modern_per_difficulty">โมเดิร์นตามความยาก</string>
+    <string name="perfect_games">จบเกมแบบไม่มีที่ติ</string>
+    <string name="classic_per_difficulty">คลาสสิกตามระดับความยาก</string>
+    <string name="modern_per_difficulty">โมเดิร์นตามระดับความยาก</string>
     <string name="delete_all_history">ลบประวัติทั้งหมด</string>
     <string name="started">เริ่มเมื่อ</string>
     <string name="completed">เสร็จสิ้นเมื่อ</string>
-    <string name="time_played">เวลาที่ใช้เล่น</string>
+    <string name="time_played">เวลาที่เล่น</string>
     <string name="best_time">เวลาที่ดีที่สุด</string>
-    <string name="achieved">สำเร็จเมื่อ</string>
+    <string name="achieved">ทำได้เมื่อ</string>
     <string name="backup_imported">นำเข้าข้อมูลสำรองแล้ว</string>
     <string name="share_backup_title">แชร์ข้อมูลสำรอง</string>
     <string name="app_by">แอปโดย %1$s</string>
-
+    <string name="backup_info_title">การซิงค์ทำงานอย่างไร</string>
+    <string name="backup_info_desc">เพื่อให้ข้อมูลตรงกันในหลายอุปกรณ์ เราขอแนะนำให้ใช้ \"บันทึกที่…\" และสร้างไฟล์ในคลาวด์ (เช่น Google Drive) \n\n1. กดที่ \"บันทึกที่…\" และสร้างไฟล์ใน Google Drive ของคุณ\n2. แอปจะบันทึกความคืบหน้าของคุณที่นั่นโดยอัตโนมัติทุกครั้งที่คุณชนะ\n3. ในเครื่องอื่นของคุณ ให้กดที่ \"นำเข้าไฟล์\" และเลือกไฟล์เดียวกันนั้น \n\nจากนั้นแอปจะรวบรวมเวลาที่ดีที่สุดของคุณจากทุกเครื่องมารวมกันในหน้าเดียว และใช้ไฟล์นั้นในการบันทึกข้อมูลครั้งต่อไป</string>
+    <!-- Difficulty Labels -->
     <!-- Game Modes -->
     <string name="game_mode_classic">คลาสสิก</string>
     <string name="game_mode_modern">โมเดิร์น</string>
 
-    <!-- Difficulty Labels -->
     <string name="difficulty_very_easy">ง่ายมาก</string>
     <string name="difficulty_easy">ง่าย</string>
     <string name="difficulty_medium">ปานกลาง</string>
@@ -95,17 +108,17 @@
     <string name="difficulty_expert">ผู้เชี่ยวชาญ</string>
 
     <!-- Difficulty Labels (Short) -->
-    <string name="diff_very_easy">งม</string>
+    <string name="diff_very_easy">ง่ายม.</string>
     <string name="diff_easy">ง่าย</string>
     <string name="diff_medium">กลาง</string>
     <string name="diff_hard">ยาก</string>
-    <string name="diff_very_hard">ยม</string>
-    <string name="diff_expert">พช</string>
+    <string name="diff_very_hard">ยากม.</string>
+    <string name="diff_expert">เก่ง</string>
 
     <!-- Mode Labels (Short) -->
-    <string name="mode_modern">โมเดิร์น</string>
-    <string name="mode_classic">คลาสสิก</string>
-    <string name="mode_modern_short">โมเดิร์น</string>
-    <string name="mode_classic_short">คลาสสิก</string>
+    <string name="mode_modern">M</string>
+    <string name="mode_classic">C</string>
+    <string name="mode_modern_short">M</string>
+    <string name="mode_classic_short">C</string>
     <string name="title">SimplySudoku</string>
 </resources>

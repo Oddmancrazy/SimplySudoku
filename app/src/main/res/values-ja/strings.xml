@@ -2,63 +2,73 @@
     <string name="app_name">SimplySudoku</string>
 
     <!-- General -->
-    <string name="welcome_to">ようこそ</string>
+    <string name="welcome_to">SimplySudokuへようこそ</string>
     <string name="select_language">言語を選択</string>
-    <string name="start_game">ゲームを開始</string>
-    <string name="system">システム設定</string>
+    <string name="start_game">ゲーム開始</string>
+    <string name="system">システム</string>
 
     <!-- Home Screen -->
-    <string name="to_game">ゲームに戻る</string>
+    <string name="to_game">ゲームへ</string>
     <string name="highlights">ハイライト</string>
     <string name="loading_stats">統計を読み込み中…</string>
     <string name="no_stats">統計データがありません。</string>
     <string name="settings">設定</string>
     <string name="language">言語</string>
-    <string name="language_desc">アプリのデフォルト言語を選択してください。初回起動時はシステム設定が使用されます。</string>
-    <string name="storage_and_backup">ストレージとバックアップ</string>
-    <string name="storage_desc">ゲームデータはローカルに保存されます。複数デバイスでプレイするには、クラウド上の共有バックアップファイルを選択してください。</string>
+    <string name="language_desc">アプリのデフォルト言語を選択します。初回起動時はシステムの言語が使用されます。</string>
+    <string name="storage_and_backup">保存とバックアップ</string>
+    <string name="storage_desc">ゲームデータはローカルに保存されます。複数のデバイスでプレイするには、クラウド上の共有バックアップファイルを選択してください。</string>
     <string name="auto_backup">自動バックアップ</string>
     <string name="on">オン</string>
     <string name="off">オフ</string>
     <string name="selected_location">選択された場所</string>
     <string name="none_selected">未選択</string>
-    <string name="choose_folder">名前を付けて保存&#8230;</string>
+    <string name="choose_folder">保存先を指定…</string>
     <string name="export_now">コピーを保存</string>
     <string name="share_backup">バックアップを共有</string>
-    <string name="import_label">ファイルを読み込む</string>
-    <string name="auto_backup_active">✓ クラウドへの自動バックアップが有効です</string>
+    <string name="import_label">ファイルをインポート</string>
+    <string name="auto_backup_active">✓ 自動クラウドバックアップが有効です</string>
     <string name="working">処理中…</string>
     <string name="hide">非表示</string>
-    <string name="about_app">アプリについて</string>
-    <string name="classic">クラシックモード</string>
-    <string name="classic_desc">最小限のヒントで、伝統的な数独を楽しめます。</string>
-    <string name="modern">モダンモード</string>
-    <string name="modern_desc">メモ機能やリアルタイムのエラー表示など、視覚的なサポートを提供します。</string>
-    <string name="goal">目標</string>
-    <string name="goal_desc">すべての行、列、3×3のブロックに1から9までの数字が重複なく1つずつ入るように埋めてください。</string>
+    <string name="about_app">SimplySudokuについて</string>
+    <string name="about_modes_title">ゲームモード</string>
+    <string name="classic">クラシック</string>
+    <string name="classic_desc">伝統的なスタイル。ヒントは最小限で、プレイ中のエラー表示もありません。紙とペンのような感覚です。</string>
+    <string name="modern">モダン</string>
+    <string name="modern_desc">重複やエラーを即座にハイライトし、視覚的なサポートを提供します。スピーディーでガイド付きの体験に最適です。</string>
+    <string name="about_features_title">機能</string>
+    <string name="feature_pause_title">フェアプレー一時停止</string>
+    <string name="feature_pause_desc">一時停止中はボードが隠されます。これにより、時間が止まっている間に次の手を考えることができないよう、公平性を保ちます。</string>
+    <string name="feature_layout_title">フレキシブル・レイアウト</string>
+    <string name="feature_layout_desc">大画面でのプレイや左利きですか？横向きモードでは、操作パネルの左右を簡単に入れ替えることができ、最適なエルゴノミクスを実現します。</string>
+    <string name="feature_history_title">統計とバックアップ</string>
+    <string name="feature_history_desc">アプリがあなたのベストタイムを記録します。トップページでハイライトを確認したり、詳細な履歴を確認できます。データはあなたのものです。バックアップや削除、新デバイスへの移行も自由です。</string>
+    <string name="about_story_title">開発ストーリー</string>
+    <string name="about_story_desc">SimplySudokuは、余計なメニューや clutter（散らかり）がなく、ワンタップですぐにプレイを開始できる、クリーンで美しいアプリを求めて開発されました。</string>
+
+    <string name="goal">ルール</string>
+    <string name="goal_desc">すべての行、列、および3×3のブロックに、1から9までの数字が一度ずつ入るようにボードを埋めます。</string>
     <string name="all_history">すべての履歴</string>
 
     <!-- Game Screen -->
     <string name="congratulations">おめでとうございます！</string>
     <string name="new_game">新規ゲーム</string>
     <string name="new_game_short">新規</string>
-    <string name="swap_sides">左右入れ替え</string>
+    <string name="swap_sides">配置を左右反転</string>
     <string name="game_paused">一時停止中</string>
     <string name="resume">再開</string>
-    <string name="confirm_restart">この設定を変更すると新しいゲームが始まります。続けますか？</string>
+    <string name="confirm_restart">設定を変更すると新しいゲームが開始されます。続行しますか？</string>
     <string name="cancel">キャンセル</string>
     <string name="continue_btn">続行</string>
     <string name="continue_label">続行</string>
 
     <!-- Statistics -->
     <string name="total_time_played">総プレイ時間</string>
-    <string name="completed_games">完了したゲーム数</string>
-    <string name="best_time_per_difficulty">難易度別の最高記録</string>
+    <string name="completed_games">完了したゲーム</string>
+    <string name="best_time_per_difficulty">難易度別ベストタイム</string>
 
     <!-- Time Formatting -->
     <string name="time_h_m_s">%1$d時間 %2$02d分 %3$02d秒</string>
     <string name="time_m_s">%1$02d分 %2$02d秒</string>
-
     <!-- Records Screen -->
     <string name="delete_history_title">履歴を削除しますか？</string>
     <string name="delete_history_msg">すべての履歴を削除してもよろしいですか？</string>
@@ -70,25 +80,26 @@
     <string name="refresh">更新</string>
     <string name="no_data">データがありません。</string>
     <string name="overview">概要</string>
-    <string name="combined">統合</string>
-    <string name="perfect_games">ミスなしで完了</string>
-    <string name="classic_per_difficulty">難易度別クラシック記録</string>
-    <string name="modern_per_difficulty">難易度別モダン記録</string>
+    <string name="combined">総合</string>
+    <string name="perfect_games">エラーなしで完了</string>
+    <string name="classic_per_difficulty">難易度別（クラシック）</string>
+    <string name="modern_per_difficulty">難易度別（モダン）</string>
     <string name="delete_all_history">すべての履歴を削除</string>
-    <string name="started">開始</string>
-    <string name="completed">完了</string>
+    <string name="started">開始日時</string>
+    <string name="completed">完了日時</string>
     <string name="time_played">プレイ時間</string>
-    <string name="best_time">最高記録</string>
+    <string name="best_time">ベストタイム</string>
     <string name="achieved">達成日</string>
     <string name="backup_imported">バックアップを読み込みました。</string>
     <string name="share_backup_title">バックアップを共有</string>
-    <string name="app_by">アプリ作成：%1$s</string>
-
+    <string name="app_by">%1$s によるアプリ</string>
+    <string name="backup_info_title">同期の仕組み</string>
+    <string name="backup_info_desc">複数のデバイスで同期を保つには、「保存先を指定…」を使用してクラウド（Googleドライブなど）にファイルを作成することをお勧めします。\n\n1.「保存先を指定…」を押し、Googleドライブにファイルを作成します。\n2. これで、勝利するたびに進行状況が自動的にそのファイルに保存されます。\n3. もう一方のデバイスで「ファイルをインポート」を押し、同じファイルを選択します。\n\nアプリは自動的にすべてのデバイスのベストタイムを1つの共有ビューに統合し、今後の保存にそのファイルを使用します。</string>
+    <!-- Difficulty Labels -->
     <!-- Game Modes -->
     <string name="game_mode_classic">クラシック</string>
     <string name="game_mode_modern">モダン</string>
 
-    <!-- Difficulty Labels -->
     <string name="difficulty_very_easy">超初級</string>
     <string name="difficulty_easy">初級</string>
     <string name="difficulty_medium">中級</string>
@@ -98,16 +109,16 @@
 
     <!-- Difficulty Labels (Short) -->
     <string name="diff_very_easy">超初</string>
-    <string name="diff_easy">初級</string>
-    <string name="diff_medium">中級</string>
-    <string name="diff_hard">上級</string>
+    <string name="diff_easy">初</string>
+    <string name="diff_medium">中</string>
+    <string name="diff_hard">上</string>
     <string name="diff_very_hard">超上</string>
-    <string name="diff_expert">達人</string>
+    <string name="diff_expert">EX</string>
 
     <!-- Mode Labels (Short) -->
-    <string name="mode_modern">モダン</string>
-    <string name="mode_classic">標準</string>
-    <string name="mode_modern_short">モダン</string>
-    <string name="mode_classic_short">標準</string>
+    <string name="mode_modern">M</string>
+    <string name="mode_classic">C</string>
+    <string name="mode_modern_short">M</string>
+    <string name="mode_classic_short">C</string>
     <string name="title">SimplySudoku</string>
 </resources>

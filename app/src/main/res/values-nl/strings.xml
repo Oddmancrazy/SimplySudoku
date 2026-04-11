@@ -29,11 +29,21 @@
     <string name="auto_backup_active">✓ Automatische cloud-back-up is actief</string>
     <string name="working">Bezig…</string>
     <string name="hide">Verbergen</string>
-    <string name="about_app">Over de app</string>
+    <string name="about_app">Over SimplySudoku</string>
+    <string name="about_modes_title">Spelmodi</string>
     <string name="classic">Klassiek</string>
-    <string name="classic_desc">Minimale hulp en een meer traditionele Sudoku-ervaring.</string>
+    <string name="classic_desc">Voor de traditionele speler. Minimale hulp, geen foutmarkeringen tijdens het spel – net als pen en papier.</string>
     <string name="modern">Modern</string>
-    <string name="modern_desc">Biedt meer visuele hulp met markeringen en foutweergave tijdens het spel.</string>
+    <string name="modern_desc">Biedt visuele ondersteuning door duplicaten en fouten onmiddellijk te markeren. Perfect voor een snellere en meer begeleide ervaring.</string>
+    <string name="about_features_title">Kenmerken</string>
+    <string name="feature_pause_title">Fair-Play Pauze</string>
+    <string name="feature_pause_desc">Wanneer je het spel pauzeert, wordt het bord bedekt. Dit zorgt ervoor dat de klok eerlijk stopt, zodat je je volgende zet niet kunt plannen terwijl de tijd stilstaat.</string>
+    <string name="feature_layout_title">Flexibele Layout</string>
+    <string name="feature_layout_desc">Speel je op een groot scherm of ben je linkshandig? In de liggende modus kun je eenvoudig van kant wisselen op het bedieningspaneel voor de beste ergonomie.</string>
+    <string name="feature_history_title">Stats &amp; Back-up</string>
+    <string name="feature_history_desc">De app houdt je beste tijden bij. Bekijk snelle hoogtepunten op de voorpagina of duik in je volledige geschiedenis. Je gegevens zijn van jou – je kunt er een back-up van maken, ze verwijderen of ze naar een nieuw apparaat verplaatsen.</string>
+    <string name="about_story_title">Het Verhaal Eraf</string>
+    <string name="about_story_desc">SimplySudoku is ontwikkeld door iemand die gewoon een schone en mooie app wilde waarmee je met één tik kon beginnen te spelen, zonder rommel of onnodige menu\'s.</string>
     <string name="goal">Doel</string>
     <string name="goal_desc">Vul het hele bord zo in dat elke rij, kolom en 3×3-box de getallen 1 tot 9 elk precies één keer bevat.</string>
     <string name="all_history">Alle geschiedenis</string>
@@ -81,8 +91,8 @@
     <string name="best_time">Beste tijd</string>
     <string name="achieved">Behaald</string>
     <string name="backup_imported">Back-up geïmporteerd.</string>
-    <string name="share_backup_title">Back-up delen</string>
-    <string name="app_by">App door %1$s</string>
+    <string name="backup_info_title">Hoe synchronisatie werkt</string>
+    <string name="backup_info_desc">Om meerdere apparaten gesynchroniseerd te houden, raden we aan om \"Opslaan in...\" te gebruiken en een bestand in de cloud te maken (bijv. Google Drive). \n\n1. Druk op \"Opslaan in...\" en maak een bestand op je Google Drive.\n2. De app slaat je voortgang daar nu automatisch op telkens wanneer je wint.\n3. Druk op je andere apparaat op \"Bestand importeren\" en selecteer HETZELFDE bestand. \n\nDe app voegt dan automatisch je beste tijden van alle apparaten samen in één gedeeld overzicht en gebruikt dit bestand voor toekomstige opslag.</string>
 
     <!-- Game Modes -->
     <string name="game_mode_classic">Klassiek</string>

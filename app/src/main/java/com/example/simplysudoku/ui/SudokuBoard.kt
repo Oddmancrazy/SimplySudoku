@@ -35,7 +35,11 @@ fun SudokuBoard(
 
     val boardByPosition = board.associateBy { cell -> cell.row to cell.col }
 
-    Box {
+    Box(
+        modifier = Modifier
+            .aspectRatio(1f)
+            .fillMaxSize()
+    ) {
         Column(
             modifier = Modifier.fillMaxSize()
         ) {

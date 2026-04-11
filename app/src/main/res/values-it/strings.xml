@@ -29,11 +29,21 @@
     <string name="auto_backup_active">✓ Backup automatico nel cloud attivo</string>
     <string name="working">Elaborazione…</string>
     <string name="hide">Nascondi</string>
-    <string name="about_app">Info sull\'app</string>
+    <string name="about_app">Informazioni su SimplySudoku</string>
+    <string name="about_modes_title">Modalità di Gioco</string>
     <string name="classic">Classico</string>
-    <string name="classic_desc">Aiuto minimo ed esperienza tradizionale del Sudoku.</string>
+    <string name="classic_desc">Per il giocatore tradizionale. Aiuto minimo, nessun segno di errore durante il gioco – proprio come carta e penna.</string>
     <string name="modern">Moderno</string>
-    <string name="modern_desc">Più aiuto visivo con segni ed errori in tempo reale.</string>
+    <string name="modern_desc">Fornisce supporto visivo evidenziando immediatamente duplicati ed errori. Perfetto per un\'esperienza più veloce e guidata.</string>
+    <string name="about_features_title">Caratteristiche</string>
+    <string name="feature_pause_title">Pausa Fair-Play</string>
+    <string name="feature_pause_desc">Quando metti il gioco in pausa, la griglia viene coperta. Questo assicura che il tempo si fermi onestamente, impedendoti di pianificare la prossima mossa mentre il tempo è fermo.</string>
+    <string name="feature_layout_title">Layout Flessibile</string>
+    <string name="feature_layout_desc">Giochi su uno schermo grande o sei mancino? In modalità orizzontale, puoi facilmente scambiare i lati del pannello di controllo per la migliore ergonomia.</string>
+    <string name="feature_history_title">Statistiche e Backup</string>
+    <string name="feature_history_desc">L\'app tiene traccia dei tuoi tempi migliori. Guarda i momenti salienti nella pagina principale o immergiti nella tua cronologia completa. I tuoi dati sono tuoi: puoi eseguire il backup, eliminarli o spostarli su un nuovo dispositivo.</string>
+    <string name="about_story_title">La Storia Dietro</string>
+    <string name="about_story_desc">SimplySudoku è stata sviluppata da qualcuno che voleva semplicemente un\'app pulita e bella dove poter iniziare a giocare con un solo tocco, senza menu inutili.</string>
     <string name="goal">Obiettivo</string>
     <string name="goal_desc">Riempi la griglia in modo che ogni riga, colonna e blocco 3×3 contenga i numeri da 1 a 9 una sola volta.</string>
     <string name="all_history">Tutta la cronologia</string>
@@ -81,8 +91,8 @@
     <string name="best_time">Miglior tempo</string>
     <string name="achieved">Raggiunto</string>
     <string name="backup_imported">Backup importato.</string>
-    <string name="share_backup_title">Condividi backup</string>
-    <string name="app_by">App di %1$s</string>
+    <string name="backup_info_title">Come funziona la sincronizzazione</string>
+    <string name="backup_info_desc">Per mantenere più dispositivi sincronizzati, consigliamo di utilizzare \"Salva in...\" e creare un file nel cloud (es. Google Drive). \n\n1. Premi \"Salva in...\" e crea un file sul tuo Google Drive.\n2. L\'app ora salverà automaticamente i tuoi progressi lì ogni volta che vinci.\n3. Sul tuo altro dispositivo, premi \"Importa file\" e seleziona lo STESSO file. \n\nL\'app unirà quindi automaticamente i tuoi tempi migliori da tutti i dispositivi in una panoramica condivisa e utilizzerà questo file per i salvataggi futuri.</string>
 
     <!-- Game Modes -->
     <string name="game_mode_classic">Classico</string>

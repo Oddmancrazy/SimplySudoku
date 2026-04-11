@@ -56,12 +56,29 @@ fun NumberPad(
     onNumberClick: (Int) -> Unit,
     onEraseClick: () -> Unit,
     panelWidth: Dp = 286.dp,
-    compact: Boolean = false
+    compact: Boolean = false,
+    isTablet: Boolean = false
 ) {
-    val spacing = if (compact) 5.dp else 6.dp
-    val keyWidth = if (compact) 52.dp else 56.dp
-    val keyHeight = if (compact) 46.dp else 48.dp
-    val eraseWidth = if (compact) 56.dp else 60.dp
+    val spacing = when {
+        isTablet -> 10.dp
+        compact -> 5.dp
+        else -> 6.dp
+    }
+    val keyWidth = when {
+        isTablet -> 80.dp
+        compact -> 52.dp
+        else -> 56.dp
+    }
+    val keyHeight = when {
+        isTablet -> 68.dp
+        compact -> 46.dp
+        else -> 48.dp
+    }
+    val eraseWidth = when {
+        isTablet -> 84.dp
+        compact -> 56.dp
+        else -> 60.dp
+    }
 
     WoodPanel(
         modifier = Modifier.width(panelWidth)
@@ -121,13 +138,18 @@ fun LandscapeNumberPad(
     completedNumbers: Set<Int>,
     selectedNumber: Int?,
     onNumberClick: (Int) -> Unit,
-    onEraseClick: () -> Unit
+    onEraseClick: () -> Unit,
+    isTablet: Boolean = false
 ) {
     val leftColumn = listOf(1, 3, 5, 7, 9)
     val rightColumn = listOf(2, 4, 6, 8)
+    
+    val keySize = if (isTablet) 72.dp else 56.dp
+    val spacing = if (isTablet) 12.dp else 8.dp
+    val panelWidth = if (isTablet) 190.dp else 154.dp
 
     WoodPanel(
-        modifier = Modifier.width(154.dp)
+        modifier = Modifier.width(panelWidth)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -135,7 +157,7 @@ fun LandscapeNumberPad(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(spacing),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 leftColumn.forEach { number ->
@@ -143,13 +165,14 @@ fun LandscapeNumberPad(
                         number = number,
                         isSelected = selectedNumber == number,
                         isCompleted = completedNumbers.contains(number),
-                        onClick = { onNumberClick(number) }
+                        onClick = { onNumberClick(number) },
+                        size = keySize
                     )
                 }
             }
 
             Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(spacing),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 rightColumn.forEach { number ->
@@ -157,11 +180,12 @@ fun LandscapeNumberPad(
                         number = number,
                         isSelected = selectedNumber == number,
                         isCompleted = completedNumbers.contains(number),
-                        onClick = { onNumberClick(number) }
+                        onClick = { onNumberClick(number) },
+                        size = keySize
                     )
                 }
 
-                SquareEraseKey(onClick = onEraseClick)
+                SquareEraseKey(onClick = onEraseClick, size = keySize)
             }
         }
     }
@@ -282,7 +306,8 @@ private fun SquareNumberKey(
     number: Int,
     isSelected: Boolean,
     isCompleted: Boolean,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    size: Dp = 56.dp
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
@@ -304,7 +329,7 @@ private fun SquareNumberKey(
     Box(
         modifier = Modifier
             .shadow(4.dp, RoundedCornerShape(16.dp), clip = false)
-            .size(56.dp)
+            .size(size)
             .clip(RoundedCornerShape(16.dp))
             .background(KeyWoodDark)
             .clickable(
@@ -324,7 +349,7 @@ private fun SquareNumberKey(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .height(14.dp)
+                .height(if (size > 60.dp) 18.dp else 14.dp)
                 .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
                 .background(
                     Brush.verticalGradient(
@@ -349,7 +374,7 @@ private fun SquareNumberKey(
             Text(
                 text = number.toString(),
                 color = KeyText,
-                fontSize = 20.sp,
+                fontSize = if (size > 60.dp) 26.sp else 20.sp,
                 fontWeight = FontWeight.ExtraBold,
                 fontFamily = FontFamily.Serif
             )
@@ -425,7 +450,8 @@ private fun EraseKey(
 
 @Composable
 private fun SquareEraseKey(
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    size: Dp = 56.dp
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
@@ -433,7 +459,7 @@ private fun SquareEraseKey(
     Box(
         modifier = Modifier
             .shadow(4.dp, RoundedCornerShape(16.dp), clip = false)
-            .size(56.dp)
+            .size(size)
             .clip(RoundedCornerShape(16.dp))
             .background(KeyWoodDark)
             .clickable(
@@ -460,7 +486,7 @@ private fun SquareEraseKey(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .height(14.dp)
+                .height(if (size > 60.dp) 18.dp else 14.dp)
                 .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
                 .background(
                     Brush.verticalGradient(
@@ -479,7 +505,7 @@ private fun SquareEraseKey(
             Text(
                 text = "⌫",
                 color = KeyText,
-                fontSize = 22.sp,
+                fontSize = if (size > 60.dp) 30.sp else 22.sp,
                 fontWeight = FontWeight.ExtraBold
             )
         }

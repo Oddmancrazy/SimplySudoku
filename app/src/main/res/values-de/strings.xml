@@ -29,11 +29,22 @@
     <string name="auto_backup_active">✓ Automatische Cloud-Sicherung ist aktiv</string>
     <string name="working">In Arbeit…</string>
     <string name="hide">Ausblenden</string>
-    <string name="about_app">Über die App</string>
+    <string name="about_app">Über SimplySudoku</string>
+    <string name="about_modes_title">Spielmodi</string>
     <string name="classic">Klassisch</string>
-    <string name="classic_desc">Minimale Hilfe und ein traditionelleres Sudoku-Erlebnis.</string>
+    <string name="classic_desc">Für den traditionellen Spieler. Minimale Hilfe, keine Fehlermarkierungen währenddessen – genau wie Stift und Papier.</string>
     <string name="modern">Modern</string>
-    <string name="modern_desc">Bietet mehr visuelle Hilfe mit Markierungen und Fehleranzeige während des Spiels.</string>
+    <string name="modern_desc">Bietet visuelle Unterstützung, indem Duplikate und Fehler sofort markiert werden. Perfekt für ein schnelleres und geführtes Erlebnis.</string>
+    <string name="about_features_title">Funktionen</string>
+    <string name="feature_pause_title">Fair-Play Pause</string>
+    <string name="feature_pause_desc">Wenn Sie das Spiel pausieren, wird das Brett abgedeckt. Dies stellt sicher, dass die Uhr fair stoppt, damit Sie Ihren nächsten Zug nicht planen können, während die Zeit stillsteht.</string>
+    <string name="feature_layout_title">Flexibles Layout</string>
+    <string name="feature_layout_desc">Spielen Sie auf einem großen Bildschirm oder sind Sie Linkshänder? Im Querformat können Sie die Seiten des Bedienfelds einfach tauschen, um die beste Ergonomie zu erzielen.</string>
+    <string name="feature_history_title">Statistik &amp; Backup</string>
+    <string name="feature_history_desc">Die App verfolgt Ihre Bestzeiten. Sehen Sie schnelle Highlights auf der Vorderseite oder tauchen Sie in Ihren vollständigen Verlauf ein. Ihre Daten gehören Ihnen – Sie können sie sichern, löschen oder auf ein neues Gerät verschieben.</string>
+    <string name="about_story_title">Die Geschichte dahinter</string>
+    <string name="about_story_desc">SimplySudoku wurde von jemandem entwickelt, der einfach eine saubere und schöne App wollte, mit der man mit einem einzigen Antippen loslegen kann, ohne Unordnung oder unnötige Menüs.</string>
+
     <string name="goal">Ziel</string>
     <string name="goal_desc">Füllen Sie das gesamte Brett so aus, dass jede Zeile, Spalte und jeder 3×3-Block die Zahlen 1 bis 9 jeweils genau einmal enthält.</string>
     <string name="all_history">Gesamter Verlauf</string>
@@ -58,7 +69,6 @@
     <!-- Time Formatting -->
     <string name="time_h_m_s">%1$dst %2$02dmin %3$02ds</string>
     <string name="time_m_s">%1$02dmin %2$02ds</string>
-
     <!-- Records Screen -->
     <string name="delete_history_title">Verlauf löschen?</string>
     <string name="delete_history_msg">Sind Sie sicher, dass Sie den gesamten Verlauf löschen möchten?</string>
@@ -83,12 +93,13 @@
     <string name="backup_imported">Backup importiert.</string>
     <string name="share_backup_title">Backup teilen</string>
     <string name="app_by">App von %1$s</string>
-
+    <string name="backup_info_title">So funktioniert die Synchronisierung</string>
+    <string name="backup_info_desc">Um mehrere Geräte synchron zu halten, empfehlen wir, \"Speichern unter...\" zu verwenden und eine Datei in der Cloud (z. B. Google Drive) zu erstellen. \n\n1. Drücken Sie \"Speichern unter...\" und erstellen Sie eine Datei auf Ihrem Google Drive.\n2. Die App speichert Ihren Fortschritt nun automatisch dort, jedes Mal wenn Sie gewinnen.\n3. Drücken Sie auf Ihrem anderen Gerät auf \"Datei importieren\" und wählen Sie dieselbe Datei aus. \n\nDie App führt dann automatisch Ihre Bestzeiten von allen Geräten in einer gemeinsamen Übersicht zusammen und verwendet diese Datei für zukünftige Speichervorgänge.</string>
+    <!-- Difficulty Labels -->
     <!-- Game Modes -->
     <string name="game_mode_classic">Klassisch</string>
     <string name="game_mode_modern">Modern</string>
 
-    <!-- Difficulty Labels -->
     <string name="difficulty_very_easy">Sehr einfach</string>
     <string name="difficulty_easy">Einfach</string>
     <string name="difficulty_medium">Mittel</string>

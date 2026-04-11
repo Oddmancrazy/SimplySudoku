@@ -29,11 +29,21 @@
     <string name="auto_backup_active">✓ Copia automática en la nube activa</string>
     <string name="working">Procesando…</string>
     <string name="hide">Ocultar</string>
-    <string name="about_app">Sobre la app</string>
+    <string name="about_app">Sobre SimplySudoku</string>
+    <string name="about_modes_title">Modos de Juego</string>
     <string name="classic">Clásico</string>
-    <string name="classic_desc">Ayuda mínima y experiencia de Sudoku tradicional.</string>
+    <string name="classic_desc">Para el jugador tradicional. Ayuda mínima, sin marcas de error durante la partida – como lápiz y papel.</string>
     <string name="modern">Moderno</string>
-    <string name="modern_desc">Más ayuda visual con marcas y errores en tiempo real.</string>
+    <string name="modern_desc">Brinda apoyo visual resaltando duplicados y errores de inmediato. Perfecto para una experiencia más rápida y guiada.</string>
+    <string name="about_features_title">Características</string>
+    <string name="feature_pause_title">Pausa de Juego Limpio</string>
+    <string name="feature_pause_desc">Al pausar, el tablero se cubre. Esto asegura que el tiempo se detenga de forma justa, evitando que planees tu próximo movimiento mientras el reloj está parado.</string>
+    <string name="feature_layout_title">Diseño Flexible</string>
+    <string name="feature_layout_desc">¿Juegas en pantalla grande o eres zurdo? En modo horizontal, puedes cambiar fácilmente los lados del panel de control para una mejor ergonomía.</string>
+    <string name="feature_history_title">Estadísticas y Copia</string>
+    <string name="feature_history_desc">La app registra tus mejores tiempos. Mira los destacados en la página principal o explora tu historial completo. Tus datos son tuyos: puedes hacer copias, borrarlos o moverlos a otro dispositivo.</string>
+    <string name="about_story_title">La Historia Detrás</string>
+    <string name="about_story_desc">SimplySudoku fue desarrollada por alguien que buscaba una app limpia y hermosa donde pudieras empezar a jugar con un solo toque, sin menús innecesarios.</string>
     <string name="goal">Objetivo</string>
     <string name="goal_desc">Llena el tablero para que cada fila, columna y bloque 3×3 contenga los números del 1 al 9 una sola vez.</string>
     <string name="all_history">Todo el historial</string>
@@ -81,8 +91,8 @@
     <string name="best_time">Mejor tiempo</string>
     <string name="achieved">Logrado</string>
     <string name="backup_imported">Copia importada.</string>
-    <string name="share_backup_title">Compartir copia</string>
-    <string name="app_by">App por %1$s</string>
+    <string name="backup_info_title">Cómo funciona la sincronización</string>
+    <string name="backup_info_desc">Para mantener varios dispositivos sincronizados, recomendamos usar \"Guardar en...\" y crear un archivo en la nube (ej. Google Drive). \n\n1. Pulsa \"Guardar en...\" y crea un archivo en tu Google Drive.\n2. La app guardará automáticamente tu progreso allí cada vez que ganes.\n3. En tu otro dispositivo, pulsa \"Importar archivo\" y selecciona el MISMO archivo. \n\nLa app combinará automáticamente tus mejores tiempos de todos los dispositivos en una vista compartida y usará ese archivo para futuros guardados.</string>
 
     <!-- Game Modes -->
     <string name="game_mode_classic">Clásico</string>

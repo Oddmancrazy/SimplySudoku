@@ -2,48 +2,59 @@
     <string name="app_name">SimplySudoku</string>
 
     <!-- General -->
-    <string name="welcome_to">환영합니다: </string>
+    <string name="welcome_to">SimplySudoku에 오신 것을 환영합니다</string>
     <string name="select_language">언어 선택</string>
     <string name="start_game">게임 시작</string>
-    <string name="system">시스템 설정</string>
+    <string name="system">시스템</string>
 
     <!-- Home Screen -->
     <string name="to_game">게임으로</string>
-    <string name="highlights">하이라이트</string>
+    <string name="highlights">기록 요약</string>
     <string name="loading_stats">통계 로딩 중…</string>
-    <string name="no_stats">아직 통계가 없습니다.</string>
+    <string name="no_stats">아직 통계 데이터가 없습니다.</string>
     <string name="settings">설정</string>
     <string name="language">언어</string>
-    <string name="language_desc">앱의 기본 언어를 선택하세요. 처음 시작할 때는 시스템 설정이 기본으로 사용됩니다.</string>
+    <string name="language_desc">앱의 기본 언어를 선택하세요. 처음 실행 시 시스템 언어가 기본값으로 사용됩니다.</string>
     <string name="storage_and_backup">저장 및 백업</string>
-    <string name="storage_desc">게임 데이터는 로컬에 저장됩니다. 여러 기기에서 플레이하려면 클라우드에 공유 백업 파일을 선택하세요.</string>
+    <string name="storage_desc">게임 데이터는 로컬에 저장됩니다. 여러 기기에서 플레이하려면 클라우드의 공유 백업 파일을 선택하세요.</string>
     <string name="auto_backup">자동 백업</string>
-    <string name="on">켜짐</string>
-    <string name="off">꺼짐</string>
+    <string name="on">켬</string>
+    <string name="off">끔</string>
     <string name="selected_location">선택된 위치</string>
     <string name="none_selected">선택되지 않음</string>
-    <string name="choose_folder">다른 이름으로 저장&#8230;</string>
+    <string name="choose_folder">저장 위치 지정…</string>
     <string name="export_now">사본 저장</string>
     <string name="share_backup">백업 공유</string>
     <string name="import_label">파일 가져오기</string>
-    <string name="auto_backup_active">✓ 클라우드 자동 백업이 활성화되었습니다</string>
-    <string name="working">작업 중…</string>
+    <string name="auto_backup_active">✓ 자동 클라우드 백업이 활성화되었습니다</string>
+    <string name="working">처리 중…</string>
     <string name="hide">숨기기</string>
-    <string name="about_app">앱 정보</string>
-    <string name="classic">클래식 모드</string>
-    <string name="classic_desc">최소한의 도움으로 정통 스도쿠를 즐기세요.</string>
-    <string name="modern">모던 모드</string>
-    <string name="modern_desc">메모 및 실시간 오류 표시 등 시각적 도움을 제공합니다.</string>
-    <string name="goal">목표</string>
-    <string name="goal_desc">모든 행, 열, 3×3 박스에 1부터 9까지의 숫자가 중복 없이 한 번씩만 들어가도록 채우세요.</string>
+    <string name="about_app">SimplySudoku 정보</string>
+    <string name="about_modes_title">게임 모드</string>
+    <string name="classic">클래식</string>
+    <string name="classic_desc">전통적인 스타일. 힌트가 최소화되고 플레이 중 오류 표시가 없습니다. 종이와 펜 같은 느낌을 줍니다.</string>
+    <string name="modern">모던</string>
+    <string name="modern_desc">중복 및 오류를 즉시 강조하여 시각적인 지원을 제공합니다. 빠르고 가이드가 있는 경험에 적합합니다.</string>
+    <string name="about_features_title">기능</string>
+    <string name="feature_pause_title">페어플레이 일시 중지</string>
+    <string name="feature_pause_desc">일시 중지 중에는 보드가 가려집니다. 이는 시간이 멈춘 동안 다음 수를 생각할 수 없도록 공정성을 보장하기 위함입니다.</string>
+    <string name="feature_layout_title">유연한 레이아웃</string>
+    <string name="feature_layout_desc">대화면에서 플레이하거나 왼손잡이인가요? 가로 모드에서는 조작 패널의 좌우를 쉽게 바꿀 수 있어 최적의 편의성을 제공합니다.</string>
+    <string name="feature_history_title">통계 및 백업</string>
+    <string name="feature_history_desc">앱이 당신의 최고 기록을 추적합니다. 홈 화면에서 요약을 보거나 전체 기록을 자세히 확인할 수 있습니다. 데이터는 당신의 것입니다. 백업, 삭제, 새 기기 이전도 자유롭습니다.</string>
+    <string name="about_story_title">개발 스토리</string>
+    <string name="about_story_desc">SimplySudoku는 불필요한 메뉴나 clutter(산만함) 없이 원터치로 바로 시작할 수 있는 깔끔하고 아름다운 앱을 원하는 마음으로 개발되었습니다.</string>
+
+    <string name="goal">규칙</string>
+    <string name="goal_desc">모든 행, 열, 3×3 블록에 1부터 9까지의 숫자가 한 번씩만 들어가도록 보드를 채웁니다.</string>
     <string name="all_history">전체 기록</string>
 
     <!-- Game Screen -->
     <string name="congratulations">축하합니다!</string>
     <string name="new_game">새 게임</string>
-    <string name="new_game_short">새 게임</string>
-    <string name="swap_sides">방향 전환</string>
-    <string name="game_paused">게임 일시 중지</string>
+    <string name="new_game_short">새로 만들기</string>
+    <string name="swap_sides">좌우 반전</string>
+    <string name="game_paused">일시 중지됨</string>
     <string name="resume">재개</string>
     <string name="confirm_restart">설정을 변경하면 새 게임이 시작됩니다. 계속하시겠습니까?</string>
     <string name="cancel">취소</string>
@@ -58,37 +69,37 @@
     <!-- Time Formatting -->
     <string name="time_h_m_s">%1$d시간 %2$02d분 %3$02d초</string>
     <string name="time_m_s">%1$02d분 %2$02d초</string>
-
     <!-- Records Screen -->
-    <string name="delete_history_title">기록을 삭제할까요?</string>
+    <string name="delete_history_title">기록을 삭제하시겠습니까?</string>
     <string name="delete_history_msg">모든 기록을 삭제하시겠습니까?</string>
     <string name="yes">예</string>
     <string name="confirm_delete_title">삭제 확인</string>
-    <string name="confirm_delete_msg">이 작업은 되돌릴 수 없습니다. 정말로 모두 삭제하시겠습니까?</string>
+    <string name="confirm_delete_msg">이 작업은 취소할 수 없습니다. 정말로 모두 삭제하시겠습니까?</string>
     <string name="delete_all_btn">모두 삭제</string>
     <string name="back">뒤로</string>
     <string name="refresh">새로고침</string>
     <string name="no_data">데이터가 없습니다.</string>
     <string name="overview">개요</string>
-    <string name="combined">통합</string>
-    <string name="perfect_games">실수 없이 완료</string>
-    <string name="classic_per_difficulty">난이도별 클래식 기록</string>
-    <string name="modern_per_difficulty">난이도별 모던 기록</string>
-    <string name="delete_all_history">전체 기록 삭제</string>
-    <string name="started">시작</string>
-    <string name="completed">완료</string>
+    <string name="combined">종합</string>
+    <string name="perfect_games">오류 없이 완료</string>
+    <string name="classic_per_difficulty">난이도별(클래식)</string>
+    <string name="modern_per_difficulty">난이도별(모던)</string>
+    <string name="delete_all_history">모든 기록 삭제</string>
+    <string name="started">시작 일시</string>
+    <string name="completed">완료 일시</string>
     <string name="time_played">플레이 시간</string>
     <string name="best_time">최고 기록</string>
     <string name="achieved">달성일</string>
     <string name="backup_imported">백업을 가져왔습니다.</string>
     <string name="share_backup_title">백업 공유</string>
-    <string name="app_by">제작: %1$s</string>
-
+    <string name="app_by">%1$s 개발</string>
+    <string name="backup_info_title">동기화 작동 방식</string>
+    <string name="backup_info_desc">여러 기기에서 동기화를 유지하려면 「저장 위치 지정…」을 사용하여 클라우드(Google 드라이브 등)에 파일을 만드는 것이 좋습니다. \n\n1. 「저장 위치 지정…」을 누르고 Google 드라이브에 파일을 만듭니다.\n2. 이제 게임에서 이길 때마다 진행 상황이 자동으로 해당 파일에 저장됩니다.\n3. 다른 기기에서 「파일 가져오기」를 누르고 동일한 파일을 선택합니다. \n\n앱은 자동으로 모든 기기의 최고 기록을 하나의 공유 뷰로 통합하고 앞으로의 저장을 위해 해당 파일을 사용합니다.</string>
+    <!-- Difficulty Labels -->
     <!-- Game Modes -->
     <string name="game_mode_classic">클래식</string>
     <string name="game_mode_modern">모던</string>
 
-    <!-- Difficulty Labels -->
     <string name="difficulty_very_easy">매우 쉬움</string>
     <string name="difficulty_easy">쉬움</string>
     <string name="difficulty_medium">보통</string>
@@ -100,14 +111,14 @@
     <string name="diff_very_easy">매쉬</string>
     <string name="diff_easy">쉬움</string>
     <string name="diff_medium">보통</string>
-    <string name="diff_hard">어려</string>
+    <string name="diff_hard">어려움</string>
     <string name="diff_very_hard">매어</string>
     <string name="diff_expert">전문</string>
 
     <!-- Mode Labels (Short) -->
-    <string name="mode_modern">모던</string>
-    <string name="mode_classic">클래식</string>
-    <string name="mode_modern_short">모던</string>
-    <string name="mode_classic_short">클래식</string>
+    <string name="mode_modern">M</string>
+    <string name="mode_classic">C</string>
+    <string name="mode_modern_short">M</string>
+    <string name="mode_classic_short">C</string>
     <string name="title">SimplySudoku</string>
 </resources>

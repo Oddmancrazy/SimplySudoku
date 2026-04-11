@@ -16,34 +16,50 @@
     <string name="language">שפה</string>
     <string name="language_desc">בחר את שפת ברירת המחדל. הגדרות המערכת משמשות כברירת מחדל בהפעלה הראשונה.</string>
     <string name="storage_and_backup">אחסון וגיבוי</string>
-    <string name="storage_desc">נתוני המשחק נשמרים מקומית. ניתן לבחור תיקיית גיבוי, לייצא, לשתף או לייבא גיבוי.</string>
+    <string name="storage_desc">נתוני המשחק נשמרים מקומית. כדי לשחק במספר מכשירים, בחר קובץ גיבוי משותף בענן.</string>
     <string name="auto_backup">גיבוי אוטומטי</string>
     <string name="on">פעיל</string>
     <string name="off">כבוי</string>
     <string name="selected_location">מיקום נבחר</string>
     <string name="none_selected">טרם נבחר</string>
-    <string name="choose_folder">בחר תיקייה</string>
-    <string name="export_now">ייצא כעת</string>
+    <string name="choose_folder">שמור ב...</string>
+    <string name="export_now">שמור עותק</string>
     <string name="share_backup">שתף גיבוי</string>
-    <string name="import_label">ייבא</string>
+    <string name="import_label">ייבא קובץ</string>
+    <string name="auto_backup_active">✓ גיבוי ענן אוטומטי פעיל</string>
     <string name="working">מעבד…</string>
     <string name="hide">הסתר</string>
-    <string name="about_app">אודות האפליקציה</string>
+    <string name="about_app">אודות SimplySudoku</string>
+    <string name="about_modes_title">מצבי משחק</string>
     <string name="classic">קלאסי</string>
-    <string name="classic_desc">עזרה מינימלית וחוויית סודוקו מסורתית יותר.</string>
+    <string name="classic_desc">עבור השחקן המסורתי. עזרה מינימלית, ללא סימון שגיאות במהלך המשחק – בדיוק כמו דף ועט.</string>
     <string name="modern">מודרני</string>
-    <string name="modern_desc">מספק עזרה חזותית רבה יותר עם סימונים ותצוגת שגיאות תוך כדי תנועה.</string>
+    <string name="modern_desc">מספק עזרה חזותית על ידי סימון כפילויות ושגיאות באופן מיידי. מושלם לחוויה מהירה ומודרכת יותר.</string>
+    <string name="about_features_title">תכונות</string>
+    <string name="feature_pause_title">השהיית משחק הוגן</string>
+    <string name="feature_pause_desc">כשאתה משהה את המשחק, הלוח מכוסה. זה מבטיח שהשעון עוצר בצורה הוגנת, כך שלא תוכל לתכנן את המהלך הבא שלך בזמן שהזמן עומד מלכת.</string>
+    <string name="feature_layout_title">פריסה גמישה</string>
+    <string name="feature_layout_desc">משחק על מסך גדול או שמאלי? במצב לרוחב, תוכל להחליף בקלות בין צידי לוח הבקרה לארגונומיה מיטבית.</string>
+    <string name="feature_history_title">סטטיסטיקה וגיבוי</string>
+    <string name="feature_history_desc">האפליקציה עוקבת אחר הזמנים הטובים ביותר שלך. ראה שיאים בדף הבית או צלול להיסטוריה המלאה שלך. הנתונים שלך הם שלך – תוכל לגבות אותם, למחוק אותם או להעביר אותם למכשיר חדש.</string>
+    <string name="about_story_title">הסיפור מאחורי</string>
+    <string name="about_story_desc">SimplySudoku פותחה על ידי מישהו שפשוט רצה אפליקציה נקייה ויפה שבה אפשר להתחיל לשחק בלחיצה אחת, ללא עומס או תפריטים מיותרים.</string>
+
     <string name="goal">מטרה</string>
     <string name="goal_desc">מלא את הלוח כך שכל שורה, עמודה ותיבת 3×3 יכילו את המספרים 1 עד 9 פעם אחת בדיוק.</string>
     <string name="all_history">כל ההיסטוריה</string>
 
     <!-- Game Screen -->
     <string name="congratulations">כל הכבוד!</string>
-    <string name="new_game">חדש</string>
+    <string name="new_game">משחק חדש</string>
+    <string name="new_game_short">חדש</string>
     <string name="swap_sides">החלף צדדים</string>
+    <string name="game_paused">המשחק מושהה</string>
+    <string name="resume">המשך</string>
     <string name="confirm_restart">שינוי זה יתחיל משחק חדש. האם להמשיך?</string>
     <string name="cancel">ביטול</string>
     <string name="continue_btn">המשך</string>
+    <string name="continue_label">המשך</string>
 
     <!-- Statistics -->
     <string name="total_time_played">זמן משחק כולל</string>
@@ -53,7 +69,6 @@
     <!-- Time Formatting -->
     <string name="time_h_m_s">%1$dש %2$02ד %3$02ש</string>
     <string name="time_m_s">%1$02ד %2$02ש</string>
-
     <!-- Records Screen -->
     <string name="delete_history_title">למחוק היסטוריה?</string>
     <string name="delete_history_msg">האם אתה בטוח שברצונך למחוק את כל ההיסטוריה?</string>
@@ -78,12 +93,13 @@
     <string name="backup_imported">הגיבוי יובא בהצלחה.</string>
     <string name="share_backup_title">שתף גיבוי</string>
     <string name="app_by">אפליקציה מאת %1$s</string>
-
+    <string name="backup_info_title">איך עובד סנכרון</string>
+    <string name="backup_info_desc">כדי לשמור על מספר מכשירים מסונכרנים, אנו ממליצים להשתמש ב-\"שמור ב...\" וליצור קובץ בענן (למשל, Google Drive). \n\n1. לחץ על \"שמור ב...\" וצור קובץ ב-Google Drive שלך.\n2. האפליקציה תשמור כעת באופן אוטומטי את ההתקדמות שלך שם בכל פעם שתנצח.\n3. במכשיר השני שלך, לחץ על \"ייבא קובץ\" ובחר את אותו הקובץ בדיוק. \n\nהאפליקציה תמזג באופן אוטומטי את הזמנים הטובים ביותר שלך מכל המכשירים לסקירה משותפת אחת, ותשתמש בקובץ זה לשמירות עתידיות.</string>
+    <!-- Difficulty Labels -->
     <!-- Game Modes -->
     <string name="game_mode_classic">קלאסי</string>
     <string name="game_mode_modern">מודרני</string>
 
-    <!-- Difficulty Labels -->
     <string name="difficulty_very_easy">קל מאוד</string>
     <string name="difficulty_easy">קל</string>
     <string name="difficulty_medium">בינוני</string>
@@ -102,5 +118,7 @@
     <!-- Mode Labels (Short) -->
     <string name="mode_modern">M</string>
     <string name="mode_classic">C</string>
+    <string name="mode_modern_short">M</string>
+    <string name="mode_classic_short">C</string>
     <string name="title">SimplySudoku</string>
 </resources>
