@@ -107,18 +107,5 @@
     <string name="difficulty_very_hard">صعب جداً</string>
     <string name="difficulty_expert">خبير</string>
 
-    <!-- Difficulty Labels (Short) -->
-    <string name="diff_very_easy">س ج</string>
-    <string name="diff_easy">سهل</string>
-    <string name="diff_medium">متو</string>
-    <string name="diff_hard">صعب</string>
-    <string name="diff_very_hard">ص ج</string>
-    <string name="diff_expert">خبي</string>
-
-    <!-- Mode Labels (Short) -->
-    <string name="mode_modern">M</string>
-    <string name="mode_classic">C</string>
-    <string name="mode_modern_short">M</string>
-    <string name="mode_classic_short">C</string>
     <string name="title">SimplySudoku</string>
 </resources>

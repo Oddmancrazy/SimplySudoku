@@ -52,7 +52,6 @@
     <!-- Game Screen -->
     <string name="congratulations">ขอแสดงความยินดี!</string>
     <string name="new_game">เริ่มเกมใหม่</string>
-    <string name="new_game_short">ใหม่</string>
     <string name="swap_sides">สลับด้าน</string>
     <string name="game_paused">หยุดเกมชั่วคราว</string>
     <string name="resume">เล่นต่อ</string>
@@ -106,19 +105,5 @@
     <string name="difficulty_hard">ยาก</string>
     <string name="difficulty_very_hard">ยากมาก</string>
     <string name="difficulty_expert">ผู้เชี่ยวชาญ</string>
-
-    <!-- Difficulty Labels (Short) -->
-    <string name="diff_very_easy">ง่ายม.</string>
-    <string name="diff_easy">ง่าย</string>
-    <string name="diff_medium">กลาง</string>
-    <string name="diff_hard">ยาก</string>
-    <string name="diff_very_hard">ยากม.</string>
-    <string name="diff_expert">เก่ง</string>
-
-    <!-- Mode Labels (Short) -->
-    <string name="mode_modern">M</string>
-    <string name="mode_classic">C</string>
-    <string name="mode_modern_short">M</string>
-    <string name="mode_classic_short">C</string>
     <string name="title">SimplySudoku</string>
 </resources>

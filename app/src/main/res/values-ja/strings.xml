@@ -107,18 +107,5 @@
     <string name="difficulty_very_hard">超上級</string>
     <string name="difficulty_expert">エキスパート</string>
 
-    <!-- Difficulty Labels (Short) -->
-    <string name="diff_very_easy">超初</string>
-    <string name="diff_easy">初</string>
-    <string name="diff_medium">中</string>
-    <string name="diff_hard">上</string>
-    <string name="diff_very_hard">超上</string>
-    <string name="diff_expert">EX</string>
-
-    <!-- Mode Labels (Short) -->
-    <string name="mode_modern">M</string>
-    <string name="mode_classic">C</string>
-    <string name="mode_modern_short">M</string>
-    <string name="mode_classic_short">C</string>
     <string name="title">SimplySudoku</string>
 </resources>

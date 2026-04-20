@@ -107,18 +107,5 @@
     <string name="difficulty_very_hard">Sehr schwer</string>
     <string name="difficulty_expert">Experte</string>
 
-    <!-- Difficulty Labels (Short) -->
-    <string name="diff_very_easy">SE</string>
-    <string name="diff_easy">E</string>
-    <string name="diff_medium">M</string>
-    <string name="diff_hard">S</string>
-    <string name="diff_very_hard">SS</string>
-    <string name="diff_expert">EX</string>
-
-    <!-- Mode Labels (Short) -->
-    <string name="mode_modern">M</string>
-    <string name="mode_classic">K</string>
-    <string name="mode_modern_short">M</string>
-    <string name="mode_classic_short">K</string>
     <string name="title">SimplySudoku</string>
 </resources>

@@ -108,17 +108,17 @@
     <string name="difficulty_expert">Expert</string>
 
     <!-- Difficulty Labels (Short) -->
-    <string name="diff_very_easy">ML</string>
-    <string name="diff_easy">L</string>
-    <string name="diff_medium">M</string>
-    <string name="diff_hard">S</string>
-    <string name="diff_very_hard">MS</string>
-    <string name="diff_expert">EX</string>
+    <string name="diff_very_easy">Mycket lätt</string>
+    <string name="diff_easy">Lätt</string>
+    <string name="diff_medium">Medium</string>
+    <string name="diff_hard">Svår</string>
+    <string name="diff_very_hard">Mycket svår</string>
+    <string name="diff_expert">Expert</string>
 
     <!-- Mode Labels (Short) -->
-    <string name="mode_modern">M</string>
-    <string name="mode_classic">K</string>
-    <string name="mode_modern_short">M</string>
-    <string name="mode_classic_short">K</string>
+    <string name="mode_modern">Modern</string>
+    <string name="mode_classic">Klassisk</string>
+    <string name="mode_modern_short">Modern</string>
+    <string name="mode_classic_short">Klassisk</string>
     <string name="title">SimplySudoku</string>
 </resources>

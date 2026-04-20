@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.simplysudoku"
+    namespace = "com.simplysudoku.app"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.simplysudoku"
+        applicationId = "com.simplysudoku.app"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -19,7 +19,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

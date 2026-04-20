@@ -52,7 +52,6 @@
     <!-- Game Screen -->
     <string name="congratulations">כל הכבוד!</string>
     <string name="new_game">משחק חדש</string>
-    <string name="new_game_short">חדש</string>
     <string name="swap_sides">החלף צדדים</string>
     <string name="game_paused">המשחק מושהה</string>
     <string name="resume">המשך</string>
@@ -62,7 +61,7 @@
     <string name="continue_label">המשך</string>
 
     <!-- Statistics -->
-    <string name="total_time_played">זמן משחק כולל</string>
+    <string name="total_time_played">זמן משחק כולล</string>
     <string name="completed_games">משחקים שהושלמו</string>
     <string name="best_time_per_difficulty">זמן שיא לפי רמת קושי</string>
 
@@ -106,19 +105,5 @@
     <string name="difficulty_hard">קשה</string>
     <string name="difficulty_very_hard">קשה מאוד</string>
     <string name="difficulty_expert">מומחה</string>
-
-    <!-- Difficulty Labels (Short) -->
-    <string name="diff_very_easy">קמ</string>
-    <string name="diff_easy">קל</string>
-    <string name="diff_medium">בינ</string>
-    <string name="diff_hard">קשה</string>
-    <string name="diff_very_hard">ק"מ</string>
-    <string name="diff_expert">מומ</string>
-
-    <!-- Mode Labels (Short) -->
-    <string name="mode_modern">M</string>
-    <string name="mode_classic">C</string>
-    <string name="mode_modern_short">M</string>
-    <string name="mode_classic_short">C</string>
     <string name="title">SimplySudoku</string>
 </resources>
