@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
+import com.simplysudoku.app.R
 import com.simplysudoku.app.data.backup.BackupFileManager
 import com.simplysudoku.app.data.repository.RecordRepository
 import com.simplysudoku.app.data.repository.SettingsRepository
@@ -65,26 +66,26 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
         val currentSettings = settingsRepository.getSettings()
 
-        val message = when {
+        val messageRes = when {
             enabled && currentSettings.backupUri.isNullOrBlank() ->
-                "Automatisk backup er slått på. Velg lagringsmappe for å ta det i bruk."
+                R.string.auto_backup_on_no_uri
             enabled ->
-                "Automatisk backup er slått på."
+                R.string.auto_backup_on
             else ->
-                "Automatisk backup er slått av."
+                R.string.auto_backup_off
         }
 
-        refreshWithMessage(message)
+        refreshWithResMessage(messageRes)
     }
 
     fun setBackupUri(uri: String?) {
         settingsRepository.saveBackupUri(uri)
-        refreshWithMessage("Lagringsmappe valgt.")
+        refreshWithResMessage(R.string.folder_selected)
     }
 
     fun clearBackupUri() {
         settingsRepository.clearBackupUri()
-        refreshWithMessage("Lagringsmappe fjernet.")
+        refreshWithResMessage(R.string.folder_removed)
     }
 
     fun exportBackupNow() {
@@ -115,7 +116,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
                 it.copy(
                     settings = settingsRepository.getSettings(),
                     isWorking = false,
-                    statusMessage = if (result.isSuccess) "Backup lagret og koblet til." else "Klarte ikke å lagre."
+                    statusMessage = if (result.isSuccess) appContext.getString(R.string.backup_saved_connected) else appContext.getString(R.string.failed_to_save)
                 )
             }
         }
@@ -137,7 +138,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
             _uiState.update {
                 it.copy(
                     isWorking = false,
-                    statusMessage = if (result.isSuccess) "Backup eksportert." else "Eksport feilet."
+                    statusMessage = if (result.isSuccess) appContext.getString(R.string.backup_exported) else appContext.getString(R.string.export_failed)
                 )
             }
         }
@@ -156,7 +157,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
                 _uiState.update {
                     it.copy(
                         isWorking = false,
-                        statusMessage = "Klarte ikke å importere backup."
+                        statusMessage = appContext.getString(R.string.failed_to_import)
                     )
                 }
                 return@launch
@@ -167,7 +168,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
                 _uiState.update {
                     it.copy(
                         isWorking = false,
-                        statusMessage = "Backupfilen var tom eller ugyldig."
+                        statusMessage = appContext.getString(R.string.backup_empty_invalid)
                     )
                 }
                 return@launch
@@ -195,7 +196,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
                 it.copy(
                     settings = settingsRepository.getSettings(),
                     isWorking = false,
-                    statusMessage = "Backup flettet inn og koblet til."
+                    statusMessage = appContext.getString(R.string.backup_merged_connected)
                 )
             }
         }
@@ -213,12 +214,12 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
         return if (result.isSuccess) {
             _uiState.update {
-                it.copy(statusMessage = "Backup klar til deling.")
+                it.copy(statusMessage = appContext.getString(R.string.backup_ready_share))
             }
             result.getOrNull()
         } else {
             _uiState.update {
-                it.copy(statusMessage = "Klarte ikke å lage delbar backup.")
+                it.copy(statusMessage = appContext.getString(R.string.failed_share_backup))
             }
             null
         }
@@ -229,6 +230,15 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
             it.copy(
                 settings = settingsRepository.getSettings(),
                 statusMessage = message
+            )
+        }
+    }
+
+    private fun refreshWithResMessage(messageRes: Int) {
+        _uiState.update {
+            it.copy(
+                settings = settingsRepository.getSettings(),
+                statusMessage = appContext.getString(messageRes)
             )
         }
     }

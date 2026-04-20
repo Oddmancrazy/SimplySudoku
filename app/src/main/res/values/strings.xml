@@ -25,6 +25,8 @@
     <string name="choose_folder">Save to...</string>
     <string name="export_now">Save copy</string>
     <string name="share_backup">Share backup</string>
+    <string name="google_drive">Google Drive</string>
+    <string name="cloud_file">Cloud / File</string>
     <string name="import_label">Import file</string>
     <string name="auto_backup_active">✓ Automatic cloud backup is active</string>
     <string name="working">Working…</string>
@@ -94,6 +96,20 @@
     <string name="share_backup_title">Share backup</string>
     <string name="app_by">App by %1$s</string>
     <string name="backup_info_title">How synchronization works</string>
+    <string name="auto_backup_on_no_uri">Automatic backup is enabled. Select a storage folder to use it.</string>
+    <string name="auto_backup_on">Automatic backup is enabled.</string>
+    <string name="auto_backup_off">Automatic backup is disabled.</string>
+    <string name="folder_selected">Storage folder selected.</string>
+    <string name="folder_removed">Storage folder removed.</string>
+    <string name="backup_saved_connected">Backup saved and connected.</string>
+    <string name="failed_to_save">Failed to save.</string>
+    <string name="backup_exported">Backup exported.</string>
+    <string name="export_failed">Export failed.</string>
+    <string name="failed_to_import">Failed to import backup.</string>
+    <string name="backup_empty_invalid">Backup file was empty or invalid.</string>
+    <string name="backup_merged_connected">Backup merged and connected.</string>
+    <string name="backup_ready_share">Backup ready for sharing.</string>
+    <string name="failed_share_backup">Failed to create shareable backup.</string>
     <string name="backup_info_desc">To keep multiple devices in sync, we recommend using \"Save to...\" and creating a file in the cloud (e.g., Google Drive). \n\n1. Press \"Save to...\" and create a file on your Google Drive.\n2. The app will now automatically save your progress there every time you win.\n3. On your other device, press \"Import file\" and select the SAME file. \n\nThe app will then automatically merge your best times from all devices into one shared overview, and use this file for future saves.</string>
     <!-- Difficulty Labels -->
     <!-- Game Modes -->

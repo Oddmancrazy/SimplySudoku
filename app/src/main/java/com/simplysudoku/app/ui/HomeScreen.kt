@@ -507,8 +507,8 @@ private fun BackupSection(
             label = stringResource(R.string.selected_location),
             value = when {
                 backupUri == null -> stringResource(R.string.none_selected)
-                backupUri.contains("com.google.android.apps.docs") -> "Google Disk"
-                else -> "Sky / Fil"
+                backupUri.contains("com.google.android.apps.docs") -> stringResource(R.string.google_drive)
+                else -> stringResource(R.string.cloud_file)
             }
         )
 
@@ -517,7 +517,7 @@ private fun BackupSection(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             SmallWoodButton(
-                text = "Lagre til...",
+                text = stringResource(R.string.choose_folder),
                 onClick = onConnectDrive,
                 modifier = Modifier.weight(1f)
             )
@@ -552,21 +552,14 @@ private fun BackupSection(
         if (!statusMessage.isNullOrBlank()) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
+                horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = statusMessage,
                     fontSize = 14.sp,
-                    color = Color(0xFF6B5238)
-                )
-
-                Text(
-                    text = stringResource(R.string.hide),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = HomeKeyText,
-                    modifier = Modifier.clickable(onClick = onClearStatus)
+                    color = Color(0xFF6B5238),
+                    modifier = Modifier.weight(1f)
                 )
             }
         }
@@ -675,7 +668,16 @@ private fun SmallWoodButton(
                 text = text,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold,
-                color = HomeKeyText
+                color = HomeKeyText,
+                maxLines = 1,
+                softWrap = false,
+                onTextLayout = { textLayoutResult ->
+                    // Valgfritt: Hvis vi ville ha auto-scaling her, men Compose 
+                    // håndterer det best via biblioteker. Vi bruker en enklere løsning:
+                },
+                style = LocalTextStyle.current.copy(
+                    platformStyle = PlatformTextStyle(includeFontPadding = false)
+                )
             )
         }
     }

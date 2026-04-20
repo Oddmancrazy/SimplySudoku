@@ -25,7 +25,7 @@
     <string name="choose_folder">Opslaan in&#8230;</string>
     <string name="export_now">Kopie opslaan</string>
     <string name="share_backup">Back-up delen</string>
-    <string name="import_label">Bestand importeren</string>
+    <string name="import_label">Importeer</string>
     <string name="auto_backup_active">✓ Automatische cloud-back-up is actief</string>
     <string name="working">Bezig…</string>
     <string name="hide">Verbergen</string>
