@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.simplysudoku.app"
+    namespace = "no.oddman.simplysudoku"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.simplysudoku.app"
+        applicationId = "no.oddman.simplysudoku"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
